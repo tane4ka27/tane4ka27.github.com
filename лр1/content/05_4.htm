@@ -1,0 +1,886 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="05_4.files/filelist.xml">
+<link rel=Edit-Time-Data href="05_4.files/editdata.mso">
+<link rel=OLE-Object-Data href="05_4.files/oledata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Основы теории обобщенной машины</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Lena</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>butthead</o:LastAuthor>
+  <o:Revision>64</o:Revision>
+  <o:TotalTime>172</o:TotalTime>
+  <o:Created>2008-01-15T09:32:00Z</o:Created>
+  <o:LastSaved>2008-05-31T12:50:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>459</o:Words>
+  <o:Characters>2619</o:Characters>
+  <o:Company> </o:Company>
+  <o:Lines>21</o:Lines>
+  <o:Paragraphs>6</o:Paragraphs>
+  <o:CharactersWithSpaces>3072</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>120</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:AutoHyphenation/>
+  <w:HyphenationZone>17</w:HyphenationZone>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+   <w:UseWord97LineBreakingRules/>
+   <w:SelectEntireFieldWithStartOrEnd/>
+   <w:UseWord2002TableStyleRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:204;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+@font-face
+	{font-family:Calibri;
+	mso-font-alt:"Century Gothic";
+	mso-font-charset:204;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1073750139 0 0 159 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:0pt;
+	font-weight:normal;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MTDisplayEquation, li.MTDisplayEquation, div.MTDisplayEquation
+	{mso-style-name:MTDisplayEquation;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	tab-stops:center 241.0pt right 482.0pt;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.a, li.a, div.a
+	{mso-style-name:"Абзац списка";
+	margin-top:0cm;
+	margin-right:1.0cm;
+	margin-bottom:12.0pt;
+	margin-left:36.0pt;
+	mso-add-space:auto;
+	text-align:justify;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:Calibri;
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	mso-fareast-language:EN-US;}
+p.aCxSpFirst, li.aCxSpFirst, div.aCxSpFirst
+	{mso-style-name:"Абзац спискаCxSpFirst";
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:1.0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:Calibri;
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	mso-fareast-language:EN-US;}
+p.aCxSpMiddle, li.aCxSpMiddle, div.aCxSpMiddle
+	{mso-style-name:"Абзац спискаCxSpMiddle";
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:1.0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:Calibri;
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	mso-fareast-language:EN-US;}
+p.aCxSpLast, li.aCxSpLast, div.aCxSpLast
+	{mso-style-name:"Абзац спискаCxSpLast";
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:1.0cm;
+	margin-bottom:12.0pt;
+	margin-left:36.0pt;
+	mso-add-space:auto;
+	text-align:justify;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:Calibri;
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	mso-fareast-language:EN-US;}
+p.style3, li.style3, div.style3
+	{mso-style-name:style3;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.9pt 3.0cm 5.0cm 3.0cm;
+	mso-header-margin:35.45pt;
+	mso-footer-margin:35.45pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+table.MsoTableGrid
+	{mso-style-name:"Сетка таблицы";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="24578">
+  <o:colormenu v:ext="edit" fillcolor="black" strokecolor="none"/>
+ </o:shapedefaults></xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+  <o:regrouptable v:ext="edit">
+   <o:entry new="1" old="0"/>
+   <o:entry new="2" old="0"/>
+   <o:entry new="3" old="0"/>
+   <o:entry new="4" old="0"/>
+   <o:entry new="5" old="0"/>
+   <o:entry new="6" old="0"/>
+   <o:entry new="7" old="0"/>
+   <o:entry new="8" old="0"/>
+   <o:entry new="9" old="0"/>
+   <o:entry new="10" old="0"/>
+   <o:entry new="11" old="10"/>
+   <o:entry new="12" old="0"/>
+   <o:entry new="13" old="12"/>
+   <o:entry new="14" old="0"/>
+   <o:entry new="15" old="0"/>
+   <o:entry new="16" old="0"/>
+   <o:entry new="17" old="0"/>
+   <o:entry new="18" old="0"/>
+   <o:entry new="19" old="18"/>
+   <o:entry new="20" old="19"/>
+  </o:regrouptable>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=RU link=blue vlink=purple style='tab-interval:36.0pt'>
+
+<div class=Section1>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='background:#446644;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=1031 style='width:773.05pt;border:solid white 1.0pt;mso-border-alt:
+  solid white .25pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=style3 style='margin-top:2.0pt;margin-right:0cm;margin-bottom:2.0pt;
+  margin-left:0cm;text-indent:29.65pt'><span style='color:white;font-weight:
+  normal;mso-bidi-font-weight:bold'>5.4.</span><span lang=EN-US
+  style='color:white;mso-ansi-language:EN-US;font-weight:normal;mso-bidi-font-weight:
+  bold'>&nbsp;</span><span style='color:white;font-weight:normal;mso-bidi-font-weight:
+  bold'>Расчёт привода механизма подавателя<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'>Чаще всего применяется механизм подавателя с
+приводом от ходового винта, расположенного под столом машины. На <a
+href="#рис5_5">рис. 5.5</a> показана схема такого привода, на котором: <i
+style='mso-bidi-font-style:normal'>1</i>– стопа листов; <i style='mso-bidi-font-style:
+normal'>2</i>– корпус с гребёнкой;<i style='mso-bidi-font-style:normal'> 3 </i>–
+ролики; <i style='mso-bidi-font-style:normal'>4</i> – шарик;<i
+style='mso-bidi-font-style:normal'> 5</i> – ползун-гайка; <i style='mso-bidi-font-style:
+normal'>6</i> – ходовой винт; <i style='mso-bidi-font-style:normal'>7 </i>–
+направляющая.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:35.45pt'><a
+name="рис5_5"><span lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:
+EN-US'><!--[if gte vml 1]><v:shapetype id="_x0000_t75" coordsize="21600,21600"
+ o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f"
+ stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:308.25pt;
+ height:129.75pt'>
+ <v:imagedata src="05_4.files/image001.png" o:title="" croptop="28714f"
+  cropbottom="22211f" cropleft="21811f" cropright="22682f"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=411 height=173
+src="05_4.files/image002.jpg" v:shapes="_x0000_i1025"><![endif]></span></a><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:12.0pt'>Рис. 5.5. Схема перемещения подавателя <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'>При работе такого механизма, особенно в
+момент сдвига с места, на подаватель будут действовать две силы: <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='mso-bidi-font-size:
+14.0pt'>– <span class=GramE><i style='mso-bidi-font-style:normal'>Р</i><sub>(</sub></span><sub>т)&#8721;</sub>
+– суммарная сила трения стопы, корпуса и ползуна; <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='mso-bidi-font-size:
+14.0pt'>– <span class=GramE><i style='mso-bidi-font-style:normal'>Р</i><sub>(</sub></span><sub>ин)&#8721;</sub><span
+style='mso-spacerun:yes'>  </span>– суммарная сила инерции подвижных масс.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='mso-bidi-font-size:14.0pt'>Общая суммарная сила подвижных масс составит<o:p></o:p></span></p>
+
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;mso-yfti-tbllook:480;mso-padding-alt:
+ 0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width="96%" style='width:96.84%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:6.0pt;margin-left:0cm;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span class=SpellE><i style='mso-bidi-font-style:
+  normal'><span style='mso-bidi-font-size:14.0pt'>Р</span></i><sub><span
+  style='mso-bidi-font-size:14.0pt'>п</span></sub></span><span
+  style='mso-bidi-font-size:14.0pt'> = <span class=GramE><i style='mso-bidi-font-style:
+  normal'>Р</i><sub>(</sub></span><sub>т)&#8721; </sub>+ <i style='mso-bidi-font-style:
+  normal'>Р</i><sub>(ин)&#8721;</sub> <sub><span style='color:black'><o:p></o:p></span></sub></span></p>
+  </td>
+  <td width="3%" style='width:3.16%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:6.0pt;margin-left:0cm;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>(1)<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'>Первая составляющая этого выражения</span><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;mso-yfti-tbllook:480;mso-padding-alt:
+ 0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width="96%" style='width:96.84%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:6.0pt;margin-left:0cm;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span class=GramE><i style='mso-bidi-font-style:
+  normal'><span style='mso-bidi-font-size:14.0pt'>Р</span></i><sub><span
+  style='mso-bidi-font-size:14.0pt'>(</span></sub></span><sub><span
+  style='mso-bidi-font-size:14.0pt'>т)&#8721;</span></sub><span
+  style='mso-bidi-font-size:14.0pt'> = <i style='mso-bidi-font-style:normal'>Р</i><sub>(т)с</sub><i
+  style='mso-bidi-font-style:normal'> + Р</i><sub>(т)<span class=SpellE>пд</span></sub><i
+  style='mso-bidi-font-style:normal'> + Р</i><sub>(т)<span class=SpellE>пг</span></sub>,
+  <sub><span style='color:black'><o:p></o:p></span></sub></span></p>
+  </td>
+  <td width="3%" style='width:3.16%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:6.0pt;margin-left:0cm;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>(</span><span
+  lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:
+  EN-US'>2</span><span style='mso-bidi-font-size:14.0pt;color:black'>)<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify'><span style='mso-bidi-font-size:
+14.0pt'>где <span style='mso-tab-count:1'>   </span><span class=GramE><i
+style='mso-bidi-font-style:normal'>Р</i><sub>(</sub></span><sub>т)с</sub>, <i
+style='mso-bidi-font-style:normal'>Р</i><sub>(т)<span class=SpellE>пд</span> </sub>–
+силы трения стопы (с) и подавателя (<span class=SpellE>пд</span>) по столу; <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+class=GramE><i style='mso-bidi-font-style:normal'><span style='mso-bidi-font-size:
+14.0pt'>Р</span></i><sub><span style='mso-bidi-font-size:14.0pt'>(</span></sub></span><sub><span
+style='mso-bidi-font-size:14.0pt'>т)<span class=SpellE>пг</span></span></sub><span
+style='mso-bidi-font-size:14.0pt'> – сила трения ползуна-гайки по направляющей.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'>Сила трения стопы по столу </span><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;mso-yfti-tbllook:480;mso-padding-alt:
+ 0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width="96%" style='width:96.84%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:6.0pt;margin-left:0cm;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span class=GramE><i style='mso-bidi-font-style:
+  normal'><span style='mso-bidi-font-size:14.0pt'>Р</span></i><sub><span
+  style='mso-bidi-font-size:14.0pt'>(</span></sub></span><sub><span
+  style='mso-bidi-font-size:14.0pt'>т)с</span></sub><span style='mso-bidi-font-size:
+  14.0pt'> = </span><i style='mso-bidi-font-style:normal'><span lang=EN-US
+  style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>m</span></i><sub><span
+  lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>c</span></sub><sub><span
+  style='mso-bidi-font-size:14.0pt'>т</span></sub><i style='mso-bidi-font-style:
+  normal'><span style='mso-bidi-font-size:14.0pt'> </span></i><span lang=EN-US
+  style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>g<i
+  style='mso-bidi-font-style:normal'> f</i></span><sub><span style='mso-bidi-font-size:
+  14.0pt'>1</span></sub><span style='mso-bidi-font-size:14.0pt'>,</span><sub><span
+  lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:
+  EN-US'><o:p></o:p></span></sub></p>
+  </td>
+  <td width="3%" style='width:3.16%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:6.0pt;margin-left:0cm;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>(</span><span
+  lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:
+  EN-US'>3</span><span style='mso-bidi-font-size:14.0pt;color:black'>)<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify'><span style='mso-bidi-font-size:
+14.0pt'>где <span style='mso-tab-count:1'>   </span></span><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:
+EN-US'>f</span></i><sub><span style='mso-bidi-font-size:14.0pt'>1 </span></sub><span
+style='mso-bidi-font-size:14.0pt'>– коэффициент трения стопы по столу (при
+наличии «воздушной подушки» значение этого коэффициента резко уменьшается); <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+class=GramE><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>m</span></i><sub><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>c</span></sub><sub><span
+style='mso-bidi-font-size:14.0pt'>т</span></sub></span><span style='mso-bidi-font-size:
+14.0pt'> – масса стопы листов, вычисляется по формуле, в кг: <o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'><span style='position:relative;top:6.0pt;
+mso-text-raise:-6.0pt'><!--[if gte vml 1]><v:shape id="_x0000_i1026" type="#_x0000_t75"
+ style='width:114.75pt;height:21.75pt' o:ole="">
+ <v:imagedata src="05_4.files/image003.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=153 height=29
+src="05_4.files/image004.gif" v:shapes="_x0000_i1026"><![endif]></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1026"
+  DrawAspect="Content" ObjectID="_1273754162">
+ </o:OLEObject>
+</xml><![endif]-->,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'>здесь </span><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:
+EN-US'>L</span></i><span style='mso-bidi-font-size:14.0pt'>, </span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;mso-ansi-language:EN-US'>A</span></i><span style='mso-bidi-font-size:
+14.0pt'>, </span><span class=GramE><i style='mso-bidi-font-style:normal'><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>H</span></i></span><span
+class=SpellE><sub><span style='mso-bidi-font-size:14.0pt'>ст</span></sub></span><span
+style='mso-bidi-font-size:14.0pt'> – ширина, длина и высота стопы листов, в см;
+<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'><span style='mso-tab-count:1'>         </span></span><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>&#961;</span><span
+style='mso-bidi-font-size:14.0pt'> – <span class=GramE>плотность</span> бумаги,
+для различных видов она находится в пределах 0,7…1,2 г/см<sup>3</sup>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'>При определении силы трения подавателя по
+столу <span class=GramE><i style='mso-bidi-font-style:normal'>Р</i><sub>(</sub></span><sub>т)<span
+class=SpellE>пд</span></sub> следует учитывать, что его масса </span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;mso-ansi-language:EN-US'>m</span></i><span class=SpellE><sub><span
+style='mso-bidi-font-size:14.0pt'>пд</span></sub></span><sub><span
+style='mso-bidi-font-size:14.0pt'> </span></sub><span style='mso-bidi-font-size:
+14.0pt'>распределена на две части: большая – приходится на корпус подавателя,
+опирающийся на ролики <i style='mso-bidi-font-style:normal'>3</i>, меньшая –&nbsp;на
+«хвост», опирающийся через шарик <i style='mso-bidi-font-style:normal'>4</i> на
+<span class=SpellE>ползун-гайку</span> <i style='mso-bidi-font-style:normal'>5</i>.
+Введем коэффициент распределения массы подавателя <span class=SpellE>&#968;</span>
+(он лежит в пределах 0,6…0,75) и получим <o:p></o:p></span></p>
+
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;mso-yfti-tbllook:480;mso-padding-alt:
+ 0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width="96%" style='width:96.84%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:6.0pt;margin-left:0cm;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span class=GramE><i style='mso-bidi-font-style:
+  normal'><span style='mso-bidi-font-size:14.0pt'>Р</span></i><sub><span
+  style='mso-bidi-font-size:14.0pt'>(</span></sub></span><sub><span
+  style='mso-bidi-font-size:14.0pt'>т)<span class=SpellE>пд</span></span></sub><span
+  style='mso-bidi-font-size:14.0pt'> = <span class=SpellE>&#968;</span></span><i
+  style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+  14.0pt;mso-ansi-language:EN-US'>m</span></i><span class=SpellE><sub><span
+  style='mso-bidi-font-size:14.0pt'>пд</span></sub></span><i style='mso-bidi-font-style:
+  normal'><span style='mso-bidi-font-size:14.0pt'> </span></i><span
+  class=SpellE><span lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:
+  EN-US'>g<i style='mso-bidi-font-style:normal'>k</i></span></span><span
+  style='mso-bidi-font-size:14.0pt'>, <sub><span style='color:black'><o:p></o:p></span></sub></span></p>
+  </td>
+  <td width="3%" style='width:3.16%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:6.0pt;margin-left:0cm;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>(</span><span
+  lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:
+  EN-US'>4</span><span style='mso-bidi-font-size:14.0pt;color:black'>)<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify'><span style='mso-bidi-font-size:
+14.0pt'>где <span style='mso-tab-count:1'>   </span></span><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:
+EN-US'>k</span></i><span lang=EN-US style='mso-bidi-font-size:14.0pt'> </span><span
+style='mso-bidi-font-size:14.0pt'>– коэффициент качения роликов по столу.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'>Сила трения ползуна-гайки по направляющей
+состоит из двух составляющих: действия силы веса ползуна и части силы веса
+подавателя:<o:p></o:p></span></p>
+
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;mso-yfti-tbllook:480;mso-padding-alt:
+ 0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width="96%" style='width:96.84%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:6.0pt;margin-left:0cm;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span class=GramE><i style='mso-bidi-font-style:
+  normal'><span style='mso-bidi-font-size:14.0pt'>Р</span></i><sub><span
+  style='mso-bidi-font-size:14.0pt'>(</span></sub></span><sub><span
+  style='mso-bidi-font-size:14.0pt'>т)<span class=SpellE>пд</span></span></sub><span
+  style='mso-bidi-font-size:14.0pt'> =[</span><i style='mso-bidi-font-style:
+  normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:
+  EN-US'>m</span></i><span class=SpellE><sub><span style='mso-bidi-font-size:
+  14.0pt'>пг</span></sub></span><span style='mso-bidi-font-size:14.0pt'> +(1 – <span
+  class=SpellE>&#968;</span>)<i style='mso-bidi-font-style:normal'> </i></span><i
+  style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+  14.0pt;mso-ansi-language:EN-US'>m</span></i><span class=SpellE><sub><span
+  style='mso-bidi-font-size:14.0pt'>пд</span></sub></span><span
+  style='mso-bidi-font-size:14.0pt'>]<i style='mso-bidi-font-style:normal'> </i></span><span
+  lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>g</span><i
+  style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+  14.0pt'> </span></i><i style='mso-bidi-font-style:normal'><span lang=EN-US
+  style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>f</span></i><sub><span
+  style='mso-bidi-font-size:14.0pt'>2</span></sub><span style='mso-bidi-font-size:
+  14.0pt'>, <sub><span style='color:black'><o:p></o:p></span></sub></span></p>
+  </td>
+  <td width="3%" style='width:3.16%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:6.0pt;margin-left:0cm;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>(</span><span
+  lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:
+  EN-US'>5</span><span style='mso-bidi-font-size:14.0pt;color:black'>)<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify'><span style='mso-bidi-font-size:
+14.0pt'>где<span style='mso-tab-count:1'>    </span></span><span class=GramE><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;mso-ansi-language:EN-US'>m</span></i></span><span class=SpellE><sub><span
+style='mso-bidi-font-size:14.0pt'>пг</span></sub></span><span style='mso-bidi-font-size:
+14.0pt'> – масса ползуна-гайки; <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+class=GramE><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>f</span></i><sub><span
+style='mso-bidi-font-size:14.0pt'>2</span></sub><span style='mso-bidi-font-size:
+14.0pt'> – коэффициент трения скольжения в паре ползун-направляющая.</span></span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'>После подстановки выражений (3), (4) и (5) в
+(2) получим<o:p></o:p></span></p>
+
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;mso-yfti-tbllook:480;mso-padding-alt:
+ 0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width="96%" style='width:96.84%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:6.0pt;margin-left:0cm;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span class=GramE><i style='mso-bidi-font-style:
+  normal'><span style='mso-bidi-font-size:14.0pt'>Р</span></i><sub><span
+  style='mso-bidi-font-size:14.0pt'>(</span></sub></span><sub><span
+  style='mso-bidi-font-size:14.0pt'>т)&#8721;</span></sub><span
+  style='mso-bidi-font-size:14.0pt'> = </span><i style='mso-bidi-font-style:
+  normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:
+  EN-US'>m</span></i><sub><span lang=EN-US style='mso-bidi-font-size:14.0pt;
+  mso-ansi-language:EN-US'>c</span></sub><sub><span style='mso-bidi-font-size:
+  14.0pt'>т</span></sub><i style='mso-bidi-font-style:normal'><span
+  style='mso-bidi-font-size:14.0pt'> </span></i><span lang=EN-US
+  style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>g</span><i
+  style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+  14.0pt'> </span></i><i style='mso-bidi-font-style:normal'><span lang=EN-US
+  style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>f</span></i><sub><span
+  style='mso-bidi-font-size:14.0pt'>1</span></sub><i style='mso-bidi-font-style:
+  normal'><span style='mso-bidi-font-size:14.0pt'>+ </span></i><span
+  class=SpellE><span style='mso-bidi-font-size:14.0pt'>&#968;</span></span><i
+  style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+  14.0pt;mso-ansi-language:EN-US'>m</span></i><span class=SpellE><sub><span
+  style='mso-bidi-font-size:14.0pt'>пд</span></sub></span><i style='mso-bidi-font-style:
+  normal'><span style='mso-bidi-font-size:14.0pt'> </span></i><span
+  class=SpellE><span lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:
+  EN-US'>g<i style='mso-bidi-font-style:normal'>k</i></span></span><i
+  style='mso-bidi-font-style:normal'><span style='mso-bidi-font-size:14.0pt'> +
+  </span></i><span style='mso-bidi-font-size:14.0pt'>[</span><i
+  style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+  14.0pt;mso-ansi-language:EN-US'>m</span></i><span class=SpellE><sub><span
+  style='mso-bidi-font-size:14.0pt'>пг</span></sub></span><span
+  style='mso-bidi-font-size:14.0pt'> +(1 – <span class=SpellE>&#968;</span>)<i
+  style='mso-bidi-font-style:normal'> </i></span><i style='mso-bidi-font-style:
+  normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:
+  EN-US'>m</span></i><span class=SpellE><sub><span style='mso-bidi-font-size:
+  14.0pt'>пд</span></sub></span><span style='mso-bidi-font-size:14.0pt'>]<i
+  style='mso-bidi-font-style:normal'> </i></span><span lang=EN-US
+  style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>g</span><i
+  style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+  14.0pt'> </span></i><i style='mso-bidi-font-style:normal'><span lang=EN-US
+  style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>f</span></i><sub><span
+  style='mso-bidi-font-size:14.0pt'>2</span></sub><span style='mso-bidi-font-size:
+  14.0pt'> <sub><span style='color:black'><o:p></o:p></span></sub></span></p>
+  </td>
+  <td width="3%" style='width:3.16%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+  margin-bottom:6.0pt;margin-left:0cm;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>(</span><span
+  lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:
+  EN-US'>2</span><span style='mso-bidi-font-size:14.0pt;color:black'>)<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'>Суммарная сила инерции подавателя со стопою<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center;text-indent:35.45pt'><span
+class=GramE><i style='mso-bidi-font-style:normal'><span style='mso-bidi-font-size:
+14.0pt'>Р</span></i><sub><span style='mso-bidi-font-size:14.0pt'>(</span></sub></span><sub><span
+style='mso-bidi-font-size:14.0pt'>ин)&#8721; </span></sub><span
+style='mso-bidi-font-size:14.0pt'>= <i style='mso-bidi-font-style:normal'>Р</i><sub>(ин)с</sub><i
+style='mso-bidi-font-style:normal'> + Р</i><sub>(ин)<span class=SpellE>пд</span></sub><i
+style='mso-bidi-font-style:normal'> + Р</i><sub>(ин)<span class=SpellE>пг</span></sub>
+= (</span><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>m</span></i><span
+class=SpellE><sub><span style='mso-bidi-font-size:14.0pt'>ст</span></sub></span><span
+style='mso-bidi-font-size:14.0pt'> + <i style='mso-bidi-font-style:normal'><span
+style='mso-spacerun:yes'> </span></i></span><i style='mso-bidi-font-style:normal'><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>m</span></i><span
+class=SpellE><sub><span style='mso-bidi-font-size:14.0pt'>пд</span></sub></span><i
+style='mso-bidi-font-style:normal'><span style='mso-bidi-font-size:14.0pt'> + </span></i><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;mso-ansi-language:EN-US'>m</span></i><span class=SpellE><sub><span
+style='mso-bidi-font-size:14.0pt'>пг</span></sub></span><span style='mso-bidi-font-size:
+14.0pt'>)·<i style='mso-bidi-font-style:normal'> </i></span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;mso-ansi-language:EN-US'>a</span></i><span class=SpellE><sub><span
+style='mso-bidi-font-size:14.0pt'>пд</span></sub></span><span style='mso-bidi-font-size:
+14.0pt'>,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'>где <span style='mso-tab-count:1'>   </span></span><span
+class=GramE><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>a</span></i></span><span
+class=SpellE><sub><span style='mso-bidi-font-size:14.0pt'>пд</span></sub></span><span
+style='mso-bidi-font-size:14.0pt'><span style='mso-spacerun:yes'>  </span>–
+ускорение подавателя в период начала движения, которое учитывая кратковременность
+этого периода (около 0,1 с), можно определить приблизительно, полагая, что интенсивность
+нарастания скорости в этот период происходит равномерно:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1027" type="#_x0000_t75" style='width:121.5pt;height:41.25pt'>
+ <v:imagedata src="05_4.files/image005.png" o:title="" croptop="40513f"
+  cropbottom="14100f" cropleft="23105f" cropright="24940f"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=162 height=55
+src="05_4.files/image006.jpg" v:shapes="_x0000_i1027"><![endif]><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'>где <span style='mso-tab-count:1'>   </span><span
+class=SpellE>&#957;<sub>пд</sub></span> – скорость подавателя при перемещении
+стопы, которая у большинства<span style='mso-spacerun:yes'>  </span>ОРМ имеет
+величину 0,12…0,16 м/<span class=GramE>с</span>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+class=GramE><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>t</span></i><span
+class=SpellE><sub><span style='mso-bidi-font-size:14.0pt'>р</span></sub></span></span><span
+style='mso-bidi-font-size:14.0pt'> – период разгона подавателя из состояния
+покоя<span style='mso-spacerun:yes'>  </span><span class=SpellE>&#957;<sub>о</sub></span><sub>
+</sub><span style='mso-spacerun:yes'> </span>до <span class=SpellE>&#957;<sub>пд</sub></span>
+.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'>Момент на ходовом винте<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center;text-indent:35.45pt'><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;mso-ansi-language:EN-US'>M</span></i><span class=SpellE><sub><span
+style='mso-bidi-font-size:14.0pt'>х</span></sub></span><sub><span
+style='mso-bidi-font-size:14.0pt'> в</span></sub><span style='mso-bidi-font-size:
+14.0pt'> = </span><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>P</span></i><span
+class=SpellE><sub><span style='mso-bidi-font-size:14.0pt'>п</span></sub></span><i
+style='mso-bidi-font-style:normal'><span style='mso-bidi-font-size:14.0pt'> </span></i><span
+class=GramE><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>r</span></i><sub><span
+style='mso-bidi-font-size:14.0pt'>ср</span></sub><span class=SpellE><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>tg</span></span><span
+style='mso-bidi-font-size:14.0pt'>(</span></span><span class=SpellE><span
+style='mso-bidi-font-size:14.0pt'>&#945;</span></span><span style='mso-bidi-font-size:
+14.0pt'> – <span class=SpellE>&#966;</span>),<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'>где <span style='mso-tab-count:1'>   </span><span
+class=SpellE><i style='mso-bidi-font-style:normal'>Р</i><sub>п</sub></span><span
+style='mso-spacerun:yes'>  </span>– осевое усилие, действующее на винт, Н; <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt;tab-stops:
+35.45pt'><span class=GramE><i style='mso-bidi-font-style:normal'><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>r</span></i><sub><span
+style='mso-bidi-font-size:14.0pt'>ср</span></sub></span><span style='mso-bidi-font-size:
+14.0pt'> – средний радиус ходового винта, м;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt;tab-stops:
+35.45pt'><span class=SpellE><span style='mso-bidi-font-size:14.0pt'>&#945;</span></span><span
+style='mso-bidi-font-size:14.0pt'> = </span><span class=SpellE><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>arctg</span></span><span
+lang=EN-US style='mso-bidi-font-size:14.0pt'> </span><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:
+EN-US'>t</span></i><i style='mso-bidi-font-style:normal'><span
+style='mso-bidi-font-size:14.0pt'>/</span></i><span style='mso-bidi-font-size:
+14.0pt'>(2&#960;<i style='mso-bidi-font-style:normal'> </i></span><span
+class=GramE><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>r</span></i></span><sub><span
+style='mso-bidi-font-size:14.0pt'>ср</span></sub><span style='mso-bidi-font-size:
+14.0pt'>) – угол подъёма винтовой линии; <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt;tab-stops:
+35.45pt'><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>t</span></i><span
+style='mso-bidi-font-size:14.0pt'> – <span class=GramE>шаг</span> винта, м; <span
+class=SpellE>&#966;</span> = </span><span class=SpellE><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'>arctg</span></span><span
+lang=EN-US style='mso-bidi-font-size:14.0pt'> </span><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:
+EN-US'>f</span></i><sub><span style='mso-bidi-font-size:14.0pt'>3 </span></sub><span
+style='mso-bidi-font-size:14.0pt'>– угол трения в паре винт-гайка.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'>Мощность на валу приводного двигателя
+механизма подавателя <o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center;text-indent:35.45pt'><span
+class=SpellE><i style='mso-bidi-font-style:normal'><span style='mso-bidi-font-size:
+14.0pt'>Р</span></i><sub><span style='mso-bidi-font-size:14.0pt'>пд</span></sub></span><span
+style='mso-bidi-font-size:14.0pt'> = </span><span class=GramE><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;mso-ansi-language:EN-US'>M</span></i></span><span class=SpellE><sub><span
+style='mso-bidi-font-size:14.0pt'>х</span></sub></span><sub><span
+style='mso-bidi-font-size:14.0pt'> в</span></sub><span style='mso-bidi-font-size:
+14.0pt'> <span class=SpellE>&#969;<sub>х</sub></span><sub> в</sub>/ <span
+class=SpellE>&#951;<sub>мех</sub></span>,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'>где <span style='mso-tab-count:1'>   </span><span
+class=SpellE>&#969;<sub>х</sub></span><sub> <span class=GramE>в</span></sub> – <span
+class=GramE>угловая</span> скорость вращения ходового винта<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center'><span class=SpellE><span
+style='mso-bidi-font-size:14.0pt'>&#969;<sub>х</sub></span></span><sub><span
+style='mso-bidi-font-size:14.0pt'> в</span></sub><span style='mso-bidi-font-size:
+14.0pt'> = 2&#960;<i style='mso-bidi-font-style:normal'> </i><span
+class=SpellE>&#957;<sub>пд</sub></span><sub> </sub>/ </span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;mso-ansi-language:EN-US'>t</span></i><span style='mso-bidi-font-size:
+14.0pt'>,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'><span style='mso-spacerun:yes'> </span>а <span
+style='mso-tab-count:1'>      </span><span class=SpellE>&#951;<sub>пд</sub></span>
+– КПД<span style='mso-spacerun:yes'>  </span>кинематических передач привода
+подавателя.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.45pt'><span
+style='mso-bidi-font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='mso-bidi-font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

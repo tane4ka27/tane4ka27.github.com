@@ -1,0 +1,338 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="09.files/filelist.xml">
+<title>Основы теории обобщенной машины</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Lena</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>butthead</o:LastAuthor>
+  <o:Revision>40</o:Revision>
+  <o:TotalTime>148</o:TotalTime>
+  <o:Created>2008-01-15T09:32:00Z</o:Created>
+  <o:LastSaved>2008-05-31T12:51:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>430</o:Words>
+  <o:Characters>2457</o:Characters>
+  <o:Company> </o:Company>
+  <o:Lines>20</o:Lines>
+  <o:Paragraphs>5</o:Paragraphs>
+  <o:CharactersWithSpaces>2882</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>90</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:AutoHyphenation/>
+  <w:HyphenationZone>17</w:HyphenationZone>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+   <w:UseWord97LineBreakingRules/>
+   <w:SelectEntireFieldWithStartOrEnd/>
+   <w:UseWord2002TableStyleRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:204;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:0pt;
+	font-weight:normal;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MTDisplayEquation, li.MTDisplayEquation, div.MTDisplayEquation
+	{mso-style-name:MTDisplayEquation;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	tab-stops:center 241.0pt right 482.0pt;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.style3, li.style3, div.style3
+	{mso-style-name:style3;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.9pt 70.9pt 3.0cm 70.9pt;
+	mso-header-margin:35.45pt;
+	mso-footer-margin:35.45pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+table.MsoTableGrid
+	{mso-style-name:"Сетка таблицы";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="16386">
+  <o:colormenu v:ext="edit" fillcolor="black" strokecolor="none"/>
+ </o:shapedefaults></xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+  <o:regrouptable v:ext="edit">
+   <o:entry new="1" old="0"/>
+   <o:entry new="2" old="0"/>
+   <o:entry new="3" old="0"/>
+   <o:entry new="4" old="0"/>
+   <o:entry new="5" old="0"/>
+   <o:entry new="6" old="0"/>
+   <o:entry new="7" old="0"/>
+   <o:entry new="8" old="0"/>
+   <o:entry new="9" old="0"/>
+   <o:entry new="10" old="0"/>
+   <o:entry new="11" old="10"/>
+   <o:entry new="12" old="0"/>
+   <o:entry new="13" old="12"/>
+   <o:entry new="14" old="0"/>
+   <o:entry new="15" old="0"/>
+   <o:entry new="16" old="0"/>
+   <o:entry new="17" old="0"/>
+   <o:entry new="18" old="0"/>
+   <o:entry new="19" old="18"/>
+   <o:entry new="20" old="19"/>
+  </o:regrouptable>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=RU style='tab-interval:36.0pt'>
+
+<div class=Section1>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='background:#446644;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=1210 style='width:32.0cm;border:solid white 1.0pt;mso-border-alt:
+  solid white .25pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=style3 align=center style='margin-top:2.0pt;margin-right:0cm;
+  margin-bottom:2.0pt;margin-left:0cm;text-align:center'><span
+  style='color:white;font-weight:normal'>9.</span><span lang=EN-US
+  style='color:white;mso-ansi-language:EN-US;font-weight:normal'>&nbsp;</span><span
+  style='color:white;font-weight:normal'>ОХРАНА ТРУДА ПРИ РАБОТЕ НА ОДНОНОЖЕВОЙ
+  РЕЗАЛЬНОЙ МАШИНЕ</span><span style='color:white;font-weight:normal;
+  mso-bidi-font-weight:bold'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:8.5pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;text-align:justify;text-indent:34.85pt;
+background:white'><span style='mso-bidi-font-size:14.0pt'>Обеспечение охраны
+труда обслуживающего персонала является важной проблемой, особенно учитывая <span
+class=SpellE>травмоопасность</span> ОРМ. Поэтому на всех моделях машин этому
+вопросу уделяется большое внимание. В настоящее время это обеспечивается за
+счет:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:24.95pt;background:white'><span
+style='mso-bidi-font-size:14.0pt'>– включения машины двумя руками (метод
+занятости двух рук);<span style='letter-spacing:-1.3pt'><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:24.95pt;background:white'><span
+style='mso-bidi-font-size:14.0pt'>– наличия светового барьера перед зоной
+резания;<span style='letter-spacing:-.75pt'><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:24.95pt;background:white'><span
+style='mso-bidi-font-size:14.0pt'>– включения машины только на один цикл;<span
+style='color:#A50021;letter-spacing:-.55pt'><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-right:7.2pt;text-align:justify;tab-stops:24.95pt;
+background:white'><span style='mso-bidi-font-size:14.0pt'>– наличия эффективной
+быстродействующей муфты включения-тормоза на приводном валу механизма ножа;<span
+style='letter-spacing:-.55pt'><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-right:6.95pt;text-align:justify;tab-stops:
+24.95pt;background:white'><span style='mso-bidi-font-size:14.0pt'>– наличия
+специального приспособления для облегчения замены ножа;<span style='letter-spacing:
+-.7pt'><o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='margin-right:6.7pt;text-align:justify;background:
+white'><span style='mso-bidi-font-size:14.0pt'>– расположения лезвия ножа в
+верхнем положении выше нижней плоскости прижима;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:24.95pt;background:white'><span
+style='mso-bidi-font-size:14.0pt'>– блокировки ножа в верхнем положении и др.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.0pt;background:
+white'><span style='mso-bidi-font-size:14.0pt'>Некоторые из этих требований
+необходимо пояснить.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-right:3.85pt;text-align:justify;text-indent:
+35.0pt;background:white'><span class=SpellE><i><span style='mso-bidi-font-size:
+14.0pt;color:green'>Двуруковое</span></i></span><i><span style='mso-bidi-font-size:
+14.0pt;color:green'> включение машины</span></i><span style='mso-bidi-font-size:
+14.0pt;mso-bidi-font-style:italic'>. </span><span style='mso-bidi-font-size:
+14.0pt'>Включение механизма ножа производится двумя руками. Отпускание кнопок
+(ручек) или хотя бы одной из них ведет к немедленной остановке и обратному
+движе­нию балки прижима и ножа в верхнее положение. Дальнейшее окончание цикла
+возможно только после полного отпускания обеих кнопок, Машину невозможно
+включить на резание, если кнопки нажаты <span class=SpellE>неодновременно</span>
+(с интервалом более 0,5 с).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-right:.95pt;text-align:justify;text-indent:
+35.0pt;background:white'><i><span style='mso-bidi-font-size:14.0pt;color:green'>Световой
+барьер</span></i><i><span style='mso-bidi-font-size:14.0pt'>.</span></i><span
+style='mso-bidi-font-size:14.0pt;mso-bidi-font-style:italic'> </span><span
+style='mso-bidi-font-size:14.0pt'>Инфракрасная защита обеспечивает безопасную
+работу на машине, останавливая процесс резки при попадании рук резальщика или
+посторонних предметов в зону резания. Инфракрасные лучи <span class=SpellE>светодатчика</span>,
+будучи невидимыми, не слепят глаз оператора, создают световой заслон опасной
+зоны и попадают на фотодиоды <span class=SpellE>светоприемника</span>. Если все
+фотодиоды освещены, то создается электрическая цепь для нормальной работы
+машины. Если хотя бы один инфракрасный луч перекрыт, то электрическая цепь
+разрешения на работу машины разомкнута. При этом включить машину на рабочий ход
+невозможно, а если в это время происходит резка, то нож остановится, а балка
+прижима поднимется в верхнее положение. Резку можно продолжить только после
+отпускания кнопок и повторного их нажатия. <span class=SpellE>Светоизлучатель</span>
+и <span class=SpellE>светоприемник</span> должны быть установлены так, чтобы их
+оптические оси совпадали. Для этого они имеют регулировку, которая позволяет
+перемещать фотодиоды и светодиоды в вертикальной и горизонтальной плоскостях.
+Это дает возможность легко сфокусировать лучи светодиодов относительно окон фотодиодов.
+Схема <span class=SpellE>фотозащиты</span> разработана так, что <span
+class=GramE>до</span> и <span class=GramE>во</span> время каждого реза
+происходит проверка исправности <span class=SpellE>фотозащиты</span>. При <span
+class=GramE>неисправной</span> <span class=SpellE>фотозащите</span> машина не
+работает, компьютер не выдает команд.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-right:4.3pt;text-align:justify;text-indent:
+42.55pt;background:white'><span style='mso-bidi-font-size:14.0pt;mso-bidi-font-style:
+italic'>Тормоз </span><span style='mso-bidi-font-size:14.0pt'>используется в
+ОРМ обычно в виде комбинированной муфты включения тормоза, который срабатывает
+автоматически после окончания резки. Все резальные машины обычно используют
+тормоз так называемого «нормально закрытого типа», т. е. все время механизм
+ножа находится в заторможенном состоянии, только при включении механизма на
+рабочий ход (резка) он растормаживается и снова возвращается в свое исходное
+положение после подъема ножа.<o:p></o:p></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>

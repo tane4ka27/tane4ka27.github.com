@@ -1,0 +1,1657 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="04_2.files/filelist.xml">
+<link rel=Edit-Time-Data href="04_2.files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Основы теории обобщенной машины</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Lena</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>butthead</o:LastAuthor>
+  <o:Revision>48</o:Revision>
+  <o:TotalTime>164</o:TotalTime>
+  <o:Created>2008-01-15T09:32:00Z</o:Created>
+  <o:LastSaved>2008-05-31T12:45:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>477</o:Words>
+  <o:Characters>2723</o:Characters>
+  <o:Company> </o:Company>
+  <o:Lines>22</o:Lines>
+  <o:Paragraphs>6</o:Paragraphs>
+  <o:CharactersWithSpaces>3194</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>90</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:AutoHyphenation/>
+  <w:HyphenationZone>17</w:HyphenationZone>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+   <w:UseWord97LineBreakingRules/>
+   <w:SelectEntireFieldWithStartOrEnd/>
+   <w:UseWord2002TableStyleRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:204;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:0pt;
+	font-weight:normal;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MTDisplayEquation, li.MTDisplayEquation, div.MTDisplayEquation
+	{mso-style-name:MTDisplayEquation;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	tab-stops:center 241.0pt right 482.0pt;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.style3, li.style3, div.style3
+	{mso-style-name:style3;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.9pt 70.9pt 3.0cm 70.9pt;
+	mso-header-margin:35.45pt;
+	mso-footer-margin:35.45pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+table.MsoTableGrid
+	{mso-style-name:"Сетка таблицы";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="19458">
+  <o:colormenu v:ext="edit" fillcolor="black" strokecolor="none"/>
+ </o:shapedefaults></xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1,9,12"/>
+  <o:rules v:ext="edit">
+   <o:r id="V:Rule1" type="arc" idref="#_x0000_s12864"/>
+   <o:r id="V:Rule2" type="arc" idref="#_x0000_s12865"/>
+   <o:r id="V:Rule3" type="arc" idref="#_x0000_s12867"/>
+   <o:r id="V:Rule4" type="arc" idref="#_x0000_s12868"/>
+   <o:r id="V:Rule5" type="arc" idref="#_x0000_s12870"/>
+   <o:r id="V:Rule6" type="arc" idref="#_x0000_s12871"/>
+   <o:r id="V:Rule7" type="arc" idref="#_x0000_s12879"/>
+   <o:r id="V:Rule8" type="arc" idref="#_x0000_s12880"/>
+   <o:r id="V:Rule9" type="arc" idref="#_x0000_s12882"/>
+   <o:r id="V:Rule10" type="arc" idref="#_x0000_s12883"/>
+   <o:r id="V:Rule11" type="arc" idref="#_x0000_s12885"/>
+   <o:r id="V:Rule12" type="arc" idref="#_x0000_s12886"/>
+   <o:r id="V:Rule13" type="arc" idref="#_x0000_s12912"/>
+   <o:r id="V:Rule14" type="arc" idref="#_x0000_s12921"/>
+   <o:r id="V:Rule15" type="arc" idref="#_x0000_s13017"/>
+  </o:rules>
+  <o:regrouptable v:ext="edit">
+   <o:entry new="1" old="0"/>
+   <o:entry new="2" old="0"/>
+   <o:entry new="3" old="0"/>
+   <o:entry new="4" old="0"/>
+   <o:entry new="5" old="0"/>
+   <o:entry new="6" old="0"/>
+   <o:entry new="7" old="0"/>
+   <o:entry new="8" old="0"/>
+   <o:entry new="9" old="0"/>
+   <o:entry new="10" old="0"/>
+   <o:entry new="11" old="10"/>
+   <o:entry new="12" old="0"/>
+   <o:entry new="13" old="12"/>
+   <o:entry new="14" old="0"/>
+   <o:entry new="15" old="0"/>
+   <o:entry new="16" old="0"/>
+   <o:entry new="17" old="0"/>
+   <o:entry new="18" old="0"/>
+   <o:entry new="19" old="18"/>
+   <o:entry new="20" old="19"/>
+  </o:regrouptable>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=RU link=blue vlink=purple style='tab-interval:36.0pt'>
+
+<div class=Section1>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='background:#446644;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=1210 style='width:32.0cm;border:solid white 1.0pt;mso-border-alt:
+  solid white .25pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=style3 style='margin-top:2.0pt;margin-right:0cm;margin-bottom:2.0pt;
+  margin-left:0cm;text-indent:29.65pt'><span style='color:white;font-weight:
+  normal'>4.2.</span><span lang=EN-US style='color:white;mso-ansi-language:
+  EN-US;font-weight:normal'>&nbsp;</span><span style='color:white;font-weight:
+  normal'>Развитие конструкций механизма прижима</span><span style='color:white;
+  font-weight:normal;mso-bidi-font-weight:bold'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:36.0pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><span
+style='mso-bidi-font-size:14.0pt;color:black'>Одноножевые резальные машины
+ранних выпус­ков имели сложные многозвенные рычажные механизмы с блоком пружин.
+Ведущим звеном был кулачок, который действовал на ролик и передавал движение
+через рычаги и тяги на балку прижима. Недостатком таких механизмов было наличие
+значительных кон­тактных напряжений в паре кулачок-ролик, <span class=SpellE>многозвенность</span>,
+металлоемкость конструкции, значительные потери на трение в шарнирах, низкий
+КПД. Механизмы ножа и прижима получали движение от одного привода. Дальнейшее
+развитие конструкции заключалось и замене, кулачкового механизма на <span
+class=GramE>кривошипный</span>. Максимальная величина усилия при­жима
+достигалась до начала врезания ножа. Однако и этот механизм, несмотря на ряд
+преимуществ, также был многозвенным и металлоемким. В нем сложно было
+регулировать величину усилия прижима, по­этому условия резки стоп различного
+формата были неодинаковыми. Вышеупомянутые недостатки пружинных механизмов
+прижи­ма привели к появлению <span style='mso-bidi-font-style:italic'>гидравлического<i>
+</i></span>привода, который в на­стоящее время применяется во всех резальных
+машинах средних и больших форматов. Механизмы с гидравлическим приводом имеют,
+несомненно, ряд положительных качеств:</span><span style='mso-bidi-font-size:
+14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+чрезвычайно простая механическая передача от гидроцилин­дра на балку прижима;</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–<span
+style='mso-spacerun:yes'>  </span>возможность создания значительно большего
+усилия прижима;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–<span
+style='mso-spacerun:yes'>  </span>легкое бесступенчатое регулирование давления
+в широком диапазоне;</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+одинаковое усилие прижима независимо от высоты стопы;</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+возможность автоматического изменения усилия прижима по предварительно записанной
+программе.</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>В современных резальных машинах встречаются две схемы
+гидравлического привода балки прижима: с центральным и бо­ковым расположением
+гидроцилиндра. При <span style='mso-bidi-font-style:italic'>центральном<i> </i></span>расположении
+гидроцилиндр находится на оси симметрии машины <a href="#рис4_2">(рис. 4.2, <i>а</i></a><span
+style='mso-bidi-font-style:italic'>)<i>. </i></span>Через <span class=SpellE>двухплечные</span>
+рычаги <i style='mso-bidi-font-style:normal'>13</i> и <i style='mso-bidi-font-style:
+normal'>9</i> дви­жение от поршня <i style='mso-bidi-font-style:normal'>12</i>
+передается на вертикальные тяги <i>1 </i>и <i style='mso-bidi-font-style:normal'>8</i>,
+которые тянут балку прижима <i style='mso-bidi-font-style:normal'>5</i> вниз.
+Балка перемещается в направляющих <i>3 </i>и <i>6. </i>Предварительный прижим
+получают, нажимая на педаль <i style='mso-bidi-font-style:normal'>11</i>. Балка
+прижима в верхнем положении удерживается за счет натяжения пружины <i
+style='mso-bidi-font-style:normal'>10</i>, один конец которой гибким звеном
+перекинут через <span class=SpellE>по­лудиск</span> и соединен с держателем <i
+style='mso-bidi-font-style:normal'>14</i> рычага <i>13. </i>Параллельность
+балки плоскости стола регулируется с помощью винтовых пар <i>2 </i>и <i>7</i><span
+style='mso-bidi-font-style:italic'>.<i> </i></span>Снизу балки прижима <i>5 </i>кренится
+пластина <i>4. </i>При цен­тральном расположении гидроцилиндра механическая
+часть привода простая и состоит из одинаковых деталей, однако ход поршня в этом
+случае находится в пределах величины хода балки прижима.</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:36.0pt'><a
+name="рис4_2"></a><!--[if mso & !supportInlineShapes & supportFields]><span
+style='mso-bookmark:рис4_2'></span><span style='mso-element:field-begin;
+mso-field-lock:yes'></span><span style='mso-bookmark:рис4_2'><span
+style='mso-bidi-font-size:14.0pt'><span style='mso-spacerun:yes'> </span>SHAPE <span
+style='mso-spacerun:yes'> </span>\* MERGEFORMAT <span style='mso-element:field-separator'></span></span></span><![endif]--><span
+style='mso-bookmark:рис4_2'><span style='mso-bidi-font-size:14.0pt'><!--[if gte vml 1]><v:group
+ id="_x0000_s12839" style='width:371.65pt;height:664.4pt;
+ mso-position-horizontal-relative:char;mso-position-vertical-relative:line'
+ coordorigin="2328,1538" coordsize="7433,13288" wrapcoords="4747 0 2613 366 2352 463 2308 1170 697 1268 523 1292 523 1999 2134 2340 2308 2340 915 2438 740 2487 740 3121 -44 3511 -44 3657 2526 3901 3397 3949 3353 4218 3571 4291 1437 4535 740 4632 740 5339 1481 5461 3005 5461 2613 5753 2787 5851 6227 5851 6227 6314 8797 6631 9319 6631 9319 6875 9450 7021 9668 7021 9668 7801 9406 7874 9363 8191 8710 8386 8535 8460 8623 8606 10103 8972 10190 9240 10365 9362 10800 9362 9624 9727 9581 10922 3353 11117 2831 11166 2831 11312 740 11556 44 11653 44 12360 740 12482 2134 12482 2134 12872 44 13262 -44 13872 44 13969 392 14067 3353 14433 958 14676 87 14798 87 15530 4485 15603 4050 15798 3963 15871 4050 15993 435 16163 87 16212 87 16919 1394 17163 2134 17163 1350 17309 827 17456 697 17675 784 17797 1002 17943 2090 18333 2134 18601 4616 18723 9363 18723 8535 18918 8579 19089 10800 19113 10800 19503 9798 19577 9624 19650 9624 20332 10669 20674 2221 20844 1742 20844 1742 21576 21600 21576 21600 20844 21034 20844 10844 20674 11105 20284 11061 19625 10800 19503 10800 19113 10539 18967 9537 18723 9711 18333 9711 17943 11627 17943 12890 17797 12934 17065 12237 17017 6837 16773 11976 16773 17681 16578 17637 16383 17811 16383 19205 16042 19335 15895 19205 15798 18769 15603 20206 15603 20685 15505 20685 14652 19815 14554 17332 14433 20555 14042 20729 13847 20642 13262 18552 12872 18552 12482 20119 12482 20860 12360 20903 11653 17811 11312 17898 11166 17202 11117 11366 10922 11323 10337 11105 10142 11105 9752 10452 8972 11889 8606 12106 8581 13718 8240 16374 8191 16853 8143 16853 7436 16505 7411 12019 7411 11976 7167 11715 7021 11976 6948 12063 6753 11932 6631 12716 6631 16766 6314 16853 5607 16679 5534 15721 5461 15765 4681 16853 4291 17245 4218 17202 3925 18160 3901 20860 3657 20816 3511 20468 3121 20555 2535 20337 2487 18421 2340 18639 2340 20250 1999 20337 1316 19989 1243 18421 1170 18377 439 18116 341 11453 0 4747 0">
+ <v:shapetype id="_x0000_t202" coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
+  <v:stroke joinstyle="miter"/>
+  <v:path gradientshapeok="t" o:connecttype="rect"/>
+ </v:shapetype><v:shape id="_x0000_s12840" type="#_x0000_t202" style='position:absolute;
+  left:2958;top:14372;width:6803;height:454' wrapcoords="-48 0 -48 20880 21600 20880 21600 0 -48 0"
+  stroked="f">
+  <v:textbox>
+   <![if !mso]>
+   <table cellpadding=0 cellspacing=0 width="100%">
+    <tr>
+     <td><![endif]>
+     <div>
+     <p class=MsoNormal><span style='font-size:12.0pt'>Рис. 4.2.<span
+     style='mso-spacerun:yes'>  </span>Механизмы прижима с гидравлическим
+     приводом<o:p></o:p></span></p>
+     </div>
+     <![if !mso]></td>
+    </tr>
+   </table>
+   <![endif]></v:textbox>
+ </v:shape><v:group id="_x0000_s12841" style='position:absolute;left:2333;
+  top:1538;width:7143;height:6430' coordorigin="2473,1538" coordsize="7143,6430"
+  wrapcoords="4946 0 2723 755 2450 957 2405 2417 726 2618 545 2669 545 4129 2224 4834 2405 4834 953 5035 771 5136 771 6445 -45 7250 -45 7552 2632 8056 3539 8157 3494 8660 3721 8862 1497 9365 771 9566 771 11027 1543 11278 3131 11278 2723 11883 2904 12084 6444 12084 6444 13041 9121 13695 9666 13695 9666 14199 9802 14501 10074 14501 10074 16112 9756 16263 9711 16917 9076 17320 8894 17471 8985 17773 10482 18529 10573 18931 10709 19334 10029 20140 10029 21550 11526 21550 11526 20140 10800 19334 10845 18529 12343 17773 12570 17723 14249 17018 17017 16917 17516 16817 17516 15357 17153 15306 12479 15306 12434 14803 12161 14501 12434 14350 12524 13947 12388 13695 13205 13695 17425 13041 17516 11580 17334 11429 16336 11278 16382 9667 17516 8862 17924 8710 17879 8106 18877 8056 21645 7552 21645 7250 21282 6445 21373 5236 21146 5136 19150 4834 19376 4834 21055 4129 21146 2719 20783 2568 19150 2417 19104 906 18832 705 11934 0 4946 0">
+  <v:group id="_x0000_s12842" style='position:absolute;left:2473;top:1538;
+   width:7143;height:5718' coordorigin="2473,1538" coordsize="7143,5718"
+   wrapcoords="4946 0 2723 850 2450 1077 2405 2721 726 2948 545 3005 545 4649 2224 5443 2405 5443 953 5669 771 5783 771 7257 -45 8164 -45 8504 2632 9071 3539 9184 3494 9751 3721 9978 1497 10545 771 10772 771 12416 1543 12699 3131 12699 2723 13380 2904 13606 6444 13606 6444 14683 9121 15420 9666 15420 9666 15987 9802 16328 10074 16328 10074 18142 9756 18312 9711 19049 9076 19502 8894 19672 8985 20013 10482 20863 10573 21543 10755 21543 10845 20863 12343 20013 12570 19956 14249 19162 17017 19049 17516 18935 17516 17291 17153 17235 12479 17235 12434 16668 12161 16328 12434 16157 12524 15704 12388 15420 13205 15420 17425 14683 17516 13039 17334 12869 16336 12699 16382 10885 17516 9978 17924 9808 17879 9128 18877 9071 21645 8504 21645 8164 21282 7257 21373 5896 21146 5783 19150 5443 19376 5443 21055 4649 21146 3061 20783 2891 19150 2721 19104 1020 18832 794 11934 0 4946 0">
+   <v:shape id="_x0000_s12843" type="#_x0000_t202" style='position:absolute;
+    left:4638;top:4967;width:962;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'><span
+       style='mso-spacerun:yes'> </span>13 12<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s12844" type="#_x0000_t202" style='position:absolute;
+    left:8926;top:3077;width:567;height:636' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s12844'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>7<o:p></o:p></span></p>
+       <p class=MsoNormal><span style='font-size:12.0pt'>8<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s12845" type="#_x0000_t202" style='position:absolute;
+    left:2753;top:3068;width:567;height:636' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s12845'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>2<o:p></o:p></span></p>
+       <p class=MsoNormal><span style='font-size:12.0pt'>1<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s12846" type="#_x0000_t202" style='position:absolute;
+    left:2678;top:2330;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s12846'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>3<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:group id="_x0000_s12847" style='position:absolute;left:2473;
+    top:1766;width:7143;height:5490' coordorigin="2053,1766" coordsize="7143,5490"
+    wrapcoords="2723 0 2450 177 2405 6256 2541 6610 2723 6610 4039 7554 -45 7554 -45 8026 4084 8498 3539 8675 3494 9325 3766 9502 3676 10269 3449 11331 3176 12275 2723 13102 2813 13279 9666 14164 9666 15816 9756 16052 10074 16052 10074 17941 9756 18177 9711 18885 9076 19416 8894 19593 8985 19948 10392 20774 10573 20774 10573 21541 10755 21541 10755 20774 10936 20774 12343 19948 14249 19062 14294 18826 13296 18413 12434 17764 12434 16466 12252 16052 12434 15934 12434 14636 12161 14164 12297 13161 12207 12807 11934 12275 15247 12157 15474 11626 14975 11331 15020 10387 15247 10387 17652 9502 17970 9266 17879 8675 17380 8498 21600 8026 21600 7554 17425 7554 18741 6610 19013 6610 19195 6197 19104 236 18741 0 2723 0">
+    <v:rect id="_x0000_s12848" style='position:absolute;left:5478;top:4667;
+     width:227;height:340' wrapcoords="-288 -864 -288 20736 21888 20736 21888 -864 -288 -864"/>
+    <v:group id="_x0000_s12849" style='position:absolute;left:5723;top:4682;
+     width:283;height:283' coordorigin="5618,5228" coordsize="283,283"
+     wrapcoords="3411 0 -1137 5684 -1137 13642 1137 18189 3411 20463 17053 20463 19326 18189 21600 13642 21600 5684 17053 0 3411 0">
+     <v:oval id="_x0000_s12850" style='position:absolute;left:5618;top:5228;
+      width:283;height:283' wrapcoords="5400 0 -771 3456 -771 14688 4629 20736 5400 20736 15429 20736 16200 20736 22371 13824 22371 7776 19286 1728 15429 0 5400 0"/>
+     <v:oval id="_x0000_s12851" style='position:absolute;left:5703;top:5313;
+      width:113;height:113' wrapcoords="5400 0 -771 3456 -771 14688 4629 20736 5400 20736 15429 20736 16200 20736 22371 13824 22371 7776 19286 1728 15429 0 5400 0"/>
+    </v:group><v:group id="_x0000_s12852" style='position:absolute;left:5183;
+     top:4682;width:283;height:283' coordorigin="5618,5228" coordsize="283,283"
+     wrapcoords="3411 0 -1137 5684 -1137 13642 1137 18189 3411 20463 17053 20463 19326 18189 21600 13642 21600 5684 17053 0 3411 0">
+     <v:oval id="_x0000_s12853" style='position:absolute;left:5618;top:5228;
+      width:283;height:283' wrapcoords="5400 0 -771 3456 -771 14688 4629 20736 5400 20736 15429 20736 16200 20736 22371 13824 22371 7776 19286 1728 15429 0 5400 0"/>
+     <v:oval id="_x0000_s12854" style='position:absolute;left:5703;top:5313;
+      width:113;height:113' wrapcoords="5400 0 -771 3456 -771 14688 4629 20736 5400 20736 15429 20736 16200 20736 22371 13824 22371 7776 19286 1728 15429 0 5400 0"/>
+    </v:group><v:line id="_x0000_s12855" style='position:absolute' from="8238,1766"
+     to="8238,3467" wrapcoords="0 1 0 127 2 127 2 1 0 1"/>
+    <v:rect id="_x0000_s12856" style='position:absolute;left:8253;top:1823;
+     width:113;height:1587' wrapcoords="-2700 0 -2700 21370 21600 21370 21600 0 -2700 0"
+     fillcolor="black" stroked="f">
+     <v:fill src="04_2.files/image003.gif" o:title="Светлый диагональный 2"
+      type="pattern"/>
+    </v:rect><v:line id="_x0000_s12857" style='position:absolute' from="3003,1766"
+     to="3003,3467" wrapcoords="0 1 0 127 2 127 2 1 0 1"/>
+    <v:rect id="_x0000_s12858" style='position:absolute;left:2883;top:1823;
+     width:113;height:1587' wrapcoords="-2700 0 -2700 21370 21600 21370 21600 0 -2700 0"
+     fillcolor="black" stroked="f">
+     <v:fill src="04_2.files/image003.gif" o:title="Светлый диагональный 2"
+      type="pattern"/>
+    </v:rect><v:group id="_x0000_s12859" style='position:absolute;left:2053;
+     top:3704;width:7143;height:113' coordorigin="1978,3704" coordsize="7143,113"
+     wrapcoords="-45 0 363 18900 408 18900 21146 18900 21192 18900 21645 0 -45 0">
+     <v:rect id="_x0000_s12860" style='position:absolute;left:2148;top:3704;
+      width:6803;height:113' wrapcoords="-2700 0 -2700 21370 21600 21370 21600 0 -2700 0"
+      fillcolor="black" stroked="f">
+      <v:fill src="04_2.files/image003.gif" o:title="Светлый диагональный 2"
+       type="pattern"/>
+     </v:rect><v:line id="_x0000_s12861" style='position:absolute' from="1978,3712"
+      to="9121,3712" wrapcoords="1 1 468 1 468 1 1 1 1 1"/>
+    </v:group><v:group id="_x0000_s12862" style='position:absolute;left:7653;
+     top:3047;width:246;height:227' coordorigin="9258,2406" coordsize="246,320"
+     wrapcoords="0 0 -1350 20571 20250 20571 21600 0 0 0">
+     <v:group id="_x0000_s12863" style='position:absolute;left:9258;top:2406;
+      width:71;height:320' coordorigin="9258,2406" coordsize="71,320"
+      wrapcoords="0 0 -4320 20571 17280 20571 21600 0 0 0">
+      <v:shapetype id="_x0000_t19" coordsize="21600,21600" o:spt="19" adj="-5898240,,,21600,21600"
+       path="wr-21600,,21600,43200,,,21600,21600nfewr-21600,,21600,43200,,,21600,21600l,21600nsxe"
+       filled="f">
+       <v:formulas>
+        <v:f eqn="val #2"/>
+        <v:f eqn="val #3"/>
+        <v:f eqn="val #4"/>
+       </v:formulas>
+       <v:path arrowok="t" o:extrusionok="f" gradientshapeok="t" o:connecttype="custom"
+        o:connectlocs="0,0;21600,21600;0,21600"/>
+       <v:handles>
+        <v:h position="@2,#0" polar="@0,@1"/>
+        <v:h position="@2,#1" polar="@0,@1"/>
+       </v:handles>
+      </v:shapetype><v:shape id="_x0000_s12864" type="#_x0000_t19" style='position:absolute;
+       left:9258;top:2570;width:59;height:156;flip:x' coordsize="21600,39815"
+       wrapcoords="0 0 -5400 35834 21600 35834 21600 0 0 0" adj="-4303799,4506243,,19682"
+       path="wr-21600,-1918,21600,41282,8899,,7825,39815nfewr-21600,-1918,21600,41282,8899,,7825,39815l,19682nsxe">
+       <v:path o:connectlocs="8899,0;7825,39815;0,19682"/>
+      </v:shape><v:shape id="_x0000_s12865" type="#_x0000_t19" style='position:absolute;
+       left:9270;top:2406;width:59;height:160;rotation:-180;flip:x'
+       coordsize="21600,40585" wrapcoords="-5400 0 -5400 36895 21600 36895 21600 0 -5400 0"
+       adj="-4503923,4671120,,20128" path="wr-21600,-1472,21600,41728,7838,,6934,40585nfewr-21600,-1472,21600,41728,7838,,6934,40585l,20128nsxe">
+       <v:path o:connectlocs="7838,0;6934,40585;0,20128"/>
+      </v:shape></v:group><v:group id="_x0000_s12866" style='position:absolute;
+      left:9345;top:2406;width:71;height:320' coordorigin="9258,2406"
+      coordsize="71,320" wrapcoords="0 0 -4320 20571 17280 20571 21600 0 0 0">
+      <v:shape id="_x0000_s12867" type="#_x0000_t19" style='position:absolute;
+       left:9258;top:2570;width:59;height:156;flip:x' coordsize="21600,39815"
+       wrapcoords="0 0 -5400 35834 21600 35834 21600 0 0 0" adj="-4303799,4506243,,19682"
+       path="wr-21600,-1918,21600,41282,8899,,7825,39815nfewr-21600,-1918,21600,41282,8899,,7825,39815l,19682nsxe">
+       <v:path o:connectlocs="8899,0;7825,39815;0,19682"/>
+      </v:shape><v:shape id="_x0000_s12868" type="#_x0000_t19" style='position:absolute;
+       left:9270;top:2406;width:59;height:160;rotation:-180;flip:x'
+       coordsize="21600,40585" wrapcoords="-5400 0 -5400 36895 21600 36895 21600 0 -5400 0"
+       adj="-4503923,4671120,,20128" path="wr-21600,-1472,21600,41728,7838,,6934,40585nfewr-21600,-1472,21600,41728,7838,,6934,40585l,20128nsxe">
+       <v:path o:connectlocs="7838,0;6934,40585;0,20128"/>
+      </v:shape></v:group><v:group id="_x0000_s12869" style='position:absolute;
+      left:9433;top:2406;width:71;height:320' coordorigin="9258,2406"
+      coordsize="71,320" wrapcoords="0 0 -4320 20571 17280 20571 21600 0 0 0">
+      <v:shape id="_x0000_s12870" type="#_x0000_t19" style='position:absolute;
+       left:9258;top:2570;width:59;height:156;flip:x' coordsize="21600,39815"
+       wrapcoords="0 0 -5400 35834 21600 35834 21600 0 0 0" adj="-4303799,4506243,,19682"
+       path="wr-21600,-1918,21600,41282,8899,,7825,39815nfewr-21600,-1918,21600,41282,8899,,7825,39815l,19682nsxe">
+       <v:path o:connectlocs="8899,0;7825,39815;0,19682"/>
+      </v:shape><v:shape id="_x0000_s12871" type="#_x0000_t19" style='position:absolute;
+       left:9270;top:2406;width:59;height:160;rotation:-180;flip:x'
+       coordsize="21600,40585" wrapcoords="-5400 0 -5400 36895 21600 36895 21600 0 -5400 0"
+       adj="-4503923,4671120,,20128" path="wr-21600,-1472,21600,41728,7838,,6934,40585nfewr-21600,-1472,21600,41728,7838,,6934,40585l,20128nsxe">
+       <v:path o:connectlocs="7838,0;6934,40585;0,20128"/>
+      </v:shape></v:group></v:group><v:line id="_x0000_s12872" style='position:absolute'
+     from="3073,2050" to="8175,2050" wrapcoords="1 1 346 1 346 1 1 1 1 1"/>
+    <v:line id="_x0000_s12873" style='position:absolute' from="3073,2050" to="3073,3184"
+     wrapcoords="0 1 0 76 2 76 2 1 0 1"/>
+    <v:line id="_x0000_s12874" style='position:absolute' from="8175,2050" to="8175,3184"
+     wrapcoords="0 1 0 76 2 76 2 1 0 1"/>
+    <v:line id="_x0000_s12875" style='position:absolute' from="3073,3181" to="3356,3181"
+     wrapcoords="1 1 346 1 346 1 1 1 1 1"/>
+    <v:line id="_x0000_s12876" style='position:absolute' from="7892,3181" to="8175,3181"
+     wrapcoords="1 1 346 1 346 1 1 1 1 1"/>
+    <v:group id="_x0000_s12877" style='position:absolute;left:3323;top:3047;
+     width:246;height:227' coordorigin="9258,2406" coordsize="246,320"
+     wrapcoords="0 0 -1350 20571 20250 20571 21600 0 0 0">
+     <v:group id="_x0000_s12878" style='position:absolute;left:9258;top:2406;
+      width:71;height:320' coordorigin="9258,2406" coordsize="71,320"
+      wrapcoords="0 0 -4320 20571 17280 20571 21600 0 0 0">
+      <v:shape id="_x0000_s12879" type="#_x0000_t19" style='position:absolute;
+       left:9258;top:2570;width:59;height:156;flip:x' coordsize="21600,39815"
+       wrapcoords="0 0 -5400 35834 21600 35834 21600 0 0 0" adj="-4303799,4506243,,19682"
+       path="wr-21600,-1918,21600,41282,8899,,7825,39815nfewr-21600,-1918,21600,41282,8899,,7825,39815l,19682nsxe">
+       <v:path o:connectlocs="8899,0;7825,39815;0,19682"/>
+      </v:shape><v:shape id="_x0000_s12880" type="#_x0000_t19" style='position:absolute;
+       left:9270;top:2406;width:59;height:160;rotation:-180;flip:x'
+       coordsize="21600,40585" wrapcoords="-5400 0 -5400 36895 21600 36895 21600 0 -5400 0"
+       adj="-4503923,4671120,,20128" path="wr-21600,-1472,21600,41728,7838,,6934,40585nfewr-21600,-1472,21600,41728,7838,,6934,40585l,20128nsxe">
+       <v:path o:connectlocs="7838,0;6934,40585;0,20128"/>
+      </v:shape></v:group><v:group id="_x0000_s12881" style='position:absolute;
+      left:9345;top:2406;width:71;height:320' coordorigin="9258,2406"
+      coordsize="71,320" wrapcoords="0 0 -4320 20571 17280 20571 21600 0 0 0">
+      <v:shape id="_x0000_s12882" type="#_x0000_t19" style='position:absolute;
+       left:9258;top:2570;width:59;height:156;flip:x' coordsize="21600,39815"
+       wrapcoords="0 0 -5400 35834 21600 35834 21600 0 0 0" adj="-4303799,4506243,,19682"
+       path="wr-21600,-1918,21600,41282,8899,,7825,39815nfewr-21600,-1918,21600,41282,8899,,7825,39815l,19682nsxe">
+       <v:path o:connectlocs="8899,0;7825,39815;0,19682"/>
+      </v:shape><v:shape id="_x0000_s12883" type="#_x0000_t19" style='position:absolute;
+       left:9270;top:2406;width:59;height:160;rotation:-180;flip:x'
+       coordsize="21600,40585" wrapcoords="-5400 0 -5400 36895 21600 36895 21600 0 -5400 0"
+       adj="-4503923,4671120,,20128" path="wr-21600,-1472,21600,41728,7838,,6934,40585nfewr-21600,-1472,21600,41728,7838,,6934,40585l,20128nsxe">
+       <v:path o:connectlocs="7838,0;6934,40585;0,20128"/>
+      </v:shape></v:group><v:group id="_x0000_s12884" style='position:absolute;
+      left:9433;top:2406;width:71;height:320' coordorigin="9258,2406"
+      coordsize="71,320" wrapcoords="0 0 -4320 20571 17280 20571 21600 0 0 0">
+      <v:shape id="_x0000_s12885" type="#_x0000_t19" style='position:absolute;
+       left:9258;top:2570;width:59;height:156;flip:x' coordsize="21600,39815"
+       wrapcoords="0 0 -5400 35834 21600 35834 21600 0 0 0" adj="-4303799,4506243,,19682"
+       path="wr-21600,-1918,21600,41282,8899,,7825,39815nfewr-21600,-1918,21600,41282,8899,,7825,39815l,19682nsxe">
+       <v:path o:connectlocs="8899,0;7825,39815;0,19682"/>
+      </v:shape><v:shape id="_x0000_s12886" type="#_x0000_t19" style='position:absolute;
+       left:9270;top:2406;width:59;height:160;rotation:-180;flip:x'
+       coordsize="21600,40585" wrapcoords="-5400 0 -5400 36895 21600 36895 21600 0 -5400 0"
+       adj="-4503923,4671120,,20128" path="wr-21600,-1472,21600,41728,7838,,6934,40585nfewr-21600,-1472,21600,41728,7838,,6934,40585l,20128nsxe">
+       <v:path o:connectlocs="7838,0;6934,40585;0,20128"/>
+      </v:shape></v:group></v:group><v:line id="_x0000_s12887" style='position:absolute'
+     from="3533,3181" to="7672,3181" wrapcoords="1 1 346 1 346 1 1 1 1 1"/>
+    <v:line id="_x0000_s12888" style='position:absolute' from="3611,3293" to="7636,3293"
+     wrapcoords="1 1 346 1 346 1 1 1 1 1"/>
+    <v:line id="_x0000_s12889" style='position:absolute' from="3611,3208" to="3611,3293"
+     wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:line id="_x0000_s12890" style='position:absolute' from="7636,3208" to="7636,3293"
+     wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:group id="_x0000_s12891" style='position:absolute;left:4059;top:4398;
+     width:510;height:461' coordorigin="4083,4496" coordsize="510,461"
+     wrapcoords="7624 0 6988 1394 5082 11148 -635 14632 0 20903 20965 20903 22235 16026 20965 13935 15882 11148 13976 1394 13341 0 7624 0">
+     <v:shapetype id="_x0000_t5" coordsize="21600,21600" o:spt="5" adj="10800"
+      path="m@0,l,21600r21600,xe">
+      <v:stroke joinstyle="miter"/>
+      <v:formulas>
+       <v:f eqn="val #0"/>
+       <v:f eqn="prod #0 1 2"/>
+       <v:f eqn="sum @1 10800 0"/>
+      </v:formulas>
+      <v:path gradientshapeok="t" o:connecttype="custom" o:connectlocs="@0,0;@1,10800;0,21600;10800,21600;21600,21600;@2,10800"
+       textboxrect="0,10800,10800,18000;5400,10800,16200,18000;10800,10800,21600,18000;0,7200,7200,21600;7200,7200,14400,21600;14400,7200,21600,21600"/>
+      <v:handles>
+       <v:h position="#0,topLeft" xrange="0,21600"/>
+      </v:handles>
+     </v:shapetype><v:shape id="_x0000_s12892" type="#_x0000_t5" style='position:absolute;
+      left:4196;top:4559;width:284;height:268;mso-wrap-edited:f' wrapcoords="7958 0 -2274 21600 23874 21600 12505 0 7958 0"/>
+     <v:group id="_x0000_s12893" style='position:absolute;left:4083;top:4827;
+      width:510;height:130' coordorigin="4083,4827" coordsize="510,130"
+      wrapcoords="-635 -2400 0 19200 20965 19200 22235 -2400 -635 -2400">
+      <v:rect id="_x0000_s12894" style='position:absolute;left:4111;top:4844;
+       width:454;height:113' wrapcoords="-720 0 -720 19200 21600 19200 21600 0 -720 0"
+       fillcolor="black" stroked="f">
+       <v:fill src="04_2.files/image003.gif" o:title="" type="pattern"/>
+      </v:rect><v:line id="_x0000_s12895" style='position:absolute' from="4083,4827"
+       to="4593,4827" wrapcoords="0 0 0 1 36 1 36 0 0 0" strokeweight="1.5pt"/>
+     </v:group><v:oval id="_x0000_s12896" style='position:absolute;left:4267;
+      top:4496;width:142;height:142;mso-wrap-edited:f' wrapcoords="2400 0 -2400 6480 -2400 12960 2400 21600 19200 21600 24000 12960 24000 6480 19200 0 2400 0"/>
+    </v:group><v:group id="_x0000_s12897" style='position:absolute;left:6636;
+     top:4398;width:510;height:461' coordorigin="4083,4496" coordsize="510,461"
+     wrapcoords="7624 0 6988 1394 5082 11148 -635 14632 0 20903 20965 20903 22235 16026 20965 13935 15882 11148 13976 1394 13341 0 7624 0">
+     <v:shape id="_x0000_s12898" type="#_x0000_t5" style='position:absolute;
+      left:4196;top:4559;width:284;height:268;mso-wrap-edited:f' wrapcoords="7958 0 -2274 21600 23874 21600 12505 0 7958 0"/>
+     <v:group id="_x0000_s12899" style='position:absolute;left:4083;top:4827;
+      width:510;height:130' coordorigin="4083,4827" coordsize="510,130"
+      wrapcoords="-635 -2400 0 19200 20965 19200 22235 -2400 -635 -2400">
+      <v:rect id="_x0000_s12900" style='position:absolute;left:4111;top:4844;
+       width:454;height:113' wrapcoords="-720 0 -720 19200 21600 19200 21600 0 -720 0"
+       fillcolor="black" stroked="f">
+       <v:fill src="04_2.files/image003.gif" o:title="" type="pattern"/>
+      </v:rect><v:line id="_x0000_s12901" style='position:absolute' from="4083,4827"
+       to="4593,4827" wrapcoords="0 0 0 1 36 1 36 0 0 0" strokeweight="1.5pt"/>
+     </v:group><v:oval id="_x0000_s12902" style='position:absolute;left:4267;
+      top:4496;width:142;height:142;mso-wrap-edited:f' wrapcoords="2400 0 -2400 6480 -2400 12960 2400 21600 19200 21600 24000 12960 24000 6480 19200 0 2400 0"/>
+    </v:group><v:rect id="_x0000_s12903" style='position:absolute;left:6523;
+     top:6572;width:227;height:57' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+    <v:group id="_x0000_s12904" style='position:absolute;left:6975;top:4147;
+     width:1019;height:170;rotation:340' coordorigin="6972,4147" coordsize="1019,170"
+     wrapcoords="12706 -1964 -318 7855 -318 11782 12388 19636 21918 19636 21918 -1964 12706 -1964">
+     <v:line id="_x0000_s12905" style='position:absolute' from="6972,4232"
+      to="7596,4232" wrapcoords="1 1 346 1 346 1 1 1 1 1"/>
+     <v:group id="_x0000_s12906" style='position:absolute;left:7594;top:4147;
+      width:397;height:170' coordorigin="3243,4070" coordsize="397,170"
+      wrapcoords="-831 -1964 -831 19636 22431 19636 22431 -1964 -831 -1964">
+      <v:rect id="_x0000_s12907" style='position:absolute;left:3243;top:4070;
+       width:397;height:170' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+      <v:oval id="_x0000_s12908" style='position:absolute;left:3385;top:4098;
+       width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+     </v:group></v:group><v:line id="_x0000_s12909" style='position:absolute'
+     from="7778,3263" to="7778,4113" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:oval id="_x0000_s12910" style='position:absolute;left:7728;top:3323;
+     width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+    <v:line id="_x0000_s12911" style='position:absolute;rotation:340' from="5838,4650"
+     to="6802,4650" wrapcoords="1 1 66 1 66 1 1 1 1 1"/>
+    <v:shape id="_x0000_s12912" type="#_x0000_t19" style='position:absolute;
+     left:6778;top:4346;width:219;height:122;flip:x' coordsize="41515,23241"
+     wrapcoords="2768 0 -2768 8715 0 14526 33212 20336 44283 20336 41515 11620 33212 0 2768 0"
+     adj="-10303469,285586,19915" path="wr-1685,,41515,43200,,13236,41453,23241nfewr-1685,,41515,43200,,13236,41453,23241l19915,21600nsxe">
+     <v:path o:connectlocs="0,13236;41453,23241;19915,21600"/>
+    </v:shape><v:group id="_x0000_s12913" style='position:absolute;left:3223;
+     top:4146;width:1013;height:170;rotation:20' coordorigin="2320,4466"
+     coordsize="1013,170" wrapcoords="-318 -1964 -318 19636 8894 19636 21600 11782 21600 7855 8894 -1964 -318 -1964">
+     <v:line id="_x0000_s12914" style='position:absolute' from="2709,4551"
+      to="3333,4551" wrapcoords="1 1 346 1 346 1 1 1 1 1"/>
+     <v:group id="_x0000_s12915" style='position:absolute;left:2320;top:4466;
+      width:397;height:170' coordorigin="3243,4070" coordsize="397,170"
+      wrapcoords="-831 -1964 -831 19636 22431 19636 22431 -1964 -831 -1964">
+      <v:rect id="_x0000_s12916" style='position:absolute;left:3243;top:4070;
+       width:397;height:170' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+      <v:oval id="_x0000_s12917" style='position:absolute;left:3385;top:4098;
+       width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+     </v:group></v:group><v:line id="_x0000_s12918" style='position:absolute'
+     from="3443,3263" to="3443,4113" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:oval id="_x0000_s12919" style='position:absolute;left:3393;top:3323;
+     width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+    <v:line id="_x0000_s12920" style='position:absolute;rotation:20' from="4398,4655"
+     to="5362,4655" wrapcoords="1 1 66 1 66 1 1 1 1 1"/>
+    <v:shape id="_x0000_s12921" type="#_x0000_t19" style='position:absolute;
+     left:4218;top:4354;width:212;height:128;flip:x' coordsize="40240,24371"
+     wrapcoords="5749 0 -2874 10832 -2874 21663 20120 21663 40240 8124 34491 0 5749 0"
+     adj="11313454,-1988977,21600" path="wr,,43200,43200,178,24371,40240,10686nfewr,,43200,43200,178,24371,40240,10686l21600,21600nsxe">
+     <v:path o:connectlocs="178,24371;40240,10686;21600,21600"/>
+    </v:shape><v:rect id="_x0000_s12922" style='position:absolute;left:5133;
+     top:4616;width:907;height:57' wrapcoords="-288 -864 -288 20736 21888 20736 21888 -864 -288 -864"/>
+    <v:rect id="_x0000_s12923" style='position:absolute;left:5133;top:4982;
+     width:907;height:57' wrapcoords="-288 -864 -288 20736 21888 20736 21888 -864 -288 -864"/>
+    <v:group id="_x0000_s12924" style='position:absolute;left:5023;top:6737;
+     width:1134;height:113' coordorigin="1978,3704" coordsize="7143,113"
+     wrapcoords="-45 0 363 18900 408 18900 21146 18900 21192 18900 21645 0 -45 0">
+     <v:rect id="_x0000_s12925" style='position:absolute;left:2148;top:3704;
+      width:6803;height:113' wrapcoords="-2700 0 -2700 21370 21600 21370 21600 0 -2700 0"
+      fillcolor="black" stroked="f">
+      <v:fill src="04_2.files/image003.gif" o:title="Светлый диагональный 2"
+       type="pattern"/>
+     </v:rect><v:line id="_x0000_s12926" style='position:absolute' from="1978,3712"
+      to="9121,3712" wrapcoords="1 1 468 1 468 1 1 1 1 1"/>
+    </v:group><v:rect id="_x0000_s12927" style='position:absolute;left:5073;
+     top:5033;width:1020;height:227' wrapcoords="-288 -864 -288 20736 21888 20736 21888 -864 -288 -864"/>
+    <v:rect id="_x0000_s12928" style='position:absolute;left:5300;top:5258;
+     width:567;height:567' wrapcoords="-288 -864 -288 20736 21888 20736 21888 -864 -288 -864"/>
+    <v:rect id="_x0000_s12929" style='position:absolute;left:5428;top:5834;
+     width:340;height:567' wrapcoords="-288 -864 -288 20736 21888 20736 21888 -864 -288 -864"/>
+    <v:rect id="_x0000_s12930" style='position:absolute;left:5315;top:6404;
+     width:567;height:340' wrapcoords="-288 -864 -288 20736 21888 20736 21888 -864 -288 -864"/>
+    <v:line id="_x0000_s12931" style='position:absolute' from="5597,4421" to="5597,7256"
+     wrapcoords="0 1 0 229 2 229 2 1 0 1">
+     <v:stroke dashstyle="longDashDot"/>
+    </v:line><v:group id="_x0000_s12932" style='position:absolute;left:5943;
+     top:5258;width:227;height:1412' coordorigin="5943,5258" coordsize="227,1412"
+     wrapcoords="5760 0 -1440 2298 11520 3677 -1440 4366 -1440 14477 4320 14706 -1440 16774 8640 18383 0 18843 -1440 19072 5760 21370 11520 21370 15840 18383 21600 17923 21600 15396 11520 14706 20160 13787 21600 12868 15840 11030 21600 11030 21600 8272 8640 7353 17280 7353 21600 5745 21600 3677 11520 0 5760 0">
+     <v:group id="_x0000_s12933" style='position:absolute;left:5943;top:5393;
+      width:227;height:1146' coordorigin="7298,5763" coordsize="227,1146"
+      wrapcoords="7200 -568 -1440 0 -1440 3411 7200 3979 -1440 6253 8640 8526 -1440 9095 -1440 12221 11520 13074 -1440 15063 4320 17621 -1440 18189 -1440 21316 7200 21884 12960 21884 21600 19611 12960 17621 21600 16768 21600 10516 15840 8526 21600 7958 21600 4547 15840 3979 21600 1705 12960 -568 7200 -568">
+      <v:group id="_x0000_s12934" style='position:absolute;left:7298;top:5900;
+       width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+       wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+       <v:line id="_x0000_s12935" style='position:absolute;rotation:20' from="7438,5690"
+        to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       <v:line id="_x0000_s12936" style='position:absolute;rotation:340'
+        from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      </v:group><v:line id="_x0000_s12937" style='position:absolute;rotation:20'
+       from="7298,5825" to="7525,5825" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      <v:line id="_x0000_s12938" style='position:absolute;rotation:340' from="7301,5763"
+       to="7414,5763" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      <v:group id="_x0000_s12939" style='position:absolute;left:7298;top:6065;
+       width:227;height:237' coordorigin="7438,5453" coordsize="227,237"
+       wrapcoords="15840 -4050 0 1350 -1440 2700 -1440 18900 12960 24300 15840 24300 23040 24300 15840 17550 23040 9450 23040 -4050 15840 -4050">
+       <v:group id="_x0000_s12940" style='position:absolute;left:7438;top:5609;
+        width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+        wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+        <v:line id="_x0000_s12941" style='position:absolute;rotation:20'
+         from="7438,5690" to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+        <v:line id="_x0000_s12942" style='position:absolute;rotation:340'
+         from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       </v:group><v:group id="_x0000_s12943" style='position:absolute;left:7438;
+        top:5453;width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+        wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+        <v:line id="_x0000_s12944" style='position:absolute;rotation:20'
+         from="7438,5690" to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+        <v:line id="_x0000_s12945" style='position:absolute;rotation:340'
+         from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       </v:group></v:group><v:group id="_x0000_s12946" style='position:absolute;
+       left:7298;top:6371;width:227;height:237' coordorigin="7438,5453"
+       coordsize="227,237" wrapcoords="15840 -4050 0 1350 -1440 2700 -1440 18900 12960 24300 15840 24300 23040 24300 15840 17550 23040 9450 23040 -4050 15840 -4050">
+       <v:group id="_x0000_s12947" style='position:absolute;left:7438;top:5609;
+        width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+        wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+        <v:line id="_x0000_s12948" style='position:absolute;rotation:20'
+         from="7438,5690" to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+        <v:line id="_x0000_s12949" style='position:absolute;rotation:340'
+         from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       </v:group><v:group id="_x0000_s12950" style='position:absolute;left:7438;
+        top:5453;width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+        wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+        <v:line id="_x0000_s12951" style='position:absolute;rotation:20'
+         from="7438,5690" to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+        <v:line id="_x0000_s12952" style='position:absolute;rotation:340'
+         from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       </v:group></v:group><v:line id="_x0000_s12953" style='position:absolute;
+       rotation:20' from="7301,6909" to="7414,6909" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      <v:line id="_x0000_s12954" style='position:absolute;rotation:340' from="7298,6848"
+       to="7525,6848" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      <v:group id="_x0000_s12955" style='position:absolute;left:7298;top:6692;
+       width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+       wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+       <v:line id="_x0000_s12956" style='position:absolute;rotation:20' from="7438,5690"
+        to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       <v:line id="_x0000_s12957" style='position:absolute;rotation:340'
+        from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      </v:group></v:group><v:line id="_x0000_s12958" style='position:absolute'
+      from="6050,5258" to="6050,5371" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+     <v:line id="_x0000_s12959" style='position:absolute' from="6053,6557"
+      to="6053,6670" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    </v:group><v:line id="_x0000_s12960" style='position:absolute;rotation:350'
+     from="5958,6668" to="6525,6668" wrapcoords="1 1 85 1 85 1 1 1 1 1"/>
+    <v:oval id="_x0000_s12961" style='position:absolute;left:5896;top:6691;
+     width:68;height:68;rotation:20' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+    <v:oval id="_x0000_s12962" style='position:absolute;left:6023;top:6662;
+     width:68;height:68;rotation:20' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+    <v:shape id="_x0000_s12963" type="#_x0000_t5" style='position:absolute;
+     left:3298;top:4205;width:140;height:113;rotation:200' wrapcoords="4800 -864 -4800 20736 24000 20736 14400 -864 4800 -864"
+     fillcolor="black"/>
+    <v:line id="_x0000_s12964" style='position:absolute;rotation:20' from="3208,4271"
+     to="3208,5121" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:group id="_x0000_s12965" style='position:absolute;left:3666;top:4601;
+     width:510;height:461' coordorigin="4083,4496" coordsize="510,461"
+     wrapcoords="7624 0 6988 1394 5082 11148 -635 14632 0 20903 20965 20903 22235 16026 20965 13935 15882 11148 13976 1394 13341 0 7624 0">
+     <v:shape id="_x0000_s12966" type="#_x0000_t5" style='position:absolute;
+      left:4196;top:4559;width:284;height:268;mso-wrap-edited:f' wrapcoords="7958 0 -2274 21600 23874 21600 12505 0 7958 0"/>
+     <v:group id="_x0000_s12967" style='position:absolute;left:4083;top:4827;
+      width:510;height:130' coordorigin="4083,4827" coordsize="510,130"
+      wrapcoords="-635 -2400 0 19200 20965 19200 22235 -2400 -635 -2400">
+      <v:rect id="_x0000_s12968" style='position:absolute;left:4111;top:4844;
+       width:454;height:113' wrapcoords="-720 0 -720 19200 21600 19200 21600 0 -720 0"
+       fillcolor="black" stroked="f">
+       <v:fill src="04_2.files/image003.gif" o:title="" type="pattern"/>
+      </v:rect><v:line id="_x0000_s12969" style='position:absolute' from="4083,4827"
+       to="4593,4827" wrapcoords="0 0 0 1 36 1 36 0 0 0" strokeweight="1.5pt"/>
+     </v:group><v:oval id="_x0000_s12970" style='position:absolute;left:4267;
+      top:4496;width:142;height:142;mso-wrap-edited:f' wrapcoords="2400 0 -2400 6480 -2400 12960 2400 21600 19200 21600 24000 12960 24000 6480 19200 0 2400 0"/>
+    </v:group><v:group id="_x0000_s12971" style='position:absolute;left:4918;
+     top:3995;width:1899;height:227' coordorigin="4570,4085" coordsize="1899,227"
+     wrapcoords="1361 0 -170 8640 2211 20160 19219 20160 21430 10080 21600 7200 20069 0 1361 0">
+     <v:group id="_x0000_s12972" style='position:absolute;left:6043;top:4158;
+      width:227;height:81;rotation:90' coordorigin="7438,5609" coordsize="227,81"
+      wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+      <v:line id="_x0000_s12973" style='position:absolute;rotation:20' from="7438,5690"
+       to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      <v:line id="_x0000_s12974" style='position:absolute;rotation:340' from="7438,5609"
+       to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+     </v:group><v:line id="_x0000_s12975" style='position:absolute;rotation:110'
+      from="6159,4199" to="6386,4199" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+     <v:line id="_x0000_s12976" style='position:absolute;rotation:430' from="6278,4145"
+      to="6391,4145" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+     <v:group id="_x0000_s12977" style='position:absolute;left:5800;top:4080;
+      width:227;height:237;rotation:90' coordorigin="7438,5453" coordsize="227,237"
+      wrapcoords="15840 -4050 0 1350 -1440 2700 -1440 18900 12960 24300 15840 24300 23040 24300 15840 17550 23040 9450 23040 -4050 15840 -4050">
+      <v:group id="_x0000_s12978" style='position:absolute;left:7438;top:5609;
+       width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+       wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+       <v:line id="_x0000_s12979" style='position:absolute;rotation:20' from="7438,5690"
+        to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       <v:line id="_x0000_s12980" style='position:absolute;rotation:340'
+        from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      </v:group><v:group id="_x0000_s12981" style='position:absolute;left:7438;
+       top:5453;width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+       wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+       <v:line id="_x0000_s12982" style='position:absolute;rotation:20' from="7438,5690"
+        to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       <v:line id="_x0000_s12983" style='position:absolute;rotation:340'
+        from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12984" style='position:absolute;
+      left:5494;top:4080;width:227;height:237;rotation:90' coordorigin="7438,5453"
+      coordsize="227,237" wrapcoords="15840 -4050 0 1350 -1440 2700 -1440 18900 12960 24300 15840 24300 23040 24300 15840 17550 23040 9450 23040 -4050 15840 -4050">
+      <v:group id="_x0000_s12985" style='position:absolute;left:7438;top:5609;
+       width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+       wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+       <v:line id="_x0000_s12986" style='position:absolute;rotation:20' from="7438,5690"
+        to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       <v:line id="_x0000_s12987" style='position:absolute;rotation:340'
+        from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      </v:group><v:group id="_x0000_s12988" style='position:absolute;left:7438;
+       top:5453;width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+       wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+       <v:line id="_x0000_s12989" style='position:absolute;rotation:20' from="7438,5690"
+        to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       <v:line id="_x0000_s12990" style='position:absolute;rotation:340'
+        from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12991" style='position:absolute;
+      left:5251;top:4158;width:227;height:81;rotation:90' coordorigin="7438,5609"
+      coordsize="227,81" wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+      <v:line id="_x0000_s12992" style='position:absolute;rotation:20' from="7438,5690"
+       to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      <v:line id="_x0000_s12993" style='position:absolute;rotation:340' from="7438,5609"
+       to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+     </v:group><v:line id="_x0000_s12994" style='position:absolute;rotation:90'
+      from="6413,4135" to="6413,4248" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+     <v:group id="_x0000_s12995" style='position:absolute;left:4570;top:4085;
+      width:193;height:227' coordorigin="5057,4085" coordsize="193,227"
+      wrapcoords="13292 0 -1662 8640 21600 20160 28246 20160 19938 0 13292 0">
+      <v:line id="_x0000_s12996" style='position:absolute;rotation:110' from="5132,4145"
+       to="5245,4145" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      <v:line id="_x0000_s12997" style='position:absolute;rotation:430' from="5136,4199"
+       to="5363,4199" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      <v:line id="_x0000_s12998" style='position:absolute;rotation:90' from="5114,4138"
+       to="5114,4251" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+     </v:group><v:group id="_x0000_s12999" style='position:absolute;left:5013;
+      top:4080;width:227;height:237;rotation:90' coordorigin="7438,5453"
+      coordsize="227,237" wrapcoords="15840 -4050 0 1350 -1440 2700 -1440 18900 12960 24300 15840 24300 23040 24300 15840 17550 23040 9450 23040 -4050 15840 -4050">
+      <v:group id="_x0000_s13000" style='position:absolute;left:7438;top:5609;
+       width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+       wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+       <v:line id="_x0000_s13001" style='position:absolute;rotation:20' from="7438,5690"
+        to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       <v:line id="_x0000_s13002" style='position:absolute;rotation:340'
+        from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      </v:group><v:group id="_x0000_s13003" style='position:absolute;left:7438;
+       top:5453;width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+       wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+       <v:line id="_x0000_s13004" style='position:absolute;rotation:20' from="7438,5690"
+        to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       <v:line id="_x0000_s13005" style='position:absolute;rotation:340'
+        from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s13006" style='position:absolute;
+      left:4764;top:4158;width:227;height:81;rotation:90' coordorigin="7438,5609"
+      coordsize="227,81" wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+      <v:line id="_x0000_s13007" style='position:absolute;rotation:20' from="7438,5690"
+       to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      <v:line id="_x0000_s13008" style='position:absolute;rotation:340' from="7438,5609"
+       to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+     </v:group></v:group><v:group id="_x0000_s13009" style='position:absolute;
+     left:7033;top:4038;width:340;height:130;rotation:270' coordorigin="4083,4827"
+     coordsize="510,130" wrapcoords="-635 -2400 0 19200 20965 19200 22235 -2400 -635 -2400">
+     <v:rect id="_x0000_s13010" style='position:absolute;left:4111;top:4844;
+      width:454;height:113' wrapcoords="-720 0 -720 19200 21600 19200 21600 0 -720 0"
+      fillcolor="black" stroked="f">
+      <v:fill src="04_2.files/image003.gif" o:title="" type="pattern"/>
+     </v:rect><v:line id="_x0000_s13011" style='position:absolute' from="4083,4827"
+      to="4593,4827" wrapcoords="0 0 0 1 36 1 36 0 0 0" strokeweight="1.5pt"/>
+    </v:group><v:line id="_x0000_s13012" style='position:absolute' from="6783,4103"
+     to="7123,4103" wrapcoords="1 1 38 1 38 1 1 1 1 1"/>
+    <v:oval id="_x0000_s13013" style='position:absolute;left:6738;top:4040;
+     width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+    <v:oval id="_x0000_s13014" style='position:absolute;left:4778;top:4040;
+     width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+    <v:line id="_x0000_s13015" style='position:absolute' from="4106,4106" to="4786,4106"
+     wrapcoords="1 1 38 1 38 1 1 1 1 1"/>
+    <v:line id="_x0000_s13016" style='position:absolute;rotation:315' from="3886,4406"
+     to="4453,4406" wrapcoords="1 1 38 1 38 1 1 1 1 1"/>
+    <v:shape id="_x0000_s13017" type="#_x0000_t19" style='position:absolute;
+     left:3593;top:4102;width:789;height:642;flip:x' coordsize="35358,28788"
+     wrapcoords="7338 0 -667 2678 -667 5356 30688 10712 33357 21424 32689 28119 35358 28119 36025 20754 34024 9373 24017 1339 19347 0 7338 0"
+     adj="-8491057,1273940,13758" path="wr-7842,,35358,43200,,4948,34127,28788nfewr-7842,,35358,43200,,4948,34127,28788l13758,21600nsxe">
+     <v:path o:connectlocs="0,4948;34127,28788;13758,21600"/>
+    </v:shape><v:line id="_x0000_s13018" style='position:absolute;rotation:38'
+     from="3356,4247" to="3356,5211" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:oval id="_x0000_s13019" style='position:absolute;left:3003;top:5033;
+     width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+    <v:line id="_x0000_s13020" style='position:absolute;rotation:343' from="3628,4697"
+     to="3855,4697" wrapcoords="1 1 29 1 29 1 1 1 1 1"/>
+   </v:group><v:shape id="_x0000_s13021" type="#_x0000_t202" style='position:absolute;
+    left:7653;top:4967;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>9<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s13022" type="#_x0000_t202" style='position:absolute;
+    left:6598;top:4967;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>10<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s13023" type="#_x0000_t202" style='position:absolute;
+    left:7653;top:6119;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>11<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s13024" type="#_x0000_t202" style='position:absolute;
+    left:4133;top:1538;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>4<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s13025" type="#_x0000_t202" style='position:absolute;
+    left:5831;top:1538;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>5<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:line id="_x0000_s13026" style='position:absolute' from="3083,2561"
+    to="3423,2561" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+   <v:shape id="_x0000_s13027" type="#_x0000_t202" style='position:absolute;
+    left:8853;top:2330;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s13027'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>6<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:line id="_x0000_s13028" style='position:absolute' from="8668,2561"
+    to="9008,2561" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+   <v:line id="_x0000_s13029" style='position:absolute' from="3083,3563" to="3877,3563"
+    wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+   <v:line id="_x0000_s13030" style='position:absolute' from="3098,3293" to="3892,3293"
+    wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+   <v:line id="_x0000_s13031" style='position:absolute' from="4355,1919" to="4355,3280"
+    wrapcoords="0 1 0 102 2 102 2 1 0 1"/>
+   <v:line id="_x0000_s13032" style='position:absolute' from="6038,1919" to="6038,2146"
+    wrapcoords="0 1 0 102 2 102 2 1 0 1"/>
+   <v:line id="_x0000_s13033" style='position:absolute' from="8183,3563" to="8977,3563"
+    wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+   <v:line id="_x0000_s13034" style='position:absolute' from="8183,3293" to="8977,3293"
+    wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+   <v:line id="_x0000_s13035" style='position:absolute' from="6878,4121" to="6878,5028"
+    wrapcoords="0 1 0 102 2 102 2 1 0 1"/>
+   <v:line id="_x0000_s13036" style='position:absolute' from="7858,4247" to="7858,5041"
+    wrapcoords="0 1 0 102 2 102 2 1 0 1"/>
+   <v:line id="_x0000_s13037" style='position:absolute;flip:y' from="7018,6371"
+    to="7718,6596" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+   <v:line id="_x0000_s13038" style='position:absolute;flip:x' from="4960,4628"
+    to="5238,5068" wrapcoords="0 1 0 102 2 102 2 1 0 1"/>
+   <v:line id="_x0000_s13039" style='position:absolute;flip:x' from="5275,4616"
+    to="5613,5086" wrapcoords="0 1 0 102 2 102 2 1 0 1"/>
+   <v:shape id="_x0000_s13040" type="#_x0000_t202" style='position:absolute;
+    left:2753;top:4393;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>14<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:line id="_x0000_s13041" style='position:absolute' from="3188,4616"
+    to="3642,4616" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+  </v:group><v:shape id="_x0000_s13042" type="#_x0000_t202" style='position:absolute;
+   left:5817;top:7514;width:454;height:454' wrapcoords="-720 0 -720 20880 21600 20880 21600 0 -720 0"
+   stroked="f">
+   <v:textbox>
+    <![if !mso]>
+    <table cellpadding=0 cellspacing=0 width="100%">
+     <tr>
+      <td><![endif]>
+      <div>
+      <p class=MsoNormal><i style='mso-bidi-font-style:normal'><span
+      style='font-size:12.0pt'>а<o:p></o:p></span></i></p>
+      </div>
+      <![if !mso]></td>
+     </tr>
+    </table>
+    <![endif]></v:textbox>
+  </v:shape></v:group><v:group id="_x0000_s13043" style='position:absolute;
+  left:2328;top:7895;width:7152;height:6169' coordorigin="2193,7895"
+  coordsize="7152,6169" wrapcoords="9962 0 9962 1472 10143 1682 3215 1734 2943 1787 2943 2523 226 2785 45 2838 45 4362 1857 5045 2219 5045 2219 5886 362 6201 45 6307 -45 7620 272 8041 3623 8409 3623 9250 272 9565 91 9618 91 11194 3215 11772 4121 11772 4257 12350 6385 12613 91 12613 91 14190 408 14295 2219 14295 996 15346 770 15819 815 15977 815 16239 1630 16818 1992 16818 2219 17658 2219 17816 7834 18499 8921 18499 8921 18867 9962 19340 10777 19340 10008 20076 10008 21547 11547 21547 11592 20128 10777 19340 10777 18499 10053 17553 10053 17080 9917 16818 10506 16818 13358 16134 13449 14505 13087 14453 8106 14295 7109 13454 18430 13454 18340 12613 19925 12350 20106 11772 21464 11142 21509 9775 21374 9565 20921 9145 17887 8409 21238 8041 21600 7620 21555 6359 21328 6254 19291 5886 19291 5045 19834 5045 21600 4415 21600 2785 18521 2523 18611 1787 18249 1734 11638 1682 11864 1472 11819 0 9962 0">
+  <v:group id="_x0000_s13044" style='position:absolute;left:2193;top:7895;
+   width:7152;height:5386' coordorigin="2193,1523" coordsize="7152,5386"
+   wrapcoords="9962 0 9962 1685 10143 1925 3215 1986 2943 2046 2943 2888 226 3189 45 3249 45 4994 1857 5776 2219 5776 2219 6739 362 7100 45 7220 -45 8724 272 9206 3623 9627 3623 10589 272 10950 91 11011 91 12816 3215 13477 4121 13477 4257 14139 6385 14440 91 14440 91 16245 408 16365 2219 16365 996 17569 770 18110 815 18291 815 18592 1630 19253 1992 19253 2219 20216 2219 20397 7834 21179 8921 21179 8875 21540 10777 21540 10777 21179 10053 20096 10053 19554 9917 19253 10506 19253 13358 18471 13449 16606 13087 16546 8106 16365 7109 15403 18430 15403 18340 14440 19925 14139 20106 13477 21464 12755 21509 11191 21374 10950 20921 10469 17887 9627 21238 9206 21600 8724 21555 7280 21328 7160 19291 6739 19291 5776 19834 5776 21600 5054 21600 3189 18521 2888 18611 2046 18249 1986 11638 1925 11864 1685 11819 0 9962 0">
+   <v:shape id="_x0000_s13045" type="#_x0000_t202" style='position:absolute;
+    left:8838;top:4265;width:454;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s13045'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>8<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:group id="_x0000_s13046" style='position:absolute;left:2453;
+    top:5048;width:3292;height:1861' coordorigin="1628,4802" coordsize="3292,1861"
+    wrapcoords="12625 0 12230 1045 12132 1742 12427 2787 3058 4703 3058 5574 2663 8361 1381 8884 99 10452 -99 11497 197 12890 1184 13935 2959 16723 3058 18116 11737 19510 19430 19510 17951 20206 17556 20555 17556 21426 21699 21426 21699 20555 21501 20206 19825 19510 20219 16723 20022 14806 19825 13935 20318 12890 19923 12194 16274 11148 15879 6445 15090 5574 14005 2787 14301 2090 14203 871 13808 0 12625 0">
+    <v:rect id="_x0000_s13047" style='position:absolute;left:4353;top:6572;
+     width:567;height:91' wrapcoords="-288 -864 -288 20736 21888 20736 21888 -864 -288 -864"/>
+    <v:group id="_x0000_s13048" style='position:absolute;left:3003;top:6206;
+     width:1134;height:113' coordorigin="1978,3704" coordsize="7143,113"
+     wrapcoords="-45 0 363 18900 408 18900 21146 18900 21192 18900 21645 0 -45 0">
+     <v:rect id="_x0000_s13049" style='position:absolute;left:2148;top:3704;
+      width:6803;height:113' wrapcoords="-2700 0 -2700 21370 21600 21370 21600 0 -2700 0"
+      fillcolor="black" stroked="f">
+      <v:fill src="04_2.files/image003.gif" o:title="Светлый диагональный 2"
+       type="pattern"/>
+     </v:rect><v:line id="_x0000_s13050" style='position:absolute' from="1978,3712"
+      to="9121,3712" wrapcoords="1 1 468 1 468 1 1 1 1 1"/>
+    </v:group><v:rect id="_x0000_s13051" style='position:absolute;left:3238;
+     top:5294;width:680;height:907' wrapcoords="-288 -864 -288 20736 21888 20736 21888 -864 -288 -864"/>
+    <v:rect id="_x0000_s13052" style='position:absolute;left:3928;top:5369;
+     width:113;height:170' wrapcoords="-288 -864 -288 20736 21888 20736 21888 -864 -288 -864"/>
+    <v:rect id="_x0000_s13053" style='position:absolute;left:3923;top:5750;
+     width:170;height:340' wrapcoords="-288 -864 -288 20736 21888 20736 21888 -864 -288 -864"/>
+    <v:oval id="_x0000_s13054" style='position:absolute;left:4578;top:5870;
+     width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+    <v:line id="_x0000_s13055" style='position:absolute' from="4638,5990" to="4638,6557"
+     wrapcoords="0 1 0 102 2 102 2 1 0 1"/>
+    <v:line id="_x0000_s13056" style='position:absolute' from="4368,5920" to="4595,5920"
+     wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+    <v:rect id="_x0000_s13057" style='position:absolute;left:4083;top:5863;
+     width:283;height:113' wrapcoords="-288 -864 -288 20736 21888 20736 21888 -864 -288 -864"/>
+    <v:oval id="_x0000_s13058" style='position:absolute;left:4588;top:6140;
+     width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+    <v:group id="_x0000_s13059" style='position:absolute;left:2528;top:5306;
+     width:1020;height:1020' coordorigin="2115,5248" coordsize="1020,1020"
+     wrapcoords="9847 0 4129 6671 2859 9529 -318 10165 -318 10482 9529 20329 9847 21282 11118 21282 11435 20329 16835 15247 21282 10800 21600 10165 18741 9847 16835 6353 15882 5082 11118 0 9847 0">
+     <v:oval id="_x0000_s13060" style='position:absolute;left:2285;top:5419;
+      width:680;height:680' wrapcoords="5400 0 -771 3456 -771 14688 4629 20736 5400 20736 15429 20736 16200 20736 22371 13824 22371 7776 19286 1728 15429 0 5400 0"/>
+     <v:line id="_x0000_s13061" style='position:absolute' from="2625,5248"
+      to="2625,6268" wrapcoords="0 1 0 68 2 68 2 1 0 1">
+      <v:stroke dashstyle="longDashDot"/>
+     </v:line><v:line id="_x0000_s13062" style='position:absolute' from="2115,5759"
+      to="3135,5759" wrapcoords="1 1 69 1 69 1 1 1 1 1">
+      <v:stroke dashstyle="longDashDot"/>
+     </v:line></v:group><v:group id="_x0000_s13063" style='position:absolute;
+     left:2145;top:5228;width:113;height:1134' coordorigin="1698,5228"
+     coordsize="113,1134" wrapcoords="-2700 0 -2700 21316 2700 21316 18900 21316 21600 20747 21600 284 2700 0 -2700 0">
+     <v:rect id="_x0000_s13064" style='position:absolute;left:1215;top:5738;
+      width:1080;height:113;rotation:90' wrapcoords="-2700 0 -2700 21370 21600 21370 21600 0 -2700 0"
+      fillcolor="black" stroked="f">
+      <v:fill src="04_2.files/image003.gif" o:title="Светлый диагональный 2"
+       type="pattern"/>
+     </v:rect><v:line id="_x0000_s13065" style='position:absolute;rotation:90'
+      from="1131,5795" to="2265,5795" wrapcoords="1 1 468 1 468 1 1 1 1 1"/>
+    </v:group><v:shapetype id="_x0000_t8" coordsize="21600,21600" o:spt="8"
+     adj="5400" path="m,l@0,21600@1,21600,21600,xe">
+     <v:stroke joinstyle="miter"/>
+     <v:formulas>
+      <v:f eqn="val #0"/>
+      <v:f eqn="sum width 0 #0"/>
+      <v:f eqn="prod #0 1 2"/>
+      <v:f eqn="sum width 0 @2"/>
+      <v:f eqn="mid #0 width"/>
+      <v:f eqn="mid @1 0"/>
+      <v:f eqn="prod height width #0"/>
+      <v:f eqn="prod @6 1 2"/>
+      <v:f eqn="sum height 0 @7"/>
+      <v:f eqn="prod width 1 2"/>
+      <v:f eqn="sum #0 0 @9"/>
+      <v:f eqn="if @10 @8 0"/>
+      <v:f eqn="if @10 @7 height"/>
+     </v:formulas>
+     <v:path gradientshapeok="t" o:connecttype="custom" o:connectlocs="@3,10800;10800,21600;@2,10800;10800,0"
+      textboxrect="1800,1800,19800,19800;4500,4500,17100,17100;7200,7200,14400,14400"/>
+     <v:handles>
+      <v:h position="#0,bottomRight" xrange="0,10800"/>
+     </v:handles>
+    </v:shapetype><v:shape id="_x0000_s13066" type="#_x0000_t8" style='position:absolute;
+     left:1742;top:5754;width:567;height:113;rotation:90' wrapcoords="-771 -864 3857 20736 4243 20736 16971 20736 17357 20736 19286 12960 21986 -864 -771 -864"/>
+    <v:group id="_x0000_s13067" style='position:absolute;left:1628;top:5583;
+     width:454;height:454' coordorigin="323,6020" coordsize="510,510"
+     wrapcoords="8894 0 5718 3176 -635 10165 -635 11435 7624 20329 8894 20965 11435 20965 12706 20329 22235 11435 22235 10165 14612 2541 11435 0 8894 0">
+     <v:oval id="_x0000_s13068" style='position:absolute;left:380;top:6077;
+      width:397;height:397' wrapcoords="5400 0 -771 3456 -771 14688 4629 20736 5400 20736 15429 20736 16200 20736 22371 13824 22371 7776 19286 1728 15429 0 5400 0"/>
+     <v:line id="_x0000_s13069" style='position:absolute' from="579,6020" to="579,6530"
+      wrapcoords="0 1 0 68 2 68 2 1 0 1">
+      <v:stroke dashstyle="longDashDot"/>
+     </v:line><v:line id="_x0000_s13070" style='position:absolute' from="323,6276"
+      to="833,6276" wrapcoords="1 1 69 1 69 1 1 1 1 1">
+      <v:stroke dashstyle="longDashDot"/>
+     </v:line></v:group><v:rect id="_x0000_s13071" style='position:absolute;
+     left:2073;top:5527;width:57;height:567' wrapcoords="-2400 -424 -2400 21176 24000 21176 24000 -424 -2400 -424"/>
+    <v:line id="_x0000_s13072" style='position:absolute;flip:y' from="1838,5490"
+     to="2984,5639" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+    <v:line id="_x0000_s13073" style='position:absolute' from="1838,5990" to="2984,6165"
+     wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+    <v:rect id="_x0000_s13074" style='position:absolute;left:3598;top:5057;
+     width:113;height:227' wrapcoords="-288 -864 -288 20736 21888 20736 21888 -864 -288 -864"/>
+    <v:group id="_x0000_s13075" style='position:absolute;left:3513;top:4802;
+     width:283;height:283' coordorigin="5618,5228" coordsize="283,283"
+     wrapcoords="3411 0 -1137 5684 -1137 13642 1137 18189 3411 20463 17053 20463 19326 18189 21600 13642 21600 5684 17053 0 3411 0">
+     <v:oval id="_x0000_s13076" style='position:absolute;left:5618;top:5228;
+      width:283;height:283' wrapcoords="5400 0 -771 3456 -771 14688 4629 20736 5400 20736 15429 20736 16200 20736 22371 13824 22371 7776 19286 1728 15429 0 5400 0"/>
+     <v:oval id="_x0000_s13077" style='position:absolute;left:5703;top:5313;
+      width:113;height:113' wrapcoords="5400 0 -771 3456 -771 14688 4629 20736 5400 20736 15429 20736 16200 20736 22371 13824 22371 7776 19286 1728 15429 0 5400 0"/>
+    </v:group></v:group><v:line id="_x0000_s13078" style='position:absolute;
+    rotation:40' from="3289,4766" to="4650,4766" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+   <v:line id="_x0000_s13079" style='position:absolute;rotation:45' from="4067,4167"
+    to="4067,4734" wrapcoords="0 1 0 102 2 102 2 1 0 1"/>
+   <v:line id="_x0000_s13080" style='position:absolute;rotation:45' from="8790,4141"
+    to="8790,4708" wrapcoords="0 1 0 102 2 102 2 1 0 1"/>
+   <v:shape id="_x0000_s13081" type="#_x0000_t202" style='position:absolute;
+    left:2238;top:3323;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s13081'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>3<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s13082" type="#_x0000_t202" style='position:absolute;
+    left:8838;top:3323;width:454;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s13082'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>7<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:group id="_x0000_s13083" style='position:absolute;left:2193;
+    top:3704;width:7143;height:113' coordorigin="1978,3704" coordsize="7143,113"
+    wrapcoords="-45 0 363 18900 408 18900 21146 18900 21192 18900 21645 0 -45 0">
+    <v:rect id="_x0000_s13084" style='position:absolute;left:2148;top:3704;
+     width:6803;height:113' wrapcoords="-2700 0 -2700 21370 21600 21370 21600 0 -2700 0"
+     fillcolor="black" stroked="f">
+     <v:fill src="04_2.files/image003.gif" o:title="Светлый диагональный 2"
+      type="pattern"/>
+    </v:rect><v:line id="_x0000_s13085" style='position:absolute' from="1978,3712"
+     to="9121,3712" wrapcoords="1 1 468 1 468 1 1 1 1 1"/>
+   </v:group><v:line id="_x0000_s13086" style='position:absolute' from="3213,2047"
+    to="8315,2047" wrapcoords="1 1 346 1 346 1 1 1 1 1"/>
+   <v:line id="_x0000_s13087" style='position:absolute' from="3213,2050" to="3213,3184"
+    wrapcoords="0 1 0 76 2 76 2 1 0 1"/>
+   <v:line id="_x0000_s13088" style='position:absolute' from="8315,2050" to="8315,3184"
+    wrapcoords="0 1 0 76 2 76 2 1 0 1"/>
+   <v:line id="_x0000_s13089" style='position:absolute' from="3213,3181" to="8315,3181"
+    wrapcoords="1 1 346 1 346 1 1 1 1 1"/>
+   <v:group id="_x0000_s13090" style='position:absolute;left:3593;top:4587;
+    width:510;height:461' coordorigin="4083,4496" coordsize="510,461"
+    wrapcoords="7624 0 6988 1394 5082 11148 -635 14632 0 20903 20965 20903 22235 16026 20965 13935 15882 11148 13976 1394 13341 0 7624 0">
+    <v:shape id="_x0000_s13091" type="#_x0000_t5" style='position:absolute;
+     left:4196;top:4559;width:284;height:268;mso-wrap-edited:f' wrapcoords="7958 0 -2274 21600 23874 21600 12505 0 7958 0"/>
+    <v:group id="_x0000_s13092" style='position:absolute;left:4083;top:4827;
+     width:510;height:130' coordorigin="4083,4827" coordsize="510,130"
+     wrapcoords="-635 -2400 0 19200 20965 19200 22235 -2400 -635 -2400">
+     <v:rect id="_x0000_s13093" style='position:absolute;left:4111;top:4844;
+      width:454;height:113' wrapcoords="-720 0 -720 19200 21600 19200 21600 0 -720 0"
+      fillcolor="black" stroked="f">
+      <v:fill src="04_2.files/image003.gif" o:title="" type="pattern"/>
+     </v:rect><v:line id="_x0000_s13094" style='position:absolute' from="4083,4827"
+      to="4593,4827" wrapcoords="0 0 0 1 36 1 36 0 0 0" strokeweight="1.5pt"/>
+    </v:group><v:oval id="_x0000_s13095" style='position:absolute;left:4267;
+     top:4496;width:142;height:142;mso-wrap-edited:f' wrapcoords="2400 0 -2400 6480 -2400 12960 2400 21600 19200 21600 24000 12960 24000 6480 19200 0 2400 0"/>
+   </v:group><v:group id="_x0000_s13096" style='position:absolute;left:7169;
+    top:4505;width:510;height:461;rotation:280' coordorigin="4083,4496"
+    coordsize="510,461" wrapcoords="7624 0 6988 1394 5082 11148 -635 14632 0 20903 20965 20903 22235 16026 20965 13935 15882 11148 13976 1394 13341 0 7624 0">
+    <v:shape id="_x0000_s13097" type="#_x0000_t5" style='position:absolute;
+     left:4196;top:4559;width:284;height:268;mso-wrap-edited:f' wrapcoords="7958 0 -2274 21600 23874 21600 12505 0 7958 0"/>
+    <v:group id="_x0000_s13098" style='position:absolute;left:4083;top:4827;
+     width:510;height:130' coordorigin="4083,4827" coordsize="510,130"
+     wrapcoords="-635 -2400 0 19200 20965 19200 22235 -2400 -635 -2400">
+     <v:rect id="_x0000_s13099" style='position:absolute;left:4111;top:4844;
+      width:454;height:113' wrapcoords="-720 0 -720 19200 21600 19200 21600 0 -720 0"
+      fillcolor="black" stroked="f">
+      <v:fill src="04_2.files/image003.gif" o:title="" type="pattern"/>
+     </v:rect><v:line id="_x0000_s13100" style='position:absolute' from="4083,4827"
+      to="4593,4827" wrapcoords="0 0 0 1 36 1 36 0 0 0" strokeweight="1.5pt"/>
+    </v:group><v:oval id="_x0000_s13101" style='position:absolute;left:4267;
+     top:4496;width:142;height:142;mso-wrap-edited:f' wrapcoords="2400 0 -2400 6480 -2400 12960 2400 21600 19200 21600 24000 12960 24000 6480 19200 0 2400 0"/>
+   </v:group><v:line id="_x0000_s13102" style='position:absolute' from="8098,3113"
+    to="8098,4247" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+   <v:oval id="_x0000_s13103" style='position:absolute;left:8048;top:3002;
+    width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+   <v:line id="_x0000_s13104" style='position:absolute' from="3433,3113" to="3433,4247"
+    wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+   <v:oval id="_x0000_s13105" style='position:absolute;left:3383;top:3002;
+    width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+   <v:group id="_x0000_s13106" style='position:absolute;left:4340;top:4339;
+    width:2847;height:227;rotation:10' coordorigin="4265,4444" coordsize="2847,227"
+    wrapcoords="7048 0 -114 7200 -114 10080 7617 20160 18985 20160 21600 10080 21600 7200 19554 0 7048 0">
+    <v:line id="_x0000_s13107" style='position:absolute' from="6942,4552" to="7112,4552"
+     wrapcoords="1 1 38 1 38 1 1 1 1 1"/>
+    <v:oval id="_x0000_s13108" style='position:absolute;left:6897;top:4489;
+     width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+    <v:group id="_x0000_s13109" style='position:absolute;left:5077;top:4444;
+     width:1899;height:227' coordorigin="4570,4085" coordsize="1899,227"
+     wrapcoords="1361 0 -170 8640 2211 20160 19219 20160 21430 10080 21600 7200 20069 0 1361 0">
+     <v:group id="_x0000_s13110" style='position:absolute;left:6043;top:4158;
+      width:227;height:81;rotation:90' coordorigin="7438,5609" coordsize="227,81"
+      wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+      <v:line id="_x0000_s13111" style='position:absolute;rotation:20' from="7438,5690"
+       to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      <v:line id="_x0000_s13112" style='position:absolute;rotation:340' from="7438,5609"
+       to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+     </v:group><v:line id="_x0000_s13113" style='position:absolute;rotation:110'
+      from="6159,4199" to="6386,4199" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+     <v:line id="_x0000_s13114" style='position:absolute;rotation:430' from="6278,4145"
+      to="6391,4145" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+     <v:group id="_x0000_s13115" style='position:absolute;left:5800;top:4080;
+      width:227;height:237;rotation:90' coordorigin="7438,5453" coordsize="227,237"
+      wrapcoords="15840 -4050 0 1350 -1440 2700 -1440 18900 12960 24300 15840 24300 23040 24300 15840 17550 23040 9450 23040 -4050 15840 -4050">
+      <v:group id="_x0000_s13116" style='position:absolute;left:7438;top:5609;
+       width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+       wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+       <v:line id="_x0000_s13117" style='position:absolute;rotation:20' from="7438,5690"
+        to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       <v:line id="_x0000_s13118" style='position:absolute;rotation:340'
+        from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      </v:group><v:group id="_x0000_s13119" style='position:absolute;left:7438;
+       top:5453;width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+       wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+       <v:line id="_x0000_s13120" style='position:absolute;rotation:20' from="7438,5690"
+        to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       <v:line id="_x0000_s13121" style='position:absolute;rotation:340'
+        from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s13122" style='position:absolute;
+      left:5494;top:4080;width:227;height:237;rotation:90' coordorigin="7438,5453"
+      coordsize="227,237" wrapcoords="15840 -4050 0 1350 -1440 2700 -1440 18900 12960 24300 15840 24300 23040 24300 15840 17550 23040 9450 23040 -4050 15840 -4050">
+      <v:group id="_x0000_s13123" style='position:absolute;left:7438;top:5609;
+       width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+       wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+       <v:line id="_x0000_s13124" style='position:absolute;rotation:20' from="7438,5690"
+        to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       <v:line id="_x0000_s13125" style='position:absolute;rotation:340'
+        from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      </v:group><v:group id="_x0000_s13126" style='position:absolute;left:7438;
+       top:5453;width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+       wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+       <v:line id="_x0000_s13127" style='position:absolute;rotation:20' from="7438,5690"
+        to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       <v:line id="_x0000_s13128" style='position:absolute;rotation:340'
+        from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s13129" style='position:absolute;
+      left:5251;top:4158;width:227;height:81;rotation:90' coordorigin="7438,5609"
+      coordsize="227,81" wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+      <v:line id="_x0000_s13130" style='position:absolute;rotation:20' from="7438,5690"
+       to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      <v:line id="_x0000_s13131" style='position:absolute;rotation:340' from="7438,5609"
+       to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+     </v:group><v:line id="_x0000_s13132" style='position:absolute;rotation:90'
+      from="6413,4135" to="6413,4248" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+     <v:group id="_x0000_s13133" style='position:absolute;left:4570;top:4085;
+      width:193;height:227' coordorigin="5057,4085" coordsize="193,227"
+      wrapcoords="13292 0 -1662 8640 21600 20160 28246 20160 19938 0 13292 0">
+      <v:line id="_x0000_s13134" style='position:absolute;rotation:110' from="5132,4145"
+       to="5245,4145" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      <v:line id="_x0000_s13135" style='position:absolute;rotation:430' from="5136,4199"
+       to="5363,4199" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      <v:line id="_x0000_s13136" style='position:absolute;rotation:90' from="5114,4138"
+       to="5114,4251" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+     </v:group><v:group id="_x0000_s13137" style='position:absolute;left:5013;
+      top:4080;width:227;height:237;rotation:90' coordorigin="7438,5453"
+      coordsize="227,237" wrapcoords="15840 -4050 0 1350 -1440 2700 -1440 18900 12960 24300 15840 24300 23040 24300 15840 17550 23040 9450 23040 -4050 15840 -4050">
+      <v:group id="_x0000_s13138" style='position:absolute;left:7438;top:5609;
+       width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+       wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+       <v:line id="_x0000_s13139" style='position:absolute;rotation:20' from="7438,5690"
+        to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       <v:line id="_x0000_s13140" style='position:absolute;rotation:340'
+        from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      </v:group><v:group id="_x0000_s13141" style='position:absolute;left:7438;
+       top:5453;width:227;height:81' coordorigin="7438,5609" coordsize="227,81"
+       wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+       <v:line id="_x0000_s13142" style='position:absolute;rotation:20' from="7438,5690"
+        to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+       <v:line id="_x0000_s13143" style='position:absolute;rotation:340'
+        from="7438,5609" to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s13144" style='position:absolute;
+      left:4764;top:4158;width:227;height:81;rotation:90' coordorigin="7438,5609"
+      coordsize="227,81" wrapcoords="15840 -12960 -1440 4320 -1440 12960 15840 30240 23040 30240 23040 -12960 15840 -12960">
+      <v:line id="_x0000_s13145" style='position:absolute;rotation:20' from="7438,5690"
+       to="7665,5690" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+      <v:line id="_x0000_s13146" style='position:absolute;rotation:340' from="7438,5609"
+       to="7665,5609" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+     </v:group></v:group><v:oval id="_x0000_s13147" style='position:absolute;
+     left:4937;top:4489;width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+    <v:line id="_x0000_s13148" style='position:absolute' from="4265,4555" to="4945,4555"
+     wrapcoords="1 1 38 1 38 1 1 1 1 1"/>
+   </v:group><v:shape id="_x0000_s13149" type="#_x0000_t202" style='position:absolute;
+    left:2238;top:2330;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>4<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s13150" type="#_x0000_t202" style='position:absolute;
+    left:5523;top:1523;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>5<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s13151" type="#_x0000_t202" style='position:absolute;
+    left:8778;top:2330;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s13151'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>6<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:line id="_x0000_s13152" style='position:absolute' from="2678,3563"
+    to="3415,3563" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+   <v:line id="_x0000_s13153" style='position:absolute' from="5758,1919" to="5758,2146"
+    wrapcoords="0 1 0 102 2 102 2 1 0 1"/>
+   <v:line id="_x0000_s13154" style='position:absolute' from="8088,3563" to="8882,3563"
+    wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+   <v:rect id="_x0000_s13155" style='position:absolute;left:2968;top:2401;
+    width:170;height:1020' wrapcoords="-288 -864 -288 20736 21888 20736 21888 -864 -288 -864"/>
+   <v:rect id="_x0000_s13156" style='position:absolute;left:8388;top:2401;
+    width:170;height:1020' wrapcoords="-288 -864 -288 20736 21888 20736 21888 -864 -288 -864"/>
+   <v:line id="_x0000_s13157" style='position:absolute' from="2678,2561" to="3018,2561"
+    wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+   <v:line id="_x0000_s13158" style='position:absolute' from="8498,2561" to="8838,2561"
+    wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+   <v:oval id="_x0000_s13159" style='position:absolute;left:8048;top:4233;
+    width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+   <v:line id="_x0000_s13160" style='position:absolute' from="4359,4193" to="8951,4193"
+    wrapcoords="1 1 346 1 346 1 1 1 1 1"/>
+   <v:oval id="_x0000_s13161" style='position:absolute;left:3368;top:4233;
+    width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+   <v:group id="_x0000_s13162" style='position:absolute;left:8313;top:4587;
+    width:510;height:461' coordorigin="4083,4496" coordsize="510,461"
+    wrapcoords="7624 0 6988 1394 5082 11148 -635 14632 0 20903 20965 20903 22235 16026 20965 13935 15882 11148 13976 1394 13341 0 7624 0">
+    <v:shape id="_x0000_s13163" type="#_x0000_t5" style='position:absolute;
+     left:4196;top:4559;width:284;height:268;mso-wrap-edited:f' wrapcoords="7958 0 -2274 21600 23874 21600 12505 0 7958 0"/>
+    <v:group id="_x0000_s13164" style='position:absolute;left:4083;top:4827;
+     width:510;height:130' coordorigin="4083,4827" coordsize="510,130"
+     wrapcoords="-635 -2400 0 19200 20965 19200 22235 -2400 -635 -2400">
+     <v:rect id="_x0000_s13165" style='position:absolute;left:4111;top:4844;
+      width:454;height:113' wrapcoords="-720 0 -720 19200 21600 19200 21600 0 -720 0"
+      fillcolor="black" stroked="f">
+      <v:fill src="04_2.files/image003.gif" o:title="" type="pattern"/>
+     </v:rect><v:line id="_x0000_s13166" style='position:absolute' from="4083,4827"
+      to="4593,4827" wrapcoords="0 0 0 1 36 1 36 0 0 0" strokeweight="1.5pt"/>
+    </v:group><v:oval id="_x0000_s13167" style='position:absolute;left:4267;
+     top:4496;width:142;height:142;mso-wrap-edited:f' wrapcoords="2400 0 -2400 6480 -2400 12960 2400 21600 19200 21600 24000 12960 24000 6480 19200 0 2400 0"/>
+   </v:group><v:line id="_x0000_s13168" style='position:absolute;rotation:40'
+    from="8107,4461" to="8561,4461" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+   <v:oval id="_x0000_s13169" style='position:absolute;left:4258;top:4137;
+    width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+   <v:oval id="_x0000_s13170" style='position:absolute;left:8963;top:4137;
+    width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+   <v:shape id="_x0000_s13171" type="#_x0000_t202" style='position:absolute;
+    left:7688;top:4909;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>9<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:line id="_x0000_s13172" style='position:absolute' from="7893,4189"
+    to="7893,4983" wrapcoords="0 1 0 102 2 102 2 1 0 1"/>
+   <v:shape id="_x0000_s13173" type="#_x0000_t202" style='position:absolute;
+    left:2258;top:4265;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s13173'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>2<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s13174" type="#_x0000_t202" style='position:absolute;
+    left:2258;top:5138;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s13174'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>1<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:line id="_x0000_s13175" style='position:absolute' from="2678,4496"
+    to="3642,4496" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+   <v:line id="_x0000_s13176" style='position:absolute' from="2678,5393" to="4435,5393"
+    wrapcoords="1 1 346 1 346 1 1 1 1 1"/>
+   <v:line id="_x0000_s13177" style='position:absolute' from="8763,4466" to="8933,4466"
+    wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+   <v:shape id="_x0000_s13178" type="#_x0000_t202" style='position:absolute;
+    left:6073;top:4909;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>10<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:line id="_x0000_s13179" style='position:absolute' from="6318,4607"
+    to="6318,4947" wrapcoords="0 1 0 102 2 102 2 1 0 1"/>
+   <v:shape id="_x0000_s13180" type="#_x0000_t202" style='position:absolute;
+    left:6038;top:5669;width:567;height:454' wrapcoords="-514 0 -514 20880 21600 20880 21600 0 -514 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>11<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:line id="_x0000_s13181" style='position:absolute' from="4358,5900"
+    to="6115,5900" wrapcoords="1 1 346 1 346 1 1 1 1 1"/>
+  </v:group><v:shape id="_x0000_s13182" type="#_x0000_t202" style='position:absolute;
+   left:5542;top:13610;width:454;height:454' wrapcoords="-720 0 -720 20880 21600 20880 21600 0 -720 0"
+   stroked="f">
+   <v:textbox>
+    <![if !mso]>
+    <table cellpadding=0 cellspacing=0 width="100%">
+     <tr>
+      <td><![endif]>
+      <div>
+      <p class=MsoNormal><i style='mso-bidi-font-style:normal'><span
+      style='font-size:12.0pt'>б<o:p></o:p></span></i></p>
+      </div>
+      <![if !mso]></td>
+     </tr>
+    </table>
+    <![endif]></v:textbox>
+  </v:shape></v:group><w:wrap type="none"/>
+ <w:anchorlock/>
+</v:group><![endif]--><![if !vml]><img width=499 height=890
+src="04_2.files/image004.gif" v:shapes="_x0000_s12839 _x0000_s12840 _x0000_s12841 _x0000_s12842 _x0000_s12843 _x0000_s12844 _x0000_s12845 _x0000_s12846 _x0000_s12847 _x0000_s12848 _x0000_s12849 _x0000_s12850 _x0000_s12851 _x0000_s12852 _x0000_s12853 _x0000_s12854 _x0000_s12855 _x0000_s12856 _x0000_s12857 _x0000_s12858 _x0000_s12859 _x0000_s12860 _x0000_s12861 _x0000_s12862 _x0000_s12863 _x0000_s12864 _x0000_s12865 _x0000_s12866 _x0000_s12867 _x0000_s12868 _x0000_s12869 _x0000_s12870 _x0000_s12871 _x0000_s12872 _x0000_s12873 _x0000_s12874 _x0000_s12875 _x0000_s12876 _x0000_s12877 _x0000_s12878 _x0000_s12879 _x0000_s12880 _x0000_s12881 _x0000_s12882 _x0000_s12883 _x0000_s12884 _x0000_s12885 _x0000_s12886 _x0000_s12887 _x0000_s12888 _x0000_s12889 _x0000_s12890 _x0000_s12891 _x0000_s12892 _x0000_s12893 _x0000_s12894 _x0000_s12895 _x0000_s12896 _x0000_s12897 _x0000_s12898 _x0000_s12899 _x0000_s12900 _x0000_s12901 _x0000_s12902 _x0000_s12903 _x0000_s12904 _x0000_s12905 _x0000_s12906 _x0000_s12907 _x0000_s12908 _x0000_s12909 _x0000_s12910 _x0000_s12911 _x0000_s12912 _x0000_s12913 _x0000_s12914 _x0000_s12915 _x0000_s12916 _x0000_s12917 _x0000_s12918 _x0000_s12919 _x0000_s12920 _x0000_s12921 _x0000_s12922 _x0000_s12923 _x0000_s12924 _x0000_s12925 _x0000_s12926 _x0000_s12927 _x0000_s12928 _x0000_s12929 _x0000_s12930 _x0000_s12931 _x0000_s12932 _x0000_s12933 _x0000_s12934 _x0000_s12935 _x0000_s12936 _x0000_s12937 _x0000_s12938 _x0000_s12939 _x0000_s12940 _x0000_s12941 _x0000_s12942 _x0000_s12943 _x0000_s12944 _x0000_s12945 _x0000_s12946 _x0000_s12947 _x0000_s12948 _x0000_s12949 _x0000_s12950 _x0000_s12951 _x0000_s12952 _x0000_s12953 _x0000_s12954 _x0000_s12955 _x0000_s12956 _x0000_s12957 _x0000_s12958 _x0000_s12959 _x0000_s12960 _x0000_s12961 _x0000_s12962 _x0000_s12963 _x0000_s12964 _x0000_s12965 _x0000_s12966 _x0000_s12967 _x0000_s12968 _x0000_s12969 _x0000_s12970 _x0000_s12971 _x0000_s12972 _x0000_s12973 _x0000_s12974 _x0000_s12975 _x0000_s12976 _x0000_s12977 _x0000_s12978 _x0000_s12979 _x0000_s12980 _x0000_s12981 _x0000_s12982 _x0000_s12983 _x0000_s12984 _x0000_s12985 _x0000_s12986 _x0000_s12987 _x0000_s12988 _x0000_s12989 _x0000_s12990 _x0000_s12991 _x0000_s12992 _x0000_s12993 _x0000_s12994 _x0000_s12995 _x0000_s12996 _x0000_s12997 _x0000_s12998 _x0000_s12999 _x0000_s13000 _x0000_s13001 _x0000_s13002 _x0000_s13003 _x0000_s13004 _x0000_s13005 _x0000_s13006 _x0000_s13007 _x0000_s13008 _x0000_s13009 _x0000_s13010 _x0000_s13011 _x0000_s13012 _x0000_s13013 _x0000_s13014 _x0000_s13015 _x0000_s13016 _x0000_s13017 _x0000_s13018 _x0000_s13019 _x0000_s13020 _x0000_s13021 _x0000_s13022 _x0000_s13023 _x0000_s13024 _x0000_s13025 _x0000_s13026 _x0000_s13027 _x0000_s13028 _x0000_s13029 _x0000_s13030 _x0000_s13031 _x0000_s13032 _x0000_s13033 _x0000_s13034 _x0000_s13035 _x0000_s13036 _x0000_s13037 _x0000_s13038 _x0000_s13039 _x0000_s13040 _x0000_s13041 _x0000_s13042 _x0000_s13043 _x0000_s13044 _x0000_s13045 _x0000_s13046 _x0000_s13047 _x0000_s13048 _x0000_s13049 _x0000_s13050 _x0000_s13051 _x0000_s13052 _x0000_s13053 _x0000_s13054 _x0000_s13055 _x0000_s13056 _x0000_s13057 _x0000_s13058 _x0000_s13059 _x0000_s13060 _x0000_s13061 _x0000_s13062 _x0000_s13063 _x0000_s13064 _x0000_s13065 _x0000_s13066 _x0000_s13067 _x0000_s13068 _x0000_s13069 _x0000_s13070 _x0000_s13071 _x0000_s13072 _x0000_s13073 _x0000_s13074 _x0000_s13075 _x0000_s13076 _x0000_s13077 _x0000_s13078 _x0000_s13079 _x0000_s13080 _x0000_s13081 _x0000_s13082 _x0000_s13083 _x0000_s13084 _x0000_s13085 _x0000_s13086 _x0000_s13087 _x0000_s13088 _x0000_s13089 _x0000_s13090 _x0000_s13091 _x0000_s13092 _x0000_s13093 _x0000_s13094 _x0000_s13095 _x0000_s13096 _x0000_s13097 _x0000_s13098 _x0000_s13099 _x0000_s13100 _x0000_s13101 _x0000_s13102 _x0000_s13103 _x0000_s13104 _x0000_s13105 _x0000_s13106 _x0000_s13107 _x0000_s13108 _x0000_s13109 _x0000_s13110 _x0000_s13111 _x0000_s13112 _x0000_s13113 _x0000_s13114 _x0000_s13115 _x0000_s13116 _x0000_s13117 _x0000_s13118 _x0000_s13119 _x0000_s13120 _x0000_s13121 _x0000_s13122 _x0000_s13123 _x0000_s13124 _x0000_s13125 _x0000_s13126 _x0000_s13127 _x0000_s13128 _x0000_s13129 _x0000_s13130 _x0000_s13131 _x0000_s13132 _x0000_s13133 _x0000_s13134 _x0000_s13135 _x0000_s13136 _x0000_s13137 _x0000_s13138 _x0000_s13139 _x0000_s13140 _x0000_s13141 _x0000_s13142 _x0000_s13143 _x0000_s13144 _x0000_s13145 _x0000_s13146 _x0000_s13147 _x0000_s13148 _x0000_s13149 _x0000_s13150 _x0000_s13151 _x0000_s13152 _x0000_s13153 _x0000_s13154 _x0000_s13155 _x0000_s13156 _x0000_s13157 _x0000_s13158 _x0000_s13159 _x0000_s13160 _x0000_s13161 _x0000_s13162 _x0000_s13163 _x0000_s13164 _x0000_s13165 _x0000_s13166 _x0000_s13167 _x0000_s13168 _x0000_s13169 _x0000_s13170 _x0000_s13171 _x0000_s13172 _x0000_s13173 _x0000_s13174 _x0000_s13175 _x0000_s13176 _x0000_s13177 _x0000_s13178 _x0000_s13179 _x0000_s13180 _x0000_s13181 _x0000_s13182"><![endif]><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><![endif]--></span></span><!--[if mso & !supportInlineShapes & supportFields]><span
+style='mso-bookmark:рис4_2'></span><v:shape id="_x0000_i1025" type="#_x0000_t75"
+ style='width:371.65pt;height:664.4pt'>
+ <v:imagedata croptop="-65520f" cropbottom="65520f"/>
+</v:shape><span style='mso-bookmark:рис4_2'><span style='mso-bidi-font-size:
+14.0pt'><span style='mso-element:field-end'></span></span></span><![endif]--><span
+style='mso-bookmark:рис4_2'></span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><i><span
+style='mso-bidi-font-size:14.0pt;font-variant:small-caps;color:black'><o:p>&nbsp;</o:p></span></i></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>При <span style='mso-bidi-font-style:italic'>боковом<i> </i></span>расположении
+гидроцилиндра отно­сительно осевой линии машины (<a href="#рис4_2">рис. 4.2, <i
+style='mso-bidi-font-style:normal'>б</i></a>) шток поршня <i>1, </i>под­нимаясь,
+поворачивает <span class=SpellE>трехплечий</span> рычаг <i>2 </i>против часовой
+стрел­ки. При этом движение вертикальной тягой <i>3 </i>передается на левую
+часть балки прижима <i style='mso-bidi-font-style:normal'>5</i>, а через тягу <i
+style='mso-bidi-font-style:normal'>9</i> – на двуплечий рычаг <i
+style='mso-bidi-font-style:normal'>8 </i>и че­рез тягу <i style='mso-bidi-font-style:
+normal'>7 </i>на правую часть балки. Балка прижима перемещается в вертикальных
+направляющих <i>4 </i><span style='mso-bidi-font-style:italic'>и <i>7</i>,<i> </i></span>пружина
+<i style='mso-bidi-font-style:normal'>10</i> обеспечивает ее возврат в верхнее
+исходное положение. При такой схеме количество передающих <span class=GramE>звенит
+от гидроцилинд­ра к балке увеличивается</span>, жесткость привода левой и
+правой частей прижима будет разной. </span><span style='mso-bidi-font-size:
+14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:36.0pt'><span style='mso-bidi-font-size:
+14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

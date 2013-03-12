@@ -1,0 +1,1964 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="05_2.files/filelist.xml">
+<link rel=Edit-Time-Data href="05_2.files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Основы теории обобщенной машины</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Lena</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>butthead</o:LastAuthor>
+  <o:Revision>66</o:Revision>
+  <o:TotalTime>161</o:TotalTime>
+  <o:Created>2008-01-15T09:32:00Z</o:Created>
+  <o:LastSaved>2008-05-31T12:58:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>359</o:Words>
+  <o:Characters>2052</o:Characters>
+  <o:Company> </o:Company>
+  <o:Lines>17</o:Lines>
+  <o:Paragraphs>4</o:Paragraphs>
+  <o:CharactersWithSpaces>2407</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:AutoHyphenation/>
+  <w:HyphenationZone>17</w:HyphenationZone>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+   <w:UseWord97LineBreakingRules/>
+   <w:SelectEntireFieldWithStartOrEnd/>
+   <w:UseWord2002TableStyleRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:204;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+@font-face
+	{font-family:Calibri;
+	mso-font-alt:"Century Gothic";
+	mso-font-charset:204;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1073750139 0 0 159 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:0pt;
+	font-weight:normal;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MTDisplayEquation, li.MTDisplayEquation, div.MTDisplayEquation
+	{mso-style-name:MTDisplayEquation;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	tab-stops:center 241.0pt right 482.0pt;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.a, li.a, div.a
+	{mso-style-name:"Абзац списка";
+	margin-top:0cm;
+	margin-right:1.0cm;
+	margin-bottom:12.0pt;
+	margin-left:36.0pt;
+	mso-add-space:auto;
+	text-align:justify;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:Calibri;
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	mso-fareast-language:EN-US;}
+p.aCxSpFirst, li.aCxSpFirst, div.aCxSpFirst
+	{mso-style-name:"Абзац спискаCxSpFirst";
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:1.0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:Calibri;
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	mso-fareast-language:EN-US;}
+p.aCxSpMiddle, li.aCxSpMiddle, div.aCxSpMiddle
+	{mso-style-name:"Абзац спискаCxSpMiddle";
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:1.0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:Calibri;
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	mso-fareast-language:EN-US;}
+p.aCxSpLast, li.aCxSpLast, div.aCxSpLast
+	{mso-style-name:"Абзац спискаCxSpLast";
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:1.0cm;
+	margin-bottom:12.0pt;
+	margin-left:36.0pt;
+	mso-add-space:auto;
+	text-align:justify;
+	line-height:150%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:Calibri;
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Times New Roman";
+	mso-fareast-language:EN-US;}
+p.style3, li.style3, div.style3
+	{mso-style-name:style3;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.9pt 70.9pt 3.0cm 70.9pt;
+	mso-header-margin:35.45pt;
+	mso-footer-margin:35.45pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+table.MsoTableGrid
+	{mso-style-name:"Сетка таблицы";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="21506">
+  <o:colormenu v:ext="edit" fillcolor="black" strokecolor="none"/>
+ </o:shapedefaults></xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1,12"/>
+  <o:rules v:ext="edit">
+   <o:r id="V:Rule1" type="arc" idref="#_x0000_s12602"/>
+   <o:r id="V:Rule2" type="arc" idref="#_x0000_s12603"/>
+   <o:r id="V:Rule3" type="arc" idref="#_x0000_s12605"/>
+   <o:r id="V:Rule4" type="arc" idref="#_x0000_s12606"/>
+   <o:r id="V:Rule5" type="arc" idref="#_x0000_s12653"/>
+   <o:r id="V:Rule6" type="arc" idref="#_x0000_s12657"/>
+  </o:rules>
+  <o:regrouptable v:ext="edit">
+   <o:entry new="1" old="0"/>
+   <o:entry new="2" old="0"/>
+   <o:entry new="3" old="0"/>
+   <o:entry new="4" old="0"/>
+   <o:entry new="5" old="0"/>
+   <o:entry new="6" old="0"/>
+   <o:entry new="7" old="0"/>
+   <o:entry new="8" old="0"/>
+   <o:entry new="9" old="0"/>
+   <o:entry new="10" old="0"/>
+   <o:entry new="11" old="10"/>
+   <o:entry new="12" old="0"/>
+   <o:entry new="13" old="12"/>
+   <o:entry new="14" old="0"/>
+   <o:entry new="15" old="0"/>
+   <o:entry new="16" old="0"/>
+   <o:entry new="17" old="0"/>
+   <o:entry new="18" old="0"/>
+   <o:entry new="19" old="18"/>
+   <o:entry new="20" old="19"/>
+  </o:regrouptable>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=RU link=blue vlink=purple style='tab-interval:36.0pt'>
+
+<div class=Section1>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='background:#446644;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=1210 style='width:32.0cm;border:solid white 1.0pt;mso-border-alt:
+  solid white .25pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:2.0pt;margin-right:0cm;margin-bottom:
+  4.8pt;margin-left:0cm;mso-para-margin-top:2.0pt;mso-para-margin-right:0cm;
+  mso-para-margin-bottom:.4gd;mso-para-margin-left:0cm;text-indent:29.65pt;
+  tab-stops:418.2pt 16.0cm 460.7pt 467.75pt'><span style='font-size:12.0pt;
+  font-family:Verdana;color:white'>5.2.</span><span lang=EN-US
+  style='font-size:12.0pt;font-family:Verdana;color:white;mso-ansi-language:
+  EN-US'>&nbsp;</span><span style='font-size:12.0pt;font-family:Verdana;
+  color:white'>Корпус подавателя<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-top:2.0pt;text-align:justify;text-indent:34.85pt;
+tab-stops:418.2pt 16.0cm 460.7pt 467.75pt'>Корпус подавателя является
+транспортным средством, которое передвигает стопу по горизонтальному столу
+резальной машины и обеспечивает ее установку относительно плоскости резания.
+Корпус подавателя транспортирует стопу, толкая ее, т. е. действует на нее
+только с одной стороны в направлении зоны резки. Такой способ передвижения
+стопы требует, чтобы подаватель двигался без резких замедлений, поскольку
+возможен отход стопы от подавателя и сдвиг верхних листов. Корпус подавателя <i
+style='mso-bidi-font-style:normal'>1</i> (<a href="#рис5_4">рис. 5.4</a>) –
+массивная литая конструкция, к которой крепится сплошная (для малоформатных
+машин) или сборная гребенка <i style='mso-bidi-font-style:normal'>2</i> (на
+рисунке состоящая из трех частей), наружная поверхность которой служит базой
+для установки стопы. Передняя часть корпуса по краям <span style='mso-bidi-font-size:
+14.0pt'>опирается на две опоры качения (на рисунке не показаны), а по центру
+(сечение <i style='mso-bidi-font-style:normal'>А</i>-<i style='mso-bidi-font-style:
+normal'>А</i>) – на болт <i style='mso-bidi-font-style:normal'>4</i> со
+сферической головкой. Болт укреплен неподвижно в ползуне <i style='mso-bidi-font-style:
+normal'>3</i>, а корпус прижимается к болту пружиной <i style='mso-bidi-font-style:
+normal'>5</i>, усилие прижима которой регулируется гайкой <i style='mso-bidi-font-style:
+normal'>6</i>. Благодаря наличию сферической опоры положение корпуса может
+изменяться в двух плоскостях при регулировке:<o:p></o:p></span></p>
+
+<p class=aCxSpFirst style='margin-top:0cm;margin-right:-2.85pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;mso-add-space:auto;line-height:normal;
+tab-stops:418.2pt 16.0cm 460.7pt 467.75pt'><span style='font-size:14.0pt;
+font-family:"Times New Roman"'>– перпендикулярности плоскости гребенок к
+поверхности стола;<o:p></o:p></span></p>
+
+<p class=aCxSpLast style='margin-top:0cm;margin-right:-2.85pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;mso-add-space:auto;line-height:normal;
+tab-stops:418.2pt 16.0cm 460.7pt 467.75pt'><span style='font-size:14.0pt;
+font-family:"Times New Roman"'>– параллельности плоскости гребенок к плоскости
+резания.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-right:-2.85pt;text-align:justify;text-indent:
+35.0pt;tab-stops:418.2pt 16.0cm 460.7pt 467.75pt'><span style='mso-bidi-font-size:
+14.0pt'>Хвостовик корпуса (сечение <i style='mso-bidi-font-style:normal'>А</i>-<i
+style='mso-bidi-font-style:normal'>А</i>) опирается на пружину <i
+style='mso-bidi-font-style:normal'>9</i>,</span> перемещение которой ограничивается
+маховичком <i style='mso-bidi-font-style:normal'>7</i> с ручкой, который
+наворачивается на винт <i style='mso-bidi-font-style:normal'>8</i>. Поднимая
+или опуская хвостовик посредством вращения маховичка, можно отрегулировать
+перпендикулярность поверхности подавателя к столу. На рис. 5.4 (сечение <i
+style='mso-bidi-font-style:normal'>В</i>-<i style='mso-bidi-font-style:normal'>В</i>)
+показана регулировка параллельности гребенок корпуса плоскости резания.
+Микрометрический винт с лимбом <i style='mso-bidi-font-style:normal'>15</i>
+обеспечивает высокую точность регулировки, после окончания которой корпус
+подавателя фиксируется относительно ползуна <i style='mso-bidi-font-style:normal'>3</i>
+рукояткой <i style='mso-bidi-font-style:normal'>17</i> и стопорными винтами <i
+style='mso-bidi-font-style:normal'>16</i>. Важным элементом корпуса является
+крепление гребенок. При перемещении корпуса они должны быть «плавающими» по отношению
+к столу, обеспечивая постоянство зазора между нижней поверхностью гребенок и
+стола. С этой целью гребенки <i style='mso-bidi-font-style:normal'>2</i> имеют
+упругое крепление<span style='mso-spacerun:yes'>  </span>к<span
+style='mso-spacerun:yes'>  </span>корпусу<span style='mso-spacerun:yes'> 
+</span><i style='mso-bidi-font-style:normal'>1 </i><span
+style='mso-spacerun:yes'> </span>посредством<span style='mso-spacerun:yes'> 
+</span>горизонтальных пружин <i style='mso-bidi-font-style:normal'>13</i>
+(сечение <i style='mso-bidi-font-style:normal'>Б</i>-<i style='mso-bidi-font-style:
+normal'>Б</i>), действующих на болты <i style='mso-bidi-font-style:normal'>14</i>.
+С другой стороны, гребенки посредством пистонов <i style='mso-bidi-font-style:
+normal'>12</i> опираются на вертикальные пружины <i style='mso-bidi-font-style:
+normal'>11</i>, опорой которым служит упор <i style='mso-bidi-font-style:normal'>10</i>.
+Сжатие пружин регулируется вращением пистонов <i style='mso-bidi-font-style:
+normal'>12 </i><span style='mso-spacerun:yes'> </span>в резьбовых отверстиях
+гребенок <i style='mso-bidi-font-style:normal'>2</i>.</p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><a name="рис5_4"></a><!--[if mso & !supportInlineShapes & supportFields]><span
+style='mso-bookmark:рис5_4'></span><span style='mso-element:field-begin;
+mso-field-lock:yes'></span><span style='mso-bookmark:рис5_4'><span
+style='mso-spacerun:yes'> </span>SHAPE <span
+style='mso-spacerun:yes'> </span>\* MERGEFORMAT <span style='mso-element:field-separator'></span></span><![endif]--><span
+style='mso-bookmark:рис5_4'><!--[if gte vml 1]><v:group id="_x0000_s12439"
+ style='width:450.45pt;height:555.25pt;mso-position-horizontal-relative:char;
+ mso-position-vertical-relative:line' coordorigin="1698,1418" coordsize="9009,11105"
+ wrapcoords="1977 0 1977 817 2120 934 2588 934 2588 1868 2049 1985 1977 2043 1977 3853 6290 4203 7511 4203 7511 4758 8662 5137 8913 5137 9021 5838 9955 6071 10782 6071 12723 6538 12723 7005 11645 7472 7727 7648 7727 8552 10818 8874 7008 8961 6361 8990 6361 9808 4349 9837 4205 9866 4205 13485 7511 13544 7511 14011 5283 14303 4852 14390 3127 14799 3127 14945 1689 15032 1474 15120 1474 15879 36 15908 -36 15937 -36 18331 1114 18681 1474 18681 1078 18915 1006 19002 1006 19411 2731 19615 4708 19615 4708 20082 10782 20082 10782 20549 3917 20812 3917 21571 17647 21571 17718 20841 17143 20783 10782 20549 10782 20082 18976 20082 21600 19965 21600 18389 21205 18243 20234 18214 20953 17368 21025 16171 17000 16054 3522 15879 3522 15412 5750 15412 7008 15237 6972 14478 7116 14478 7655 14098 7655 13544 10746 13544 13406 13339 13370 12143 16065 12143 17395 11997 17431 10362 16568 10275 17395 10158 17431 9311 13549 8874 13549 8406 16353 8406 17395 8290 17431 7414 16317 7297 12867 7005 12938 6188 12723 6159 10854 6071 11177 5663 13442 5137 14700 4758 14771 3941 14484 3853 12974 3736 15059 3269 18222 2831 18725 2802 19192 2569 19192 2335 19587 1868 19659 788 19084 730 15239 467 15239 0 1977 0">
+ <v:shapetype id="_x0000_t202" coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
+  <v:stroke joinstyle="miter"/>
+  <v:path gradientshapeok="t" o:connecttype="rect"/>
+ </v:shapetype><v:shape id="_x0000_s12440" type="#_x0000_t202" style='position:absolute;
+  left:3368;top:12126;width:5669;height:397' wrapcoords="-57 0 -57 20769 21600 20769 21600 0 -57 0"
+  stroked="f">
+  <v:textbox style='mso-next-textbox:#_x0000_s12440'>
+   <![if !mso]>
+   <table cellpadding=0 cellspacing=0 width="100%">
+    <tr>
+     <td><![endif]>
+     <div>
+     <p class=MsoNormal align=center style='text-align:center'><span
+     style='font-size:12.0pt'>Рис. 5.4. Конструкция элементов подавателя<o:p></o:p></span></p>
+     </div>
+     <![if !mso]></td>
+    </tr>
+   </table>
+   <![endif]></v:textbox>
+ </v:shape><v:group id="_x0000_s12441" style='position:absolute;left:1698;
+  top:1418;width:9009;height:10330' coordorigin="1698,1418" coordsize="9009,10330"
+  wrapcoords="1977 0 1977 878 2120 1003 2588 1003 2588 2006 2049 2132 1977 2194 1977 4138 6290 4514 7511 4514 7511 5110 8662 5518 8913 5518 9021 6270 9955 6521 10782 6521 12723 7022 12723 7524 11716 8026 7943 8245 7727 8245 7727 9217 10530 9530 7224 9624 6361 9718 6361 10534 4349 10596 4205 10628 4205 14515 7511 14546 7511 15048 5283 15361 4852 15455 3127 15894 3127 16051 1689 16145 1474 16239 1474 17054 36 17086 -36 17117 -36 19719 1042 20064 1474 20064 1078 20346 1006 20440 1006 20879 2480 21067 4708 21067 4708 21569 19372 21569 20558 21569 21600 21349 21600 19750 21205 19594 20234 19562 20953 18653 21025 17368 17000 17242 3522 17054 3522 16553 5750 16553 7008 16365 6972 15549 7152 15549 7655 15173 7655 14546 11105 14546 13406 14358 13370 13042 16317 13042 17395 12916 17431 11161 17143 11129 17431 10941 17431 10032 13549 9530 13549 9029 16497 9029 17431 8903 17431 7963 12867 7524 12938 6709 12651 6615 10854 6521 11177 6082 13442 5518 14700 5110 14771 4232 14484 4138 12974 4013 15059 3511 18222 3041 18725 3010 19192 2759 19192 2508 19587 2006 19659 846 19084 784 15239 502 15239 0 1977 0">
+  <v:group id="_x0000_s12442" style='position:absolute;left:2555;top:1418;
+   width:7295;height:3016' coordorigin="2398,992" coordsize="7295,3016"
+   wrapcoords="-44 0 -44 3116 89 3439 667 3439 667 6878 0 7307 -44 7415 -44 14185 5244 15475 6756 15475 6756 17516 8178 18913 8489 18913 8622 21493 10089 21493 10667 21493 11333 21063 11289 20633 11556 20633 13733 19128 15600 17516 15689 14507 15333 14185 13467 13755 16044 12036 19956 10424 20578 10316 21156 9457 21156 8597 21644 6878 21644 2794 16267 1719 16267 0 -44 0">
+   <v:shape id="_x0000_s12443" type="#_x0000_t202" style='position:absolute;
+    left:7428;top:992;width:454;height:454' wrapcoords="-720 0 -720 20880 21600 20880 21600 0 -720 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s12443'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>2<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s12444" type="#_x0000_t202" style='position:absolute;
+    left:2398;top:2024;width:454;height:454' wrapcoords="-720 0 -720 20880 21600 20880 21600 0 -720 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s12444'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>1<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s12445" type="#_x0000_t202" style='position:absolute;
+    left:4709;top:3002;width:454;height:454' wrapcoords="-720 0 -720 20880 21600 20880 21600 0 -720 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s12445'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><i style='mso-bidi-font-style:normal'><span
+       style='font-size:12.0pt'>В<o:p></o:p></span></i></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s12446" type="#_x0000_t202" style='position:absolute;
+    left:2398;top:2516;width:454;height:454' wrapcoords="-720 0 -720 20880 21600 20880 21600 0 -720 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s12446'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><i style='mso-bidi-font-style:normal'><span
+       style='font-size:12.0pt'>Б<o:p></o:p></span></i></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s12447" type="#_x0000_t202" style='position:absolute;
+    left:5338;top:992;width:454;height:454' wrapcoords="-720 0 -720 20880 21600 20880 21600 0 -720 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s12447'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><i style='mso-bidi-font-style:normal'><span
+       style='font-size:12.0pt'>А<o:p></o:p></span></i></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s12448" type="#_x0000_t202" style='position:absolute;
+    left:2398;top:992;width:454;height:454' wrapcoords="-720 0 -720 20880 21600 20880 21600 0 -720 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s12448'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><i style='mso-bidi-font-style:normal'><span
+       style='font-size:12.0pt'>Б<o:p></o:p></span></i></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s12449" type="#_x0000_t202" style='position:absolute;
+    left:7203;top:3002;width:454;height:454' wrapcoords="-720 0 -720 20880 21600 20880 21600 0 -720 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s12449'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><i style='mso-bidi-font-style:normal'><span
+       style='font-size:12.0pt'>В<o:p></o:p></span></i></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s12450" type="#_x0000_t202" style='position:absolute;
+    left:5338;top:3554;width:454;height:454' wrapcoords="-720 0 -720 20880 21600 20880 21600 0 -720 0"
+    stroked="f">
+    <v:textbox style='mso-next-textbox:#_x0000_s12450'>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><i style='mso-bidi-font-style:normal'><span
+       style='font-size:12.0pt'>А<o:p></o:p></span></i></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:group id="_x0000_s12451" style='position:absolute;left:2663;
+    top:1037;width:7030;height:2667' coordorigin="2663,1037" coordsize="7030,2667"
+    wrapcoords="10685 0 10685 1942 -46 2791 -46 7645 414 7766 414 10436 1842 11649 2671 11771 6724 13591 9580 15533 9073 16139 8935 16503 8935 17474 8152 17474 8198 18445 9626 19416 9626 20387 10178 21357 10685 21479 10869 21479 11330 21357 11928 20265 11882 19416 13264 18202 13402 17474 12803 17474 13172 15533 15060 13591 19113 11771 19988 11649 21186 10557 21093 7766 21508 7766 21646 7281 21646 2791 21093 2791 10869 1942 10869 0 10685 0">
+    <v:oval id="_x0000_s12452" style='position:absolute;left:5894;top:2942;
+     width:567;height:567' wrapcoords="5515 0 -460 3456 -460 15552 4136 20736 5515 20736 15626 20736 17004 20736 21600 15552 22060 7776 19762 2592 15626 0 5515 0"/>
+    <v:line id="_x0000_s12453" style='position:absolute' from="5066,1696" to="5066,1979"
+     wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:line id="_x0000_s12454" style='position:absolute' from="2663,1979" to="9693,1979"
+     wrapcoords="1 1 188 1 188 1 1 1 1 1"/>
+    <v:group id="_x0000_s12455" style='position:absolute;left:5066;top:1418;
+     width:2223;height:454' coordorigin="2958,2488" coordsize="2223,454"
+     wrapcoords="-146 -720 -146 20880 21746 20880 21746 -720 -146 -720">
+     <v:line id="_x0000_s12456" style='position:absolute' from="2958,2942"
+      to="5169,2942" wrapcoords="1 1 188 1 188 1 1 1 1 1"/>
+     <v:line id="_x0000_s12457" style='position:absolute' from="2958,2488"
+      to="2958,2942" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+     <v:line id="_x0000_s12458" style='position:absolute' from="5181,2488"
+      to="5181,2942" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+     <v:line id="_x0000_s12459" style='position:absolute' from="5011,2488"
+      to="5181,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+     <v:line id="_x0000_s12460" style='position:absolute' from="5011,2488"
+      to="5011,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+     <v:group id="_x0000_s12461" style='position:absolute;left:2958;top:2488;
+      width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+      wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12462" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12463" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12464" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12465" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12466" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12467" style='position:absolute;
+      left:3298;top:2488;width:340;height:283' coordorigin="2958,2488"
+      coordsize="340,283" wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12468" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12469" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12470" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12471" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12472" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12473" style='position:absolute;
+      left:3978;top:2488;width:340;height:283' coordorigin="2958,2488"
+      coordsize="340,283" wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12474" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12475" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12476" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12477" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12478" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12479" style='position:absolute;
+      left:4659;top:2488;width:340;height:283' coordorigin="2958,2488"
+      coordsize="340,283" wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12480" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12481" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12482" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12483" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12484" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12485" style='position:absolute;
+      left:3638;top:2488;width:340;height:283' coordorigin="2958,2488"
+      coordsize="340,283" wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12486" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12487" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12488" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12489" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12490" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12491" style='position:absolute;
+      left:4318;top:2488;width:340;height:283' coordorigin="2958,2488"
+      coordsize="340,283" wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12492" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12493" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12494" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12495" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12496" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:line id="_x0000_s12497" style='position:absolute'
+      from="2958,2867" to="5169,2867" wrapcoords="1 1 188 1 188 1 1 1 1 1"/>
+    </v:group><v:group id="_x0000_s12498" style='position:absolute;left:2663;
+     top:1418;width:2223;height:454' coordorigin="2958,2488" coordsize="2223,454"
+     wrapcoords="-146 -720 -146 20880 21746 20880 21746 -720 -146 -720">
+     <v:line id="_x0000_s12499" style='position:absolute' from="2958,2942"
+      to="5169,2942" wrapcoords="1 1 188 1 188 1 1 1 1 1"/>
+     <v:line id="_x0000_s12500" style='position:absolute' from="2958,2488"
+      to="2958,2942" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+     <v:line id="_x0000_s12501" style='position:absolute' from="5181,2488"
+      to="5181,2942" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+     <v:line id="_x0000_s12502" style='position:absolute' from="5011,2488"
+      to="5181,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+     <v:line id="_x0000_s12503" style='position:absolute' from="5011,2488"
+      to="5011,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+     <v:group id="_x0000_s12504" style='position:absolute;left:2958;top:2488;
+      width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+      wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12505" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12506" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12507" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12508" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12509" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12510" style='position:absolute;
+      left:3298;top:2488;width:340;height:283' coordorigin="2958,2488"
+      coordsize="340,283" wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12511" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12512" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12513" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12514" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12515" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12516" style='position:absolute;
+      left:3978;top:2488;width:340;height:283' coordorigin="2958,2488"
+      coordsize="340,283" wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12517" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12518" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12519" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12520" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12521" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12522" style='position:absolute;
+      left:4659;top:2488;width:340;height:283' coordorigin="2958,2488"
+      coordsize="340,283" wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12523" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12524" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12525" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12526" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12527" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12528" style='position:absolute;
+      left:3638;top:2488;width:340;height:283' coordorigin="2958,2488"
+      coordsize="340,283" wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12529" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12530" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12531" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12532" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12533" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12534" style='position:absolute;
+      left:4318;top:2488;width:340;height:283' coordorigin="2958,2488"
+      coordsize="340,283" wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12535" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12536" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12537" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12538" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12539" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:line id="_x0000_s12540" style='position:absolute'
+      from="2958,2867" to="5169,2867" wrapcoords="1 1 188 1 188 1 1 1 1 1"/>
+    </v:group><v:group id="_x0000_s12541" style='position:absolute;left:7470;
+     top:1418;width:2223;height:454' coordorigin="2958,2488" coordsize="2223,454"
+     wrapcoords="-146 -720 -146 20880 21746 20880 21746 -720 -146 -720">
+     <v:line id="_x0000_s12542" style='position:absolute' from="2958,2942"
+      to="5169,2942" wrapcoords="1 1 188 1 188 1 1 1 1 1"/>
+     <v:line id="_x0000_s12543" style='position:absolute' from="2958,2488"
+      to="2958,2942" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+     <v:line id="_x0000_s12544" style='position:absolute' from="5181,2488"
+      to="5181,2942" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+     <v:line id="_x0000_s12545" style='position:absolute' from="5011,2488"
+      to="5181,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+     <v:line id="_x0000_s12546" style='position:absolute' from="5011,2488"
+      to="5011,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+     <v:group id="_x0000_s12547" style='position:absolute;left:2958;top:2488;
+      width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+      wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12548" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12549" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12550" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12551" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12552" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12553" style='position:absolute;
+      left:3298;top:2488;width:340;height:283' coordorigin="2958,2488"
+      coordsize="340,283" wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12554" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12555" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12556" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12557" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12558" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12559" style='position:absolute;
+      left:3978;top:2488;width:340;height:283' coordorigin="2958,2488"
+      coordsize="340,283" wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12560" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12561" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12562" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12563" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12564" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12565" style='position:absolute;
+      left:4659;top:2488;width:340;height:283' coordorigin="2958,2488"
+      coordsize="340,283" wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12566" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12567" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12568" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12569" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12570" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12571" style='position:absolute;
+      left:3638;top:2488;width:340;height:283' coordorigin="2958,2488"
+      coordsize="340,283" wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12572" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12573" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12574" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12575" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12576" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:group id="_x0000_s12577" style='position:absolute;
+      left:4318;top:2488;width:340;height:283' coordorigin="2958,2488"
+      coordsize="340,283" wrapcoords="-939 -1137 -939 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+      <v:line id="_x0000_s12578" style='position:absolute' from="2958,2488"
+       to="2958,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:group id="_x0000_s12579" style='position:absolute;left:2958;top:2488;
+       width:340;height:283' coordorigin="2958,2488" coordsize="340,283"
+       wrapcoords="-939 -1137 7513 17053 8452 20463 22539 20463 12209 17053 12209 -1137 -939 -1137">
+       <v:line id="_x0000_s12580" style='position:absolute' from="2958,2488"
+        to="3128,2488" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12581" style='position:absolute' from="3128,2488"
+        to="3128,2771" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12582" style='position:absolute' from="3128,2771"
+        to="3298,2771" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:line id="_x0000_s12583" style='position:absolute'
+      from="2958,2867" to="5169,2867" wrapcoords="1 1 188 1 188 1 1 1 1 1"/>
+    </v:group><v:line id="_x0000_s12584" style='position:absolute' from="4886,1696"
+     to="4886,1979" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:line id="_x0000_s12585" style='position:absolute' from="9693,1696" to="9693,1979"
+     wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:line id="_x0000_s12586" style='position:absolute' from="7289,1696" to="7289,1979"
+     wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:line id="_x0000_s12587" style='position:absolute' from="6518,3002" to="6518,3569"
+     wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:line id="_x0000_s12588" style='position:absolute' from="2663,1696" to="2663,1979"
+     wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:line id="_x0000_s12589" style='position:absolute' from="7470,1696" to="7470,1979"
+     wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:line id="_x0000_s12590" style='position:absolute' from="5838,3002" to="5838,3569"
+     wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:rect id="_x0000_s12591" style='position:absolute;left:5894;top:2090;
+     width:567;height:567' wrapcoords="-460 -864 -460 20736 22060 20736 22060 -864 -460 -864"/>
+    <v:line id="_x0000_s12592" style='position:absolute' from="6178,1037" to="6178,3704"
+     wrapcoords="0 1 0 178 2 178 2 1 0 1">
+     <v:stroke dashstyle="longDashDot"/>
+    </v:line><v:line id="_x0000_s12593" style='position:absolute' from="5328,3226"
+     to="7029,3226" wrapcoords="1 1 114 1 114 1 1 1 1 1">
+     <v:stroke dashstyle="longDashDot"/>
+    </v:line><v:line id="_x0000_s12594" style='position:absolute' from="5838,3569"
+     to="6518,3569" wrapcoords="1 1 188 1 188 1 1 1 1 1"/>
+    <v:line id="_x0000_s12595" style='position:absolute;rotation:350' from="6605,2626"
+     to="9440,2626" wrapcoords="1 1 188 1 188 1 1 1 1 1"/>
+    <v:line id="_x0000_s12596" style='position:absolute' from="9520,1979" to="9520,2262"
+     wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:line id="_x0000_s12597" style='position:absolute' from="2836,1979" to="2836,2262"
+     wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:rect id="_x0000_s12598" style='position:absolute;left:5725;top:3140;
+     width:113;height:170' wrapcoords="-460 -864 -460 20736 22060 20736 22060 -864 -460 -864"/>
+    <v:rect id="_x0000_s12599" style='position:absolute;left:5617;top:3056;
+     width:113;height:340' wrapcoords="-460 -864 -460 20736 22060 20736 22060 -864 -460 -864"/>
+    <v:rect id="_x0000_s12600" style='position:absolute;left:6523;top:3157;
+     width:85;height:136' wrapcoords="-460 -864 -460 20736 22060 20736 22060 -864 -460 -864"/>
+    <v:shapetype id="_x0000_t135" coordsize="21600,21600" o:spt="135" path="m10800,qx21600,10800,10800,21600l,21600,,xe">
+     <v:stroke joinstyle="miter"/>
+     <v:path gradientshapeok="t" o:connecttype="rect" textboxrect="0,3163,18437,18437"/>
+    </v:shapetype><v:shape id="_x0000_s12601" type="#_x0000_t135" style='position:absolute;
+     left:6613;top:3084;width:170;height:283' wrapcoords="-1137 -864 -1137 20736 15916 20736 17053 20736 22737 12960 22737 6912 17053 0 11368 -864 -1137 -864"/>
+    <v:shapetype id="_x0000_t19" coordsize="21600,21600" o:spt="19" adj="-5898240,,,21600,21600"
+     path="wr-21600,,21600,43200,,,21600,21600nfewr-21600,,21600,43200,,,21600,21600l,21600nsxe"
+     filled="f">
+     <v:formulas>
+      <v:f eqn="val #2"/>
+      <v:f eqn="val #3"/>
+      <v:f eqn="val #4"/>
+     </v:formulas>
+     <v:path arrowok="t" o:extrusionok="f" gradientshapeok="t" o:connecttype="custom"
+      o:connectlocs="0,0;21600,21600;0,21600"/>
+     <v:handles>
+      <v:h position="@2,#0" polar="@0,@1"/>
+      <v:h position="@2,#1" polar="@0,@1"/>
+     </v:handles>
+    </v:shapetype><v:shape id="_x0000_s12602" type="#_x0000_t19" style='position:absolute;
+     left:5692;top:2859;width:142;height:141' coordsize="21600,21407"
+     wrapcoords="-2400 0 12000 19028 14400 19028 24000 19028 24000 16650 16800 4757 12000 0 -2400 0"
+     adj="-5395749,,,21407" path="wr-21600,-193,21600,43007,2882,,21600,21407nfewr-21600,-193,21600,43007,2882,,21600,21407l,21407nsxe">
+     <v:path o:connectlocs="2882,0;21600,21407;0,21407"/>
+    </v:shape><v:shape id="_x0000_s12603" type="#_x0000_t19" style='position:absolute;
+     left:6521;top:2870;width:141;height:140' coordsize="21533,21291"
+     wrapcoords="7178 0 0 7097 -2393 11828 -2393 16560 4785 16560 7178 16560 19140 0 7178 0"
+     adj="-11501299,-6534252,21533,21291" path="wr-67,-309,43133,42891,,19595,17892,nfewr-67,-309,43133,42891,,19595,17892,l21533,21291nsxe">
+     <v:path o:connectlocs="0,19595;17892,0;21533,21291"/>
+    </v:shape><v:line id="_x0000_s12604" style='position:absolute;rotation:10'
+     from="2922,2617" to="5757,2617" wrapcoords="1 1 188 1 188 1 1 1 1 1"/>
+    <v:shape id="_x0000_s12605" type="#_x0000_t19" style='position:absolute;
+     left:2834;top:2226;width:162;height:151' coordsize="24659,22859"
+     wrapcoords="-2242 0 -2242 6858 4483 20573 8967 20573 26901 20573 4483 0 -2242 0"
+     adj="5364629,-11577450,21600,1259" path="wr,-20341,43200,22859,24659,22641,37,nfewr,-20341,43200,22859,24659,22641,37,l21600,1259nsxe">
+     <v:path o:connectlocs="24659,22641;37,0;21600,1259"/>
+    </v:shape><v:shape id="_x0000_s12606" type="#_x0000_t19" style='position:absolute;
+     left:9382;top:2212;width:142;height:174' coordsize="21600,26256"
+     wrapcoords="14400 0 -2400 24068 12000 24068 14400 24068 24000 6564 24000 0 14400 0"
+     adj="-821443,5695391,,4688" path="wr-21600,-16912,21600,26288,21085,,1166,26256nfewr-21600,-16912,21600,26288,21085,,1166,26256l,4688nsxe">
+     <v:path o:connectlocs="21085,0;1166,26256;0,4688"/>
+    </v:shape><v:oval id="_x0000_s12607" style='position:absolute;left:6806;
+     top:2886;width:113;height:113' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+    <v:line id="_x0000_s12608" style='position:absolute;rotation:30' from="6788,2972"
+     to="6788,3119" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:line id="_x0000_s12609" style='position:absolute;rotation:20' from="6835,2986"
+     to="6835,3213" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+   </v:group><v:line id="_x0000_s12610" style='position:absolute' from="2789,2741"
+    to="3243,2741" wrapcoords="16 3 0 3 0 5 16 7 20 7 28 6 29 4 24 3 16 3">
+    <v:stroke endarrow="block" endarrowwidth="narrow" endarrowlength="long"/>
+   </v:line><v:line id="_x0000_s12611" style='position:absolute' from="2789,1217"
+    to="3243,1217" wrapcoords="16 3 0 3 0 5 16 7 20 7 28 6 29 4 24 3 16 3">
+    <v:stroke endarrow="block" endarrowwidth="narrow" endarrowlength="long"/>
+   </v:line><v:line id="_x0000_s12612" style='position:absolute' from="6178,1037"
+    to="6178,1377" wrapcoords="0 1 0 23 2 23 2 1 0 1" strokeweight="1.5pt"/>
+   <v:line id="_x0000_s12613" style='position:absolute' from="6178,3614" to="6178,3954"
+    wrapcoords="0 1 0 23 2 23 2 1 0 1" strokeweight="1.5pt"/>
+   <v:line id="_x0000_s12614" style='position:absolute' from="5724,3794" to="6178,3794"
+    wrapcoords="16 3 0 3 0 5 16 7 20 7 28 6 29 4 24 3 16 3">
+    <v:stroke endarrow="block" endarrowwidth="narrow" endarrowlength="long"/>
+   </v:line><v:line id="_x0000_s12615" style='position:absolute' from="5724,1217"
+    to="6178,1217" wrapcoords="16 3 0 3 0 5 16 7 20 7 28 6 29 4 24 3 16 3">
+    <v:stroke endarrow="block" endarrowwidth="narrow" endarrowlength="long"/>
+   </v:line><v:line id="_x0000_s12616" style='position:absolute;flip:y' from="5308,3218"
+    to="5308,3672" wrapcoords="2 1 2 17 3 21 7 21 8 8 6 1 2 1">
+    <v:stroke endarrow="block" endarrowwidth="narrow" endarrowlength="long"/>
+   </v:line><v:line id="_x0000_s12617" style='position:absolute;flip:y' from="7018,3218"
+    to="7018,3672" wrapcoords="2 1 2 17 3 21 7 21 8 8 6 1 2 1">
+    <v:stroke endarrow="block" endarrowwidth="narrow" endarrowlength="long"/>
+   </v:line><v:line id="_x0000_s12618" style='position:absolute' from="6933,3218"
+    to="7273,3218" wrapcoords="0 0 0 1 25 1 25 0 0 0" strokeweight="1.5pt"/>
+   <v:line id="_x0000_s12619" style='position:absolute' from="5138,3218" to="5478,3218"
+    wrapcoords="0 0 0 1 25 1 25 0 0 0" strokeweight="1.5pt"/>
+   <v:line id="_x0000_s12620" style='position:absolute' from="3243,1037" to="3243,1377"
+    wrapcoords="0 1 0 23 2 23 2 1 0 1" strokeweight="1.5pt"/>
+   <v:line id="_x0000_s12621" style='position:absolute' from="3243,2546" to="3243,2886"
+    wrapcoords="0 1 0 23 2 23 2 1 0 1" strokeweight="1.5pt"/>
+   <v:line id="_x0000_s12622" style='position:absolute' from="2723,2270" to="3143,2270"
+    wrapcoords="1 1 29 1 29 1 1 1 1 1"/>
+   <v:line id="_x0000_s12623" style='position:absolute;flip:y' from="7203,1290"
+    to="7485,1508" wrapcoords="1 1 29 1 29 1 1 1 1 1"/>
+  </v:group><v:group id="_x0000_s12624" style='position:absolute;left:3481;
+   top:4605;width:5443;height:4095' coordorigin="3935,4605" coordsize="5443,4095"
+   wrapcoords="13983 0 13983 1266 13626 2532 12734 3086 11841 3798 5950 3956 5712 4035 5712 6330 3570 7991 3451 8229 3451 8862 -60 9890 -60 19780 2083 20255 5355 20255 5355 21521 5593 21521 5593 20255 8331 20255 15114 19385 15055 16457 17732 16457 21600 15745 21600 8387 15293 7596 15352 6330 18327 6330 21600 5697 21600 3244 14579 2532 14221 1266 14221 0 13983 0">
+   <v:group id="_x0000_s12625" style='position:absolute;left:4562;top:4605;
+    width:3969;height:4095' coordorigin="1278,9038" coordsize="3969,4095"
+    wrapcoords="15731 0 15731 1266 15242 2532 14020 3086 12797 3798 4728 3956 4402 4035 4402 6330 1467 7991 1304 8229 1304 15112 1467 15191 3097 15191 -82 15666 -82 15903 2445 16457 2445 19226 3668 20255 3912 21521 4238 21521 4238 20255 7988 20255 17280 19385 17198 16457 21600 15903 21600 15666 19236 15191 19318 10919 18503 10444 17035 10127 17035 8862 17525 7596 17606 6330 18910 6330 21274 5538 21274 5064 19073 3798 16546 2532 16057 1266 16057 0 15731 0">
+    <v:rect id="_x0000_s12626" style='position:absolute;left:3938;top:11249;
+     width:567;height:68' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+    <v:rect id="_x0000_s12627" style='position:absolute;left:3803;top:11018;
+     width:794;height:227' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"
+     fillcolor="black">
+     <v:fill src="05_2.files/image001.gif" o:title="Светлый диагональный 2"
+      type="pattern"/>
+    </v:rect><v:group id="_x0000_s12628" style='position:absolute;left:2118;
+     top:9800;width:850;height:454' coordorigin="5842,4361" coordsize="850,454"
+     wrapcoords="-379 0 -379 20880 21600 20880 21600 0 -379 0">
+     <v:shape id="_x0000_s12629" type="#_x0000_t202" style='position:absolute;
+      left:5842;top:4361;width:850;height:454' wrapcoords="-720 0 -720 20880 21600 20880 21600 0 -720 0"
+      stroked="f">
+      <v:textbox style='mso-next-textbox:#_x0000_s12629'>
+       <![if !mso]>
+       <table cellpadding=0 cellspacing=0 width="100%">
+        <tr>
+         <td><![endif]>
+         <div>
+         <p class=MsoNormal><i style='mso-bidi-font-style:normal'><span
+         style='font-size:12.0pt'>А </span></i><span style='font-size:12.0pt'>–<i
+         style='mso-bidi-font-style:normal'> А<o:p></o:p></i></span></p>
+         </div>
+         <![if !mso]></td>
+        </tr>
+       </table>
+       <![endif]></v:textbox>
+     </v:shape><v:line id="_x0000_s12630" style='position:absolute' from="5928,4757"
+      to="6608,4757" wrapcoords="0 0 0 1 32 1 32 0 0 0" strokeweight="1.5pt"/>
+    </v:group><v:rect id="_x0000_s12631" style='position:absolute;left:4051;
+     top:10562;width:340;height:454' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+    <v:shapetype id="_x0000_t114" coordsize="21600,21600" o:spt="114" path="m,20172v945,400,1887,628,2795,913c3587,21312,4342,21370,5060,21597v2037,,2567,-227,3095,-285c8722,21197,9325,20970,9855,20800v490,-228,945,-400,1472,-740c11817,19887,12347,19660,12875,19375v567,-228,1095,-513,1700,-740c15177,18462,15782,18122,16537,17950v718,-113,1398,-398,2228,-513c19635,17437,20577,17322,21597,17322l21597,,,xe">
+     <v:stroke joinstyle="miter"/>
+     <v:path o:connecttype="custom" o:connectlocs="10800,0;0,10800;10800,20400;21600,10800"
+      textboxrect="0,0,21600,17322"/>
+    </v:shapetype><v:shape id="_x0000_s12632" type="#_x0000_t114" style='position:absolute;
+     left:4051;top:10562;width:340;height:227' wrapcoords="-771 -864 -771 19872 0 20736 10800 20736 16971 20736 22371 17280 22371 -864 -771 -864"/>
+    <v:rect id="_x0000_s12633" style='position:absolute;left:3938;top:11024;
+     width:567;height:68' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+    <v:rect id="_x0000_s12634" style='position:absolute;left:4187;top:10778;
+     width:68;height:397' wrapcoords="-4320 -939 -4320 21600 25920 21600 25920 -939 -4320 -939"
+     strokeweight="1.25pt"/>
+    <v:rect id="_x0000_s12635" style='position:absolute;left:4140;top:11189;
+     width:170;height:340' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+    <v:rect id="_x0000_s12636" style='position:absolute;left:3571;top:11018;
+     width:227;height:227' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+    <v:rect id="_x0000_s12637" style='position:absolute;left:3340;top:10769;
+     width:227;height:567' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"
+     fillcolor="black">
+     <v:fill src="05_2.files/image001.gif" o:title="Светлый диагональный 2"
+      type="pattern"/>
+    </v:rect><v:rect id="_x0000_s12638" style='position:absolute;left:1698;
+     top:10490;width:1701;height:68' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+    <v:shapetype id="_x0000_t95" coordsize="21600,21600" o:spt="95" adj="11796480,5400"
+     path="al10800,10800@0@0@2@14,10800,10800,10800,10800@3@15xe">
+     <v:stroke joinstyle="miter"/>
+     <v:formulas>
+      <v:f eqn="val #1"/>
+      <v:f eqn="val #0"/>
+      <v:f eqn="sum 0 0 #0"/>
+      <v:f eqn="sumangle #0 0 180"/>
+      <v:f eqn="sumangle #0 0 90"/>
+      <v:f eqn="prod @4 2 1"/>
+      <v:f eqn="sumangle #0 90 0"/>
+      <v:f eqn="prod @6 2 1"/>
+      <v:f eqn="abs #0"/>
+      <v:f eqn="sumangle @8 0 90"/>
+      <v:f eqn="if @9 @7 @5"/>
+      <v:f eqn="sumangle @10 0 360"/>
+      <v:f eqn="if @10 @11 @10"/>
+      <v:f eqn="sumangle @12 0 360"/>
+      <v:f eqn="if @12 @13 @12"/>
+      <v:f eqn="sum 0 0 @14"/>
+      <v:f eqn="val 10800"/>
+      <v:f eqn="sum 10800 0 #1"/>
+      <v:f eqn="prod #1 1 2"/>
+      <v:f eqn="sum @18 5400 0"/>
+      <v:f eqn="cos @19 #0"/>
+      <v:f eqn="sin @19 #0"/>
+      <v:f eqn="sum @20 10800 0"/>
+      <v:f eqn="sum @21 10800 0"/>
+      <v:f eqn="sum 10800 0 @20"/>
+      <v:f eqn="sum #1 10800 0"/>
+      <v:f eqn="if @9 @17 @25"/>
+      <v:f eqn="if @9 0 21600"/>
+      <v:f eqn="cos 10800 #0"/>
+      <v:f eqn="sin 10800 #0"/>
+      <v:f eqn="sin #1 #0"/>
+      <v:f eqn="sum @28 10800 0"/>
+      <v:f eqn="sum @29 10800 0"/>
+      <v:f eqn="sum @30 10800 0"/>
+      <v:f eqn="if @4 0 @31"/>
+      <v:f eqn="if #0 @34 0"/>
+      <v:f eqn="if @6 @35 @31"/>
+      <v:f eqn="sum 21600 0 @36"/>
+      <v:f eqn="if @4 0 @33"/>
+      <v:f eqn="if #0 @38 @32"/>
+      <v:f eqn="if @6 @39 0"/>
+      <v:f eqn="if @4 @32 21600"/>
+      <v:f eqn="if @6 @41 @33"/>
+     </v:formulas>
+     <v:path o:connecttype="custom" o:connectlocs="10800,@27;@22,@23;10800,@26;@24,@23"
+      textboxrect="@36,@40,@37,@42"/>
+     <v:handles>
+      <v:h position="#1,#0" polar="10800,10800" radiusrange="0,10800"/>
+     </v:handles>
+    </v:shapetype><v:shape id="_x0000_s12639" type="#_x0000_t95" style='position:absolute;
+     left:4316;top:11103;width:567;height:397;rotation:90' wrapcoords="5684 0 2274 2492 -1137 7477 -1137 9969 22168 9969 22168 7477 18758 2492 15347 0 5684 0"
+     adj="-11747650,2153" fillcolor="black">
+     <v:fill src="05_2.files/image001.gif" o:title="Светлый диагональный 2"
+      type="pattern"/>
+    </v:shape><v:rect id="_x0000_s12640" style='position:absolute;left:4542;
+     top:11031;width:113;height:204' wrapcoords="-2700 0 -2700 20057 21600 20057 21600 0 -2700 0"
+     fillcolor="black" stroked="f">
+     <v:fill src="05_2.files/image001.gif" o:title="Светлый диагональный 2"
+      type="pattern"/>
+    </v:rect><v:rect id="_x0000_s12641" style='position:absolute;left:4638;
+     top:11324;width:159;height:680' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"
+     fillcolor="black">
+     <v:fill src="05_2.files/image001.gif" o:title="Светлый диагональный 2"
+      type="pattern"/>
+    </v:rect><v:line id="_x0000_s12642" style='position:absolute' from="1278,12041"
+     to="5247,12041" wrapcoords="0 0 0 1 394 1 394 0 0 0" strokeweight="1.5pt"/>
+    <v:rect id="_x0000_s12643" style='position:absolute;left:4673;top:11264;
+     width:113;height:113' wrapcoords="-2700 0 -2700 20057 21600 20057 21600 0 -2700 0"
+     fillcolor="black" stroked="f">
+     <v:fill src="05_2.files/image001.gif" o:title="Светлый диагональный 2"
+      type="pattern"/>
+    </v:rect><v:rect id="_x0000_s12644" style='position:absolute;left:4548;
+     top:11320;width:79;height:340' wrapcoords="-4320 0 -4320 20661 21600 20661 21600 0 -4320 0"
+     stroked="f"/>
+    <v:shape id="_x0000_s12645" type="#_x0000_t95" style='position:absolute;
+     left:2987;top:10533;width:567;height:680;rotation:2119598fd' wrapcoords="5684 0 1705 2492 1705 4985 5116 7477 15916 7477 19326 4154 19326 2492 15347 0 5684 0"
+     adj="-9343153,5091" fillcolor="black">
+     <v:fill src="05_2.files/image001.gif" o:title="Светлый диагональный 2"
+      type="pattern"/>
+    </v:shape><v:rect id="_x0000_s12646" style='position:absolute;left:3393;
+     top:10748;width:147;height:204' wrapcoords="-2700 0 -2700 20057 21600 20057 21600 0 -2700 0"
+     fillcolor="black" stroked="f">
+     <v:fill src="05_2.files/image001.gif" o:title="Светлый диагональный 2"
+      type="pattern"/>
+    </v:rect><v:group id="_x0000_s12647" style='position:absolute;left:3247;
+     top:9540;width:1927;height:1022' coordorigin="5067,1920" coordsize="1927,1022"
+     wrapcoords="9450 -318 6750 1906 1856 6988 -169 9529 -169 11435 4725 14929 7256 14929 7594 20012 8269 21282 8438 21282 13331 21282 13500 21282 14175 20012 14344 14929 16706 14929 21600 11435 21600 9529 17550 4765 14850 2224 11981 -318 9450 -318">
+     <v:roundrect id="_x0000_s12648" style='position:absolute;left:5758;top:2375;
+      width:567;height:567' arcsize="18147f" wrapcoords="5116 -568 -568 0 -568 18189 1705 21032 2274 21032 18758 21032 19326 21032 22168 17621 22168 4547 18758 -568 15916 -568 5116 -568"/>
+     <v:group id="_x0000_s12649" style='position:absolute;left:5067;top:1920;
+      width:1927;height:576' coordorigin="5142,1680" coordsize="1927,576"
+      wrapcoords="9450 -568 6750 3411 1856 12505 -169 17053 169 21032 21262 21032 21600 17053 17550 8526 14850 3979 11981 -568 9450 -568">
+      <v:roundrect id="_x0000_s12650" style='position:absolute;left:5964;top:1680;
+       width:283;height:113' arcsize="25113f" wrapcoords="4670 -864 -584 864 -584 15552 1168 20736 2335 20736 19265 20736 19849 20736 22184 13824 22184 6912 19265 -864 16346 -864 4670 -864"/>
+      <v:group id="_x0000_s12651" style='position:absolute;left:5142;top:1793;
+       width:1927;height:463' coordorigin="5142,1793" coordsize="1927,463"
+       wrapcoords="6750 0 6075 697 1688 10452 169 15329 -169 16723 169 20903 21262 20903 21600 16723 21262 15329 19744 11148 15694 1394 14850 0 6750 0">
+       <v:line id="_x0000_s12652" style='position:absolute' from="5238,2253"
+        to="6995,2253" wrapcoords="1 1 76 1 76 1 1 1 1 1"/>
+       <v:shape id="_x0000_s12653" type="#_x0000_t19" style='position:absolute;
+        left:5155;top:2113;width:79;height:140;flip:x' coordsize="24046,42151"
+        wrapcoords="0 0 -4809 37468 19237 37468 24046 37468 24046 9367 19237 0 0 0"
+        adj="-4723247,6324450,2446,20551" path="wr-19154,-1049,24046,42151,9095,,,42012nfewr-19154,-1049,24046,42151,9095,,,42012l2446,20551nsxe">
+        <v:path o:connectlocs="9095,0;0,42012;2446,20551"/>
+       </v:shape><v:shape id="_x0000_s12654" style='position:absolute;left:5565;
+        top:1793;width:998;height:112;mso-position-horizontal:absolute;
+        mso-position-vertical:absolute' coordsize="998,112" wrapcoords="179 0 164 0 30 64 104 64 968 64 1013 48 909 0 179 0"
+        path="m75,67hhc,112,143,32,173,22hal255,7,810,r83,15l998,60hhe"
+        filled="f">
+        <v:path arrowok="t"/>
+       </v:shape><v:line id="_x0000_s12655" style='position:absolute;
+        rotation:30' from="6502,1986" to="7069,1986" wrapcoords="1 1 76 1 76 1 1 1 1 1"/>
+       <v:line id="_x0000_s12656" style='position:absolute;rotation:330'
+        from="5142,1986" to="5709,1986" wrapcoords="1 1 76 1 76 1 1 1 1 1"/>
+       <v:shape id="_x0000_s12657" type="#_x0000_t19" style='position:absolute;
+        left:6989;top:2123;width:71;height:133;flip:x' coordsize="21600,40198"
+        wrapcoords="0 0 -4320 4466 -4320 22332 0 35732 21600 35732 17280 0 0 0"
+        adj="6379416,-7840212,21600,18775" path="wr,-2825,43200,40375,18840,40198,10920,nfewr,-2825,43200,40375,18840,40198,10920,l21600,18775nsxe">
+        <v:path o:connectlocs="18840,40198;10920,0;21600,18775"/>
+       </v:shape></v:group></v:group><v:rect id="_x0000_s12658" style='position:absolute;
+      left:5618;top:2345;width:794;height:142' wrapcoords="-408 0 -408 19200 21600 19200 21600 0 -408 0"
+      stroked="f"/>
+    </v:group><v:group id="_x0000_s12659" style='position:absolute;left:4053;
+     top:11348;width:340;height:125' coordorigin="7298,1352" coordsize="340,141"
+     wrapcoords="14087 -4800 939 0 -939 2400 -939 24000 6574 24000 17843 24000 22539 14400 22539 -4800 14087 -4800">
+     <v:group id="_x0000_s12660" style='position:absolute;left:7298;top:1352;
+      width:340;height:66' coordorigin="7298,1352" coordsize="340,66"
+      wrapcoords="14087 -10800 -939 0 -939 16200 14087 27000 22539 27000 22539 -10800 14087 -10800">
+      <v:line id="_x0000_s12661" style='position:absolute;rotation:10' from="7298,1418"
+       to="7638,1418" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      <v:line id="_x0000_s12662" style='position:absolute;rotation:350' from="7298,1352"
+       to="7638,1352" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+     </v:group><v:line id="_x0000_s12663" style='position:absolute;rotation:350'
+      from="7298,1493" to="7638,1493" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+    </v:group><v:rect id="_x0000_s12664" style='position:absolute;left:1558;
+     top:11629;width:794;height:283' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"
+     fillcolor="black">
+     <v:fill src="05_2.files/image001.gif" o:title="Светлый диагональный 2"
+      type="pattern"/>
+    </v:rect><v:rect id="_x0000_s12665" style='position:absolute;left:1558;
+     top:10562;width:227;height:1049' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"
+     fillcolor="black">
+     <v:fill src="05_2.files/image001.gif" o:title="Светлый диагональный 2"
+      type="pattern"/>
+    </v:rect><v:rect id="_x0000_s12666" style='position:absolute;left:1935;
+     top:11248;width:204;height:567' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+    <v:group id="_x0000_s12667" style='position:absolute;left:1838;top:11077;
+     width:398;height:609' coordorigin="3658,3152" coordsize="398,609"
+     wrapcoords="6400 -527 -800 2107 -800 7902 11200 7902 800 10010 800 15278 13600 16332 -800 18439 -800 21073 22400 21073 21600 2107 14400 -527 6400 -527">
+     <v:rect id="_x0000_s12668" style='position:absolute;left:3658;top:3704;
+      width:397;height:57' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+     <v:group id="_x0000_s12669" style='position:absolute;left:3687;top:3413;
+      width:340;height:244' coordorigin="3938,3585" coordsize="340,244"
+      wrapcoords="14087 -2700 -939 0 -939 14850 5635 20250 -939 21600 -939 22950 6574 22950 22539 20250 22539 -2700 14087 -2700">
+      <v:group id="_x0000_s12670" style='position:absolute;left:3938;top:3704;
+       width:340;height:125' coordorigin="7298,1352" coordsize="340,141"
+       wrapcoords="14087 -4800 939 0 -939 2400 -939 24000 6574 24000 17843 24000 22539 14400 22539 -4800 14087 -4800">
+       <v:group id="_x0000_s12671" style='position:absolute;left:7298;top:1352;
+        width:340;height:66' coordorigin="7298,1352" coordsize="340,66"
+        wrapcoords="14087 -10800 -939 0 -939 16200 14087 27000 22539 27000 22539 -10800 14087 -10800">
+        <v:line id="_x0000_s12672" style='position:absolute;rotation:10'
+         from="7298,1418" to="7638,1418" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+        <v:line id="_x0000_s12673" style='position:absolute;rotation:350'
+         from="7298,1352" to="7638,1352" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       </v:group><v:line id="_x0000_s12674" style='position:absolute;
+        rotation:350' from="7298,1493" to="7638,1493" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group><v:group id="_x0000_s12675" style='position:absolute;left:3938;
+       top:3585;width:340;height:59' coordorigin="7298,1352" coordsize="340,66"
+       wrapcoords="14087 -10800 -939 0 -939 16200 14087 27000 22539 27000 22539 -10800 14087 -10800">
+       <v:line id="_x0000_s12676" style='position:absolute;rotation:10' from="7298,1418"
+        to="7638,1418" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12677" style='position:absolute;rotation:350'
+        from="7298,1352" to="7638,1352" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group></v:group><v:rect id="_x0000_s12678" style='position:absolute;
+      left:3659;top:3323;width:397;height:57' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+     <v:group id="_x0000_s12679" style='position:absolute;left:3687;top:3152;
+      width:340;height:173' coordorigin="3798,671" coordsize="340,173"
+      wrapcoords="5635 -1800 -939 5400 -939 19800 22539 19800 22539 9000 20661 3600 15026 -1800 5635 -1800">
+      <v:rect id="_x0000_s12680" style='position:absolute;left:3911;top:671;
+       width:113;height:57' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+      <v:group id="_x0000_s12681" style='position:absolute;left:3798;top:731;
+       width:340;height:113' coordorigin="3798,1037" coordsize="340,113"
+       wrapcoords="-939 -2700 -939 18900 22539 18900 22539 -2700 -939 -2700">
+       <v:rect id="_x0000_s12682" style='position:absolute;left:3798;top:1037;
+        width:340;height:113' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+       <v:line id="_x0000_s12683" style='position:absolute' from="4053,1037"
+        to="4053,1150" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+       <v:line id="_x0000_s12684" style='position:absolute' from="3883,1037"
+        to="3883,1150" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      </v:group></v:group></v:group><v:rect id="_x0000_s12685" style='position:absolute;
+     left:1571;top:11573;width:204;height:113' wrapcoords="-1543 0 -1543 18900 21600 18900 21600 0 -1543 0"
+     fillcolor="black" stroked="f">
+     <v:fill src="05_2.files/image001.gif" o:title="Светлый диагональный 2"
+      type="pattern"/>
+    </v:rect><v:shapetype id="_x0000_t8" coordsize="21600,21600" o:spt="8"
+     adj="5400" path="m,l@0,21600@1,21600,21600,xe">
+     <v:stroke joinstyle="miter"/>
+     <v:formulas>
+      <v:f eqn="val #0"/>
+      <v:f eqn="sum width 0 #0"/>
+      <v:f eqn="prod #0 1 2"/>
+      <v:f eqn="sum width 0 @2"/>
+      <v:f eqn="mid #0 width"/>
+      <v:f eqn="mid @1 0"/>
+      <v:f eqn="prod height width #0"/>
+      <v:f eqn="prod @6 1 2"/>
+      <v:f eqn="sum height 0 @7"/>
+      <v:f eqn="prod width 1 2"/>
+      <v:f eqn="sum #0 0 @9"/>
+      <v:f eqn="if @10 @8 0"/>
+      <v:f eqn="if @10 @7 height"/>
+     </v:formulas>
+     <v:path gradientshapeok="t" o:connecttype="custom" o:connectlocs="@3,10800;10800,21600;@2,10800;10800,0"
+      textboxrect="1800,1800,19800,19800;4500,4500,17100,17100;7200,7200,14400,14400"/>
+     <v:handles>
+      <v:h position="#0,bottomRight" xrange="0,10800"/>
+     </v:handles>
+    </v:shapetype><v:shape id="_x0000_s12686" type="#_x0000_t8" style='position:absolute;
+     left:1867;top:11813;width:340;height:170;rotation:180' wrapcoords="-1878 -1964 1878 19636 18783 19636 22539 -1964 -1878 -1964"
+     adj="3938"/>
+    <v:rect id="_x0000_s12687" style='position:absolute;left:1870;top:11986;
+     width:340;height:40' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"
+     fillcolor="#ddd">
+     <v:fill src="05_2.files/image002.jpg" o:title="Гранит" rotate="t" type="tile"/>
+    </v:rect><v:rect id="_x0000_s12688" style='position:absolute;left:1870;
+     top:12047;width:340;height:57' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+    <v:shape id="_x0000_s12689" type="#_x0000_t114" style='position:absolute;
+     left:1873;top:12047;width:560;height:771;rotation:270' wrapcoords="-584 -864 -584 20736 584 20736 10508 20736 16930 20736 22184 17280 22184 -864 -584 -864"
+     fillcolor="black">
+     <v:fill src="05_2.files/image003.gif" o:title="Широкий диагональный 1"
+      type="pattern"/>
+    </v:shape><v:rect id="_x0000_s12690" style='position:absolute;left:1955;
+     top:12101;width:170;height:227' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+    <v:line id="_x0000_s12691" style='position:absolute' from="4221,9038" to="4221,11873"
+     wrapcoords="0 1 0 102 2 102 2 1 0 1">
+     <v:stroke dashstyle="longDashDot"/>
+    </v:line><v:line id="_x0000_s12692" style='position:absolute' from="2040,10865"
+     to="2040,13133" wrapcoords="0 1 0 102 2 102 2 1 0 1">
+     <v:stroke dashstyle="longDashDot"/>
+    </v:line><v:line id="_x0000_s12693" style='position:absolute' from="2193,12161"
+     to="2613,12161" wrapcoords="1 1 29 1 29 1 1 1 1 1"/>
+    <v:line id="_x0000_s12694" style='position:absolute' from="2613,11534"
+     to="4427,11534" wrapcoords="1 1 29 1 29 1 1 1 1 1"/>
+    <v:shape id="_x0000_s12695" style='position:absolute;left:2159;top:12615;
+     width:2268;height:120;mso-position-horizontal:absolute;
+     mso-position-vertical:absolute' coordsize="2268,120" wrapcoords="1442 0 15 15 -15 105 105 105 526 105 2253 105 2268 75 1757 0 1442 0"
+     path="m,98r431,22c555,109,651,35,746,30hhc836,18,921,80,1001,90hbc1081,100,1149,102,1226,90hal1466,15,1661,r225,45l2051,75r217,23e"
+     filled="f">
+     <v:path arrowok="t"/>
+    </v:shape><v:line id="_x0000_s12696" style='position:absolute' from="4427,11534"
+     to="4427,12677" wrapcoords="0 1 0 76 2 76 2 1 0 1"/>
+    <v:line id="_x0000_s12697" style='position:absolute' from="2613,11534"
+     to="2613,12158" wrapcoords="0 1 0 76 2 76 2 1 0 1"/>
+   </v:group><v:shape id="_x0000_s12698" type="#_x0000_t202" style='position:absolute;
+    left:3938;top:7895;width:680;height:454' wrapcoords="-480 0 -480 20880 21600 20880 21600 0 -480 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>3<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s12699" type="#_x0000_t202" style='position:absolute;
+    left:3935;top:6492;width:680;height:1247' wrapcoords="-480 0 -480 20880 21600 20880 21600 0 -480 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>6<o:p></o:p></span></p>
+       <p class=MsoNormal><span style='font-size:12.0pt'>5<o:p></o:p></span></p>
+       <p class=MsoNormal><span style='font-size:12.0pt'>1<o:p></o:p></span></p>
+       <p class=MsoNormal><span style='font-size:12.0pt'>4<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:line id="_x0000_s12700" style='position:absolute;flip:x'
+    from="4286,7529" to="5250,7529" wrapcoords="1 1 66 1 66 1 1 1 1 1"/>
+   <v:line id="_x0000_s12701" style='position:absolute;flip:x' from="4374,8105"
+    to="5338,8105" wrapcoords="1 1 66 1 66 1 1 1 1 1"/>
+   <v:line id="_x0000_s12702" style='position:absolute;flip:x' from="4286,7268"
+    to="4966,7268" wrapcoords="1 1 66 1 66 1 1 1 1 1"/>
+   <v:line id="_x0000_s12703" style='position:absolute;flip:x' from="4286,6968"
+    to="5250,6968" wrapcoords="1 1 66 1 66 1 1 1 1 1"/>
+   <v:line id="_x0000_s12704" style='position:absolute;flip:x' from="4286,6737"
+    to="5250,6737" wrapcoords="1 1 66 1 66 1 1 1 1 1"/>
+   <v:shape id="_x0000_s12705" type="#_x0000_t202" style='position:absolute;
+    left:8698;top:5228;width:680;height:454' wrapcoords="-480 0 -480 20880 21600 20880 21600 0 -480 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>7<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s12706" type="#_x0000_t202" style='position:absolute;
+    left:8698;top:6208;width:680;height:454' wrapcoords="-480 0 -480 20880 21600 20880 21600 0 -480 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>8<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s12707" type="#_x0000_t202" style='position:absolute;
+    left:8698;top:6752;width:680;height:454' wrapcoords="-480 0 -480 20880 21600 20880 21600 0 -480 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>9<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:shape id="_x0000_s12708" type="#_x0000_t202" style='position:absolute;
+    left:8698;top:7133;width:680;height:454' wrapcoords="-480 0 -480 20880 21600 20880 21600 0 -480 0"
+    stroked="f">
+    <v:textbox>
+     <![if !mso]>
+     <table cellpadding=0 cellspacing=0 width="100%">
+      <tr>
+       <td><![endif]>
+       <div>
+       <p class=MsoNormal><span style='font-size:12.0pt'>1<o:p></o:p></span></p>
+       </div>
+       <![if !mso]></td>
+      </tr>
+     </table>
+     <![endif]></v:textbox>
+   </v:shape><v:line id="_x0000_s12709" style='position:absolute;flip:x'
+    from="7985,7364" to="8722,7364" wrapcoords="1 1 66 1 66 1 1 1 1 1"/>
+   <v:line id="_x0000_s12710" style='position:absolute;flip:x' from="7531,6977"
+    to="8722,6977" wrapcoords="1 1 66 1 66 1 1 1 1 1"/>
+   <v:line id="_x0000_s12711" style='position:absolute;flip:x' from="7531,6461"
+    to="8722,6461" wrapcoords="1 1 66 1 66 1 1 1 1 1"/>
+   <v:line id="_x0000_s12712" style='position:absolute;flip:x' from="7928,5459"
+    to="8722,5459" wrapcoords="1 1 66 1 66 1 1 1 1 1"/>
+  </v:group><v:group id="_x0000_s12713" style='position:absolute;left:1698;
+   top:8816;width:9009;height:2932' coordorigin="1698,8816" coordsize="9009,2932"
+   wrapcoords="4852 0 3127 1551 1617 2548 1474 2769 1474 5317 36 5760 -36 5871 -36 14954 827 15951 1474 15951 1006 17391 1006 19052 2013 19495 4708 19495 4708 21489 19372 21489 20845 21268 21600 20714 21600 15175 21205 14622 20306 14178 20594 12406 20845 11963 20953 11188 21025 7311 20737 7200 17575 7089 17647 6314 3522 5317 3522 3545 6290 3545 7044 3212 6972 0 4852 0">
+   <v:group id="_x0000_s12714" style='position:absolute;left:1698;top:8816;
+    width:5160;height:2932' coordorigin="1698,8816" coordsize="5160,2932"
+    wrapcoords="8477 0 5463 1551 2826 2548 2574 2769 2574 5317 63 5760 -63 5871 -63 14954 1444 15951 2574 15951 1758 17391 1758 19052 3516 19495 8226 19495 8226 21489 17770 21489 17770 19495 18272 19495 18649 18720 18586 17723 21600 17391 21600 8086 17393 6757 15258 6425 6153 5317 6153 3545 10988 3545 12307 3212 12181 0 8477 0">
+    <v:shape id="_x0000_s12715" type="#_x0000_t202" style='position:absolute;
+     left:1698;top:9606;width:680;height:1247' wrapcoords="-480 0 -480 20880 21600 20880 21600 0 -480 0"
+     stroked="f">
+     <v:textbox style='mso-next-textbox:#_x0000_s12715'>
+      <![if !mso]>
+      <table cellpadding=0 cellspacing=0 width="100%">
+       <tr>
+        <td><![endif]>
+        <div>
+        <p class=MsoNormal><span style='font-size:12.0pt'>12<o:p></o:p></span></p>
+        <p class=MsoNormal><span style='font-size:12.0pt'>2<o:p></o:p></span></p>
+        <p class=MsoNormal><span style='font-size:12.0pt'>11<o:p></o:p></span></p>
+        <p class=MsoNormal><span style='font-size:12.0pt'>10<o:p></o:p></span></p>
+        </div>
+        <![if !mso]></td>
+       </tr>
+      </table>
+      <![endif]></v:textbox>
+    </v:shape><v:group id="_x0000_s12716" style='position:absolute;left:2143;
+     top:8816;width:4048;height:2932' coordorigin="3238,1345" coordsize="4048,2932"
+     wrapcoords="8400 0 4560 1551 1200 2548 880 2769 880 15951 -80 17280 -80 19052 2160 19495 8080 19495 8080 21489 20240 21489 20240 19495 20880 19495 21360 18720 21360 17723 21120 17169 20400 15951 20400 14178 21600 14178 21600 14068 20400 12406 20480 8751 20000 7754 19760 6757 17040 6425 5440 5317 5440 3545 11600 3545 13280 3212 13120 0 8400 0">
+     <v:group id="_x0000_s12717" style='position:absolute;left:4837;top:1345;
+      width:850;height:454' coordorigin="2958,5990" coordsize="850,454"
+      wrapcoords="-379 0 -379 20880 21600 20880 21600 0 -379 0">
+      <v:shape id="_x0000_s12718" type="#_x0000_t202" style='position:absolute;
+       left:2958;top:5990;width:850;height:454' wrapcoords="-720 0 -720 20880 21600 20880 21600 0 -720 0"
+       stroked="f">
+       <v:textbox style='mso-next-textbox:#_x0000_s12718'>
+        <![if !mso]>
+        <table cellpadding=0 cellspacing=0 width="100%">
+         <tr>
+          <td><![endif]>
+          <div>
+          <p class=MsoNormal><i style='mso-bidi-font-style:normal'><span
+          style='font-size:12.0pt'>Б </span></i><span style='font-size:12.0pt'>–<i
+          style='mso-bidi-font-style:normal'> Б<o:p></o:p></i></span></p>
+          </div>
+          <![if !mso]></td>
+         </tr>
+        </table>
+        <![endif]></v:textbox>
+      </v:shape><v:line id="_x0000_s12719" style='position:absolute' from="3043,6371"
+       to="3723,6371" wrapcoords="0 0 0 1 32 1 32 0 0 0" strokeweight="1.5pt"/>
+     </v:group><v:group id="_x0000_s12720" style='position:absolute;left:3238;
+      top:1553;width:4048;height:2724' coordorigin="3238,1553" coordsize="4048,2724"
+      wrapcoords="4560 0 1200 1068 880 1305 880 15191 -80 16971 -80 18870 8080 18989 8080 21481 20240 21481 20240 18989 21040 18989 21360 18396 21280 17090 20400 15191 21600 13530 21600 13411 20400 13292 20480 7477 19680 6171 19440 5459 5440 3798 5680 0 4560 0">
+      <v:rect id="_x0000_s12721" style='position:absolute;left:3451;top:1713;
+       width:794;height:1984' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+      <v:roundrect id="_x0000_s12722" style='position:absolute;left:4836;top:2255;
+       width:2211;height:1701' arcsize="13253f" wrapcoords="3086 -191 1910 0 -147 1912 -147 18924 1322 21218 2204 21409 19396 21409 20131 21218 21747 18733 21600 1912 19543 0 18367 -191 3086 -191"
+       fillcolor="black">
+       <v:fill src="05_2.files/image001.gif" o:title="Светлый диагональный 2"
+        type="pattern"/>
+      </v:roundrect><v:rect id="_x0000_s12723" style='position:absolute;left:4843;
+       top:2255;width:560;height:381' wrapcoords="-584 0 -584 20736 21600 20736 21600 0 -584 0"
+       fillcolor="black" stroked="f">
+       <v:fill src="05_2.files/image001.gif" o:title="Светлый диагональный 2"
+        type="pattern"/>
+      </v:rect><v:roundrect id="_x0000_s12724" style='position:absolute;left:5088;
+       top:2471;width:1701;height:1701' arcsize="6896f" wrapcoords="1912 -191 -191 0 -191 20071 573 21218 956 21409 20453 21409 21218 21218 21791 19115 21791 1529 20644 0 19497 -191 1912 -191"/>
+      <v:rect id="_x0000_s12725" style='position:absolute;left:5088;top:2471;
+       width:560;height:381' wrapcoords="-584 0 -584 20736 21600 20736 21600 0 -584 0"
+       stroked="f"/>
+      <v:line id="_x0000_s12726" style='position:absolute' from="5085,2471"
+       to="5785,2471" wrapcoords="0 0 0 1 49 1 49 0 0 0" strokeweight="1.25pt"/>
+      <v:line id="_x0000_s12727" style='position:absolute' from="5085,2471"
+       to="5085,2852" wrapcoords="0 1 0 25 2 25 2 1 0 1" strokeweight="1.25pt"/>
+      <v:line id="_x0000_s12728" style='position:absolute' from="4840,2255"
+       to="5540,2255" wrapcoords="0 0 0 1 49 1 49 0 0 0" strokeweight="1.25pt"/>
+      <v:line id="_x0000_s12729" style='position:absolute' from="4840,2255"
+       to="4840,2636" wrapcoords="0 1 0 25 2 25 2 1 0 1" strokeweight="1.25pt"/>
+      <v:rect id="_x0000_s12730" style='position:absolute;left:4778;top:3896;
+       width:2240;height:381' wrapcoords="-145 0 -145 20736 21600 20736 21600 0 -145 0"
+       stroked="f"/>
+      <v:rect id="_x0000_s12731" style='position:absolute;left:6803;top:3032;
+       width:227;height:454' wrapcoords="-2400 -864 -2400 20736 24000 20736 24000 -864 -2400 -864"/>
+      <v:rect id="_x0000_s12732" style='position:absolute;left:4843;top:3047;
+       width:255;height:454' wrapcoords="-2400 -864 -2400 20736 24000 20736 24000 -864 -2400 -864"/>
+      <v:rect id="_x0000_s12733" style='position:absolute;left:4838;top:3181;
+       width:1531;height:170' wrapcoords="-257 -864 -257 20736 21857 20736 21857 -864 -257 -864"/>
+      <v:group id="_x0000_s12734" style='position:absolute;left:5103;top:3042;
+       width:1495;height:455' coordorigin="4543,2370" coordsize="1495,455"
+       wrapcoords="-216 -720 -216 20880 19440 20880 20952 20880 21816 17280 21816 3600 21384 1440 19440 -720 -216 -720">
+       <v:group id="_x0000_s12735" style='position:absolute;left:4643;top:2373;
+        width:95;height:448;rotation:350' coordorigin="3098,2153" coordsize="95,519"
+        wrapcoords="-3600 0 -3600 20983 10800 20983 7200 20983 7200 19749 10800 19749 10800 0 -3600 0">
+        <v:line id="_x0000_s12736" style='position:absolute' from="3098,2180"
+         to="3098,2634" wrapcoords="0 1 0 51 2 51 2 1 0 1"/>
+        <v:oval id="_x0000_s12737" style='position:absolute;left:3098;top:2153;
+         width:91;height:91' wrapcoords="4547 0 -1137 4320 -1137 14688 3411 20736 4547 20736 15916 20736 17053 20736 22737 13824 22737 8640 20463 4320 15916 0 4547 0"/>
+        <v:oval id="_x0000_s12738" style='position:absolute;left:3098;top:2581;
+         width:91;height:91' wrapcoords="4547 0 -1137 4320 -1137 14688 3411 20736 4547 20736 15916 20736 17053 20736 22737 13824 22737 8640 20463 4320 15916 0 4547 0"/>
+        <v:line id="_x0000_s12739" style='position:absolute' from="3193,2180"
+         to="3193,2634" wrapcoords="0 1 0 51 2 51 2 1 0 1"/>
+       </v:group><v:group id="_x0000_s12740" style='position:absolute;left:5683;
+        top:2373;width:95;height:448;rotation:350' coordorigin="3098,2153"
+        coordsize="95,519" wrapcoords="-3600 0 -3600 20983 10800 20983 7200 20983 7200 19749 10800 19749 10800 0 -3600 0">
+        <v:line id="_x0000_s12741" style='position:absolute' from="3098,2180"
+         to="3098,2634" wrapcoords="0 1 0 51 2 51 2 1 0 1"/>
+        <v:oval id="_x0000_s12742" style='position:absolute;left:3098;top:2153;
+         width:91;height:91' wrapcoords="4547 0 -1137 4320 -1137 14688 3411 20736 4547 20736 15916 20736 17053 20736 22737 13824 22737 8640 20463 4320 15916 0 4547 0"/>
+        <v:oval id="_x0000_s12743" style='position:absolute;left:3098;top:2581;
+         width:91;height:91' wrapcoords="4547 0 -1137 4320 -1137 14688 3411 20736 4547 20736 15916 20736 17053 20736 22737 13824 22737 8640 20463 4320 15916 0 4547 0"/>
+        <v:line id="_x0000_s12744" style='position:absolute' from="3193,2180"
+         to="3193,2634" wrapcoords="0 1 0 51 2 51 2 1 0 1"/>
+       </v:group><v:group id="_x0000_s12745" style='position:absolute;left:4833;
+        top:2373;width:95;height:448;rotation:350' coordorigin="3098,2153"
+        coordsize="95,519" wrapcoords="-3600 0 -3600 20983 10800 20983 7200 20983 7200 19749 10800 19749 10800 0 -3600 0">
+        <v:line id="_x0000_s12746" style='position:absolute' from="3098,2180"
+         to="3098,2634" wrapcoords="0 1 0 51 2 51 2 1 0 1"/>
+        <v:oval id="_x0000_s12747" style='position:absolute;left:3098;top:2153;
+         width:91;height:91' wrapcoords="4547 0 -1137 4320 -1137 14688 3411 20736 4547 20736 15916 20736 17053 20736 22737 13824 22737 8640 20463 4320 15916 0 4547 0"/>
+        <v:oval id="_x0000_s12748" style='position:absolute;left:3098;top:2581;
+         width:91;height:91' wrapcoords="4547 0 -1137 4320 -1137 14688 3411 20736 4547 20736 15916 20736 17053 20736 22737 13824 22737 8640 20463 4320 15916 0 4547 0"/>
+        <v:line id="_x0000_s12749" style='position:absolute' from="3193,2180"
+         to="3193,2634" wrapcoords="0 1 0 51 2 51 2 1 0 1"/>
+       </v:group><v:line id="_x0000_s12750" style='position:absolute' from="4638,2415"
+        to="5658,2415" wrapcoords="1 1 76 1 76 1 1 1 1 1">
+        <v:stroke dashstyle="longDashDot"/>
+       </v:line><v:line id="_x0000_s12751" style='position:absolute' from="4741,2779"
+        to="5761,2779" wrapcoords="1 1 76 1 76 1 1 1 1 1">
+        <v:stroke dashstyle="longDashDot"/>
+       </v:line><v:rect id="_x0000_s12752" style='position:absolute;left:5813;
+        top:2371;width:57;height:454' wrapcoords="-2400 -864 -2400 20736 24000 20736 24000 -864 -2400 -864"/>
+       <v:rect id="_x0000_s12753" style='position:absolute;left:4543;top:2370;
+        width:57;height:454' wrapcoords="-2400 -864 -2400 20736 24000 20736 24000 -864 -2400 -864"/>
+       <v:group id="_x0000_s12754" style='position:absolute;left:5868;top:2427;
+        width:170;height:340' coordorigin="6318,2561" coordsize="170,340"
+        wrapcoords="-1964 -939 -1964 20661 23564 20661 23564 -939 -1964 -939">
+        <v:rect id="_x0000_s12755" style='position:absolute;left:6318;top:2561;
+         width:170;height:340' wrapcoords="-2400 -864 -2400 20736 24000 20736 24000 -864 -2400 -864"/>
+        <v:line id="_x0000_s12756" style='position:absolute' from="6318,2816"
+         to="6488,2816" wrapcoords="1 1 66 1 66 1 1 1 1 1"/>
+        <v:line id="_x0000_s12757" style='position:absolute' from="6318,2646"
+         to="6488,2646" wrapcoords="1 1 66 1 66 1 1 1 1 1"/>
+       </v:group></v:group><v:rect id="_x0000_s12758" style='position:absolute;
+       left:4256;top:2570;width:567;height:1134' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"
+       fillcolor="black">
+       <v:fill src="05_2.files/image003.gif" o:title="Широкий диагональный 1"
+        type="pattern"/>
+      </v:rect><v:shape id="_x0000_s12759" type="#_x0000_t8" style='position:absolute;
+       left:3027;top:2577;width:2211;height:227;rotation:90' wrapcoords="-294 -1440 -294 0 3233 20160 18220 20160 21747 0 21747 -1440 -294 -1440"
+       adj="3790" fillcolor="black">
+       <v:fill src="05_2.files/image003.gif" o:title="Широкий диагональный 1"
+        type="pattern"/>
+      </v:shape><v:rect id="_x0000_s12760" style='position:absolute;left:3238;
+       top:3704;width:3969;height:227' wrapcoords="-82 0 -82 20661 21600 20661 21600 0 -82 0"
+       fillcolor="black" stroked="f">
+       <v:fill src="05_2.files/image004.gif" o:title="Светлый диагональный 1"
+        type="pattern"/>
+      </v:rect><v:line id="_x0000_s12761" style='position:absolute' from="3238,3704"
+       to="7207,3704" wrapcoords="0 0 0 1 310 1 310 0 0 0" strokeweight="1.5pt"/>
+      <v:rect id="_x0000_s12762" style='position:absolute;left:4123;top:1553;
+       width:170;height:170' wrapcoords="-1964 0 -1964 18900 21600 18900 21600 0 -1964 0"
+       stroked="f"/>
+      <v:line id="_x0000_s12763" style='position:absolute' from="3825,1713"
+       to="4245,1713" wrapcoords="1 1 29 1 29 1 1 1 1 1"/>
+      <v:rect id="_x0000_s12764" style='position:absolute;left:4208;top:2576;
+       width:79;height:1111' wrapcoords="-4320 0 -4320 21308 21600 21308 21600 0 -4320 0"
+       fillcolor="black" stroked="f">
+       <v:fill src="05_2.files/image003.gif" o:title="Широкий диагональный 1"
+        type="pattern"/>
+      </v:rect><v:rect id="_x0000_s12765" style='position:absolute;left:4008;
+       top:3203;width:454;height:113' wrapcoords="-332 -864 -332 20736 21932 20736 21932 -864 -332 -864"/>
+      <v:rect id="_x0000_s12766" style='position:absolute;left:4498;top:3203;
+       width:340;height:113' wrapcoords="-332 -864 -332 20736 21932 20736 21932 -864 -332 -864"/>
+      <v:line id="_x0000_s12767" style='position:absolute' from="3658,3269"
+       to="7286,3269" wrapcoords="1 1 244 1 244 1 1 1 1 1">
+       <v:stroke dashstyle="longDashDot"/>
+      </v:line><v:rect id="_x0000_s12768" style='position:absolute;left:4245;
+       top:3353;width:578;height:340' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+      <v:rect id="_x0000_s12769" style='position:absolute;left:4245;top:2771;
+       width:578;height:397' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+      <v:group id="_x0000_s12770" style='position:absolute;left:4373;top:2942;
+       width:572;height:236' coordorigin="8558,1418" coordsize="572,236"
+       wrapcoords="-568 -1350 -568 5400 11368 20250 17621 20250 21600 12150 17621 -1350 -568 -1350">
+       <v:rect id="_x0000_s12771" style='position:absolute;left:8833;top:1529;
+        width:68;height:79' wrapcoords="-584 -864 -584 20736 22184 20736 22184 -864 -584 -864"/>
+       <v:group id="_x0000_s12772" style='position:absolute;left:8558;top:1418;
+        width:454;height:236' coordorigin="8558,1418" coordsize="454,236"
+        wrapcoords="-720 -1350 -720 5400 14400 20250 22320 20250 22320 -1350 -720 -1350">
+        <v:rect id="_x0000_s12773" style='position:absolute;left:8558;top:1418;
+         width:454;height:57' wrapcoords="-584 -864 -584 20736 22184 20736 22184 -864 -584 -864"
+         fillcolor="black">
+         <v:fill src="05_2.files/image004.gif" o:title="Светлый диагональный 1"
+          type="pattern"/>
+        </v:rect><v:rect id="_x0000_s12774" style='position:absolute;left:8899;
+         top:1484;width:113;height:170' wrapcoords="-584 -864 -584 20736 22184 20736 22184 -864 -584 -864"
+         fillcolor="black">
+         <v:fill src="05_2.files/image004.gif" o:title="Светлый диагональный 1"
+          type="pattern"/>
+        </v:rect><v:rect id="_x0000_s12775" style='position:absolute;left:8918;
+         top:1433;width:85;height:85' wrapcoords="-3600 0 -3600 18000 21600 18000 21600 0 -3600 0"
+         fillcolor="black" stroked="f">
+         <v:fill src="05_2.files/image004.gif" o:title="Светлый диагональный 1"
+          type="pattern"/>
+        </v:rect></v:group><v:line id="_x0000_s12776" style='position:absolute'
+        from="8733,1569" to="9130,1569" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group><v:group id="_x0000_s12777" style='position:absolute;left:4328;
+       top:2285;width:340;height:627' coordorigin="4328,2285" coordsize="340,627"
+       wrapcoords="5635 0 -939 2571 -939 18514 1878 22629 6574 22629 11270 22629 22539 18514 21600 2571 15026 0 5635 0">
+       <v:group id="_x0000_s12778" style='position:absolute;left:4328;top:2375;
+        width:340;height:537' coordorigin="4328,2375" coordsize="340,537"
+        wrapcoords="-939 -600 -939 18000 8452 18600 1878 22800 6574 22800 14087 21600 20661 18600 22539 16200 22539 -600 -939 -600">
+        <v:rect id="_x0000_s12779" style='position:absolute;left:4328;top:2375;
+         width:340;height:454' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"
+         fillcolor="black">
+         <v:fill src="05_2.files/image004.gif" o:title="Светлый диагональный 1"
+          type="pattern"/>
+        </v:rect><v:rect id="_x0000_s12780" style='position:absolute;left:4385;
+         top:2489;width:227;height:340' wrapcoords="-771 -864 -771 20736 22371 20736 22371 -864 -771 -864"/>
+        <v:group id="_x0000_s12781" style='position:absolute;left:4385;top:2546;
+         width:227;height:366' coordorigin="8698,1799" coordsize="227,366"
+         wrapcoords="-1440 -2700 -1440 23400 4320 23400 15840 23400 21600 18900 21600 1800 4320 -2700 -1440 -2700">
+         <v:group id="_x0000_s12782" style='position:absolute;left:8698;top:1949;
+          width:227;height:75' coordorigin="8558,2561" coordsize="227,75"
+          wrapcoords="-1440 -12960 -1440 30240 4320 30240 21600 12960 21600 8640 4320 -12960 -1440 -12960">
+          <v:line id="_x0000_s12783" style='position:absolute;rotation:20'
+           from="8558,2561" to="8785,2561" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+          <v:line id="_x0000_s12784" style='position:absolute;rotation:340'
+           from="8558,2636" to="8785,2636" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+         </v:group><v:group id="_x0000_s12785" style='position:absolute;left:8698;
+          top:1799;width:227;height:75' coordorigin="8558,2561" coordsize="227,75"
+          wrapcoords="-1440 -12960 -1440 30240 4320 30240 21600 12960 21600 8640 4320 -12960 -1440 -12960">
+          <v:line id="_x0000_s12786" style='position:absolute;rotation:20'
+           from="8558,2561" to="8785,2561" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+          <v:line id="_x0000_s12787" style='position:absolute;rotation:340'
+           from="8558,2636" to="8785,2636" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+         </v:group><v:group id="_x0000_s12788" style='position:absolute;left:8698;
+          top:2090;width:227;height:75' coordorigin="8558,2561" coordsize="227,75"
+          wrapcoords="-1440 -12960 -1440 30240 4320 30240 21600 12960 21600 8640 4320 -12960 -1440 -12960">
+          <v:line id="_x0000_s12789" style='position:absolute;rotation:20'
+           from="8558,2561" to="8785,2561" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+          <v:line id="_x0000_s12790" style='position:absolute;rotation:340'
+           from="8558,2636" to="8785,2636" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+         </v:group></v:group></v:group><v:group id="_x0000_s12791" style='position:absolute;
+        left:4453;top:2285;width:91;height:170' coordorigin="7858,1418"
+        coordsize="91,170" wrapcoords="-3600 0 -3600 19636 3600 19636 10800 19636 10800 0 -3600 0">
+        <v:rect id="_x0000_s12792" style='position:absolute;left:7858;top:1418;
+         width:91;height:170' wrapcoords="-3600 0 -3600 19636 21600 19636 21600 0 -3600 0"
+         stroked="f"/>
+        <v:group id="_x0000_s12793" style='position:absolute;left:7861;top:1503;
+         width:85;height:85' coordorigin="7858,2095" coordsize="85,85"
+         wrapcoords="-3600 0 -3600 18000 3600 18000 3600 0 -3600 0">
+         <v:line id="_x0000_s12794" style='position:absolute' from="7858,2180"
+          to="7943,2180" wrapcoords="1 1 10 1 10 1 1 1 1 1"/>
+         <v:line id="_x0000_s12795" style='position:absolute' from="7858,2095"
+          to="7858,2180" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+         <v:line id="_x0000_s12796" style='position:absolute' from="7943,2095"
+          to="7943,2180" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+        </v:group></v:group></v:group></v:group></v:group><v:line id="_x0000_s12797"
+     style='position:absolute;flip:x' from="2175,10457" to="3403,10590"
+     wrapcoords="1 1 76 1 76 1 1 1 1 1"/>
+    <v:line id="_x0000_s12798" style='position:absolute;flip:x' from="2175,10181"
+     to="3388,10335" wrapcoords="1 1 76 1 76 1 1 1 1 1"/>
+    <v:line id="_x0000_s12799" style='position:absolute;flip:x' from="2175,9890"
+     to="3295,9890" wrapcoords="1 1 76 1 76 1 1 1 1 1"/>
+    <v:line id="_x0000_s12800" style='position:absolute;flip:x' from="2175,10088"
+     to="2629,10088" wrapcoords="1 1 76 1 76 1 1 1 1 1"/>
+    <v:shape id="_x0000_s12801" type="#_x0000_t202" style='position:absolute;
+     left:6178;top:9935;width:680;height:1247' wrapcoords="-480 0 -480 20880 21600 20880 21600 0 -480 0"
+     stroked="f">
+     <v:textbox style='mso-next-textbox:#_x0000_s12801'>
+      <![if !mso]>
+      <table cellpadding=0 cellspacing=0 width="100%">
+       <tr>
+        <td><![endif]>
+        <div>
+        <p class=MsoNormal><span style='font-size:12.0pt'>1<o:p></o:p></span></p>
+        <p class=MsoNormal><span style='font-size:12.0pt'>13<o:p></o:p></span></p>
+        <p class=MsoNormal><span style='font-size:12.0pt'>14<o:p></o:p></span></p>
+        </div>
+        <![if !mso]></td>
+       </tr>
+      </table>
+      <![endif]></v:textbox>
+    </v:shape><v:line id="_x0000_s12802" style='position:absolute;flip:x'
+     from="5398,10700" to="6192,10700" wrapcoords="1 1 76 1 76 1 1 1 1 1"/>
+    <v:line id="_x0000_s12803" style='position:absolute;flip:x' from="5738,10178"
+     to="6192,10178" wrapcoords="1 1 76 1 76 1 1 1 1 1"/>
+    <v:line id="_x0000_s12804" style='position:absolute;flip:x' from="5163,10408"
+     to="6176,10562" wrapcoords="1 1 76 1 76 1 1 1 1 1"/>
+   </v:group><v:group id="_x0000_s12805" style='position:absolute;left:6598;
+    top:9683;width:4109;height:2065' coordorigin="6969,9683" coordsize="4109,2065"
+    wrapcoords="8041 0 -79 1096 -79 5635 1104 7513 1498 7513 1182 8139 1104 10017 -79 11739 -79 11896 1104 12522 1104 15026 4178 17530 4020 18000 3942 21443 16712 21443 17580 21443 21600 20348 21600 13148 21442 12991 18526 12522 20812 11896 20891 11739 18920 10017 18999 10017 20023 7513 20181 5635 20339 1252 19156 939 12771 0 8041 0">
+    <v:shape id="_x0000_s12806" type="#_x0000_t202" style='position:absolute;
+     left:6989;top:9800;width:964;height:454' wrapcoords="-480 0 -480 20880 21600 20880 21600 0 -480 0"
+     stroked="f">
+     <v:textbox style='mso-next-textbox:#_x0000_s12806'>
+      <![if !mso]>
+      <table cellpadding=0 cellspacing=0 width="100%">
+       <tr>
+        <td><![endif]>
+        <div>
+        <p class=MsoNormal><span style='font-size:12.0pt'>15<span
+        style='mso-spacerun:yes'>  </span>16<o:p></o:p></span></p>
+        </div>
+        <![if !mso]></td>
+       </tr>
+      </table>
+      <![endif]></v:textbox>
+    </v:shape><v:shape id="_x0000_s12807" type="#_x0000_t202" style='position:absolute;
+     left:10098;top:9800;width:700;height:454' wrapcoords="-480 0 -480 20880 21600 20880 21600 0 -480 0"
+     stroked="f">
+     <v:textbox style='mso-next-textbox:#_x0000_s12807'>
+      <![if !mso]>
+      <table cellpadding=0 cellspacing=0 width="100%">
+       <tr>
+        <td><![endif]>
+        <div>
+        <p class=MsoNormal><span style='font-size:12.0pt'>16<o:p></o:p></span></p>
+        </div>
+        <![if !mso]></td>
+       </tr>
+      </table>
+      <![endif]></v:textbox>
+    </v:shape><v:shape id="_x0000_s12808" type="#_x0000_t202" style='position:absolute;
+     left:10378;top:10943;width:700;height:680' wrapcoords="-480 0 -480 20880 21600 20880 21600 0 -480 0"
+     stroked="f">
+     <v:textbox style='mso-next-textbox:#_x0000_s12808'>
+      <![if !mso]>
+      <table cellpadding=0 cellspacing=0 width="100%">
+       <tr>
+        <td><![endif]>
+        <div>
+        <p class=MsoNormal><span style='font-size:12.0pt'>17<o:p></o:p></span></p>
+        <p class=MsoNormal><span style='font-size:12.0pt'>3<o:p></o:p></span></p>
+        </div>
+        <![if !mso]></td>
+       </tr>
+      </table>
+      <![endif]></v:textbox>
+    </v:shape><v:group id="_x0000_s12809" style='position:absolute;left:6969;
+     top:9683;width:3969;height:2065' coordorigin="5058,1418" coordsize="3969,2065"
+     wrapcoords="8314 0 8314 4539 8803 5009 10841 5009 5950 5322 4483 5791 4483 7513 1467 7826 1141 7983 1141 10017 -82 11739 -82 11896 1141 12522 1141 15026 4320 17530 4157 18000 4075 21443 17280 21443 17198 15026 19155 12835 19155 12522 21600 11896 21600 11739 19562 10017 19644 10017 20622 7513 20948 6104 19644 5478 12715 5009 13286 4383 13205 0 8314 0">
+     <v:group id="_x0000_s12810" style='position:absolute;left:6617;top:1418;
+      width:850;height:454' coordorigin="5198,6371" coordsize="850,454"
+      wrapcoords="-379 0 -379 20880 21600 20880 21600 0 -379 0">
+      <v:shape id="_x0000_s12811" type="#_x0000_t202" style='position:absolute;
+       left:5198;top:6371;width:850;height:454' wrapcoords="-720 0 -720 20880 21600 20880 21600 0 -720 0"
+       stroked="f">
+       <v:textbox style='mso-next-textbox:#_x0000_s12811'>
+        <![if !mso]>
+        <table cellpadding=0 cellspacing=0 width="100%">
+         <tr>
+          <td><![endif]>
+          <div>
+          <p class=MsoNormal><i style='mso-bidi-font-style:normal'><span
+          style='font-size:12.0pt'>В </span></i><span style='font-size:12.0pt'>–<i
+          style='mso-bidi-font-style:normal'> В<o:p></o:p></i></span></p>
+          </div>
+          <![if !mso]></td>
+         </tr>
+        </table>
+        <![endif]></v:textbox>
+      </v:shape><v:line id="_x0000_s12812" style='position:absolute' from="5283,6752"
+       to="5963,6752" wrapcoords="0 0 0 1 32 1 32 0 0 0" strokeweight="1.5pt"/>
+     </v:group><v:group id="_x0000_s12813" style='position:absolute;left:5058;
+      top:1940;width:3969;height:1543' coordorigin="5058,1940" coordsize="3969,1543"
+      wrapcoords="6032 -210 5380 0 4402 1887 4402 3146 1467 3146 1141 3565 1141 6501 -82 8388 -82 8598 1141 9856 1141 12792 1630 13212 4320 13212 4075 19922 4075 21390 17280 21390 17280 19922 17035 13212 18992 10066 18992 9856 21600 8598 21600 8388 19481 6501 19562 6501 20214 3146 20948 2307 20622 419 15324 -210 6032 -210">
+      <v:group id="_x0000_s12814" style='position:absolute;left:5841;top:1940;
+       width:2381;height:1543' coordorigin="5841,1940" coordsize="2381,1543"
+       wrapcoords="2989 -210 1902 0 272 1887 -136 16567 -136 21390 21600 21390 21328 2097 19562 0 18475 -210 2989 -210">
+       <v:group id="_x0000_s12815" style='position:absolute;left:5841;top:1940;
+        width:2381;height:1543' coordorigin="5841,1940" coordsize="2381,1543"
+        wrapcoords="2989 -210 1902 0 272 1887 -136 16567 -136 21390 21600 21390 21328 2097 19562 0 18475 -210 2989 -210">
+        <v:roundrect id="_x0000_s12816" style='position:absolute;left:5898;
+         top:1940;width:2268;height:1417' arcsize="13605f" wrapcoords="2575 -220 1574 0 -143 2204 -143 18294 858 20939 1717 21380 19740 21380 20599 20939 21743 18073 21743 2204 19883 0 18882 -220 2575 -220"
+         fillcolor="black">
+         <v:fill src="05_2.files/image001.gif" o:title="Светлый диагональный 2"
+          type="pattern"/>
+        </v:roundrect><v:roundrect id="_x0000_s12817" style='position:absolute;
+         left:6181;top:2180;width:1701;height:1134' arcsize="10923f"
+         wrapcoords="3086 -212 -257 212 -257 18847 0 20118 1543 21388 1800 21388 19543 21388 19800 21388 21343 20118 21857 17576 21857 1694 20057 0 18257 -212 3086 -212"/>
+        <v:roundrect id="_x0000_s12818" style='position:absolute;left:6748;
+         top:2285;width:567;height:1134' arcsize="10923f" wrapcoords="3086 -212 -257 212 -257 18847 0 20118 1543 21388 1800 21388 19543 21388 19800 21388 21343 20118 21857 17576 21857 1694 20057 0 18257 -212 3086 -212"/>
+        <v:rect id="_x0000_s12819" style='position:absolute;left:5841;top:3143;
+         width:2381;height:340' wrapcoords="-136 0 -136 20661 21600 20661 21600 0 -136 0"
+         stroked="f"/>
+        <v:shape id="_x0000_s12820" style='position:absolute;left:5913;top:3150;
+         width:2240;height:45;mso-position-horizontal:absolute;
+         mso-position-vertical:absolute' coordsize="2240,45" wrapcoords="-15 0 -15 15 90 30 135 30 1939 30 2030 30 2255 15 2255 0 -15 0"
+         path="m,8l282,45r285,l732,,987,30,1287,v107,2,240,40,345,45hhc1737,45,1816,36,1917,30hal2240,8e"
+         filled="f">
+         <v:path arrowok="t"/>
+        </v:shape></v:group><v:rect id="_x0000_s12821" style='position:absolute;
+        left:5913;top:2330;width:249;height:454' wrapcoords="-1137 0 -1137 20880 21600 20880 21600 0 -1137 0"
+        stroked="f"/>
+       <v:group id="_x0000_s12822" style='position:absolute;left:6193;top:2444;
+        width:523;height:227' coordorigin="2538,2180" coordsize="523,227"
+        wrapcoords="-617 -1440 -617 20160 20366 20160 21600 12960 21600 4320 19131 -1440 -617 -1440">
+        <v:group id="_x0000_s12823" style='position:absolute;left:2538;top:2180;
+         width:523;height:227' coordorigin="2538,2180" coordsize="523,227"
+         wrapcoords="-617 -1440 -617 20160 20366 20160 21600 12960 21600 4320 19131 -1440 -617 -1440">
+         <v:rect id="_x0000_s12824" style='position:absolute;left:2538;top:2180;
+          width:454;height:227' wrapcoords="-1137 -424 -1137 21176 22737 21176 22737 -424 -1137 -424"/>
+         <v:shape id="_x0000_s12825" type="#_x0000_t8" style='position:absolute;
+          left:2919;top:2265;width:227;height:57;rotation:270' wrapcoords="-2274 -864 2274 20736 18189 20736 22737 -864 -2274 -864"/>
+        </v:group><v:rect id="_x0000_s12826" style='position:absolute;left:2538;
+         top:2208;width:340;height:170' wrapcoords="-939 -1964 -939 19636 22539 19636 22539 -1964 -939 -1964">
+         <v:stroke dashstyle="dash"/>
+        </v:rect><v:line id="_x0000_s12827" style='position:absolute' from="2878,2180"
+         to="2878,2407" wrapcoords="0 1 0 15 2 15 2 1 0 1">
+         <v:stroke dashstyle="dash"/>
+        </v:line></v:group><v:group id="_x0000_s12828" style='position:absolute;
+        left:7348;top:2444;width:523;height:227;rotation:180' coordorigin="2538,2180"
+        coordsize="523,227" wrapcoords="-617 -1440 -617 20160 20366 20160 21600 12960 21600 4320 19131 -1440 -617 -1440">
+        <v:group id="_x0000_s12829" style='position:absolute;left:2538;top:2180;
+         width:523;height:227' coordorigin="2538,2180" coordsize="523,227"
+         wrapcoords="-617 -1440 -617 20160 20366 20160 21600 12960 21600 4320 19131 -1440 -617 -1440">
+         <v:rect id="_x0000_s12830" style='position:absolute;left:2538;top:2180;
+          width:454;height:227' wrapcoords="-1137 -424 -1137 21176 22737 21176 22737 -424 -1137 -424"/>
+         <v:shape id="_x0000_s12831" type="#_x0000_t8" style='position:absolute;
+          left:2919;top:2265;width:227;height:57;rotation:270' wrapcoords="-2274 -864 2274 20736 18189 20736 22737 -864 -2274 -864"/>
+        </v:group><v:rect id="_x0000_s12832" style='position:absolute;left:2538;
+         top:2208;width:340;height:170' wrapcoords="-939 -1964 -939 19636 22539 19636 22539 -1964 -939 -1964">
+         <v:stroke dashstyle="dash"/>
+        </v:rect><v:line id="_x0000_s12833" style='position:absolute' from="2878,2180"
+         to="2878,2407" wrapcoords="0 1 0 15 2 15 2 1 0 1">
+         <v:stroke dashstyle="dash"/>
+        </v:line></v:group><v:rect id="_x0000_s12834" style='position:absolute;
+        left:7888;top:2330;width:261;height:454' wrapcoords="-1137 0 -1137 20880 21600 20880 21600 0 -1137 0"
+        stroked="f"/>
+       <v:oval id="_x0000_s12835" style='position:absolute;left:5983;top:2501;
+        width:113;height:113' wrapcoords="5400 0 -771 3456 -771 14688 4629 20736 5400 20736 15429 20736 16200 20736 22371 13824 22371 7776 19286 1728 15429 0 5400 0"/>
+       <v:oval id="_x0000_s12836" style='position:absolute;left:7958;top:2501;
+        width:113;height:113' wrapcoords="5400 0 -771 3456 -771 14688 4629 20736 5400 20736 15429 20736 16200 20736 22371 13824 22371 7776 19286 1728 15429 0 5400 0"/>
+       <v:shape id="_x0000_s12837" style='position:absolute;left:5898;top:2768;
+        width:283;height:15;mso-position-horizontal:absolute;
+        mso-position-vertical:absolute' coordsize="283,15" wrapcoords="149 -15 -15 -15 -15 0 298 0 238 -15 209 -15 149 -15"
+        path="m,14r80,1l185,r98,14e" filled="f">
+        <v:path arrowok="t"/>
+       </v:shape><v:shape id="_x0000_s12838" style='position:absolute;left:5898;
+        top:2310;width:283;height:38;mso-position-horizontal:absolute;
+        mso-position-vertical:absolute' coordsize="283,38" wrapcoords="149 0 -15 13 -15 25 164 25 268 25 283 13 253 0 149 0"
+        path="m,27l57,38r90,-8l207,r76,27e" filled="f">
+        <v:path arrowok="t"/>
+       </v:shape><v:shape id="_x0000_s12839" style='position:absolute;left:7878;
+        top:2760;width:283;height:30;mso-position-horizontal:absolute;
+        mso-position-vertical:absolute' coordsize="283,30" wrapcoords="104 0 -15 0 -15 15 298 15 283 0 104 0"
+        path="m,17l72,30,192,r91,17e" filled="f">
+        <v:path arrowok="t"/>
+       </v:shape><v:polyline id="_x0000_s12840" style='position:absolute;
+        mso-position-horizontal:absolute;mso-position-vertical:absolute'
+        points="7878,2336,7958,2348,8048,2325,8161,2336" coordsize="283,23"
+        wrapcoords="134 -12 -15 0 -15 12 134 12 268 12 283 -12 194 -12 134 -12"
+        filled="f">
+        <v:path arrowok="t"/>
+       </v:polyline></v:group><v:line id="_x0000_s12841" style='position:absolute'
+       from="6038,2411" to="6038,2694" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:line id="_x0000_s12842" style='position:absolute' from="8013,2411"
+       to="8013,2694" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:rect id="_x0000_s12843" style='position:absolute;left:8163;top:2501;
+       width:79;height:113' wrapcoords="-584 -864 -584 20736 22184 20736 22184 -864 -584 -864"/>
+      <v:shape id="_x0000_s12844" type="#_x0000_t135" style='position:absolute;
+       left:8228;top:2386;width:340;height:340' wrapcoords="-771 -424 -771 21176 14657 21176 17743 19906 22371 13129 21600 4659 14657 0 11571 -424 -771 -424"/>
+      <v:line id="_x0000_s12845" style='position:absolute;rotation:40' from="8593,2068"
+       to="8593,2465" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:line id="_x0000_s12846" style='position:absolute;rotation:30' from="8683,2069"
+       to="8683,2523" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+      <v:oval id="_x0000_s12847" style='position:absolute;left:8708;top:1985;
+       width:170;height:170' wrapcoords="2400 0 -2400 5184 -2400 15552 2400 20736 16800 20736 24000 13824 21600 4320 16800 0 2400 0"/>
+      <v:group id="_x0000_s12848" style='position:absolute;left:5315;top:2192;
+       width:283;height:680' coordorigin="5058,2225" coordsize="283,680"
+       wrapcoords="-1137 -480 -1137 21120 22737 21120 22737 -480 -1137 -480">
+       <v:rect id="_x0000_s12849" style='position:absolute;left:5058;top:2225;
+        width:283;height:680' wrapcoords="-1137 -424 -1137 21176 22737 21176 22737 -424 -1137 -424"/>
+       <v:line id="_x0000_s12850" style='position:absolute' from="5058,2426"
+        to="5341,2426" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12851" style='position:absolute' from="5058,2486"
+        to="5341,2486" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12852" style='position:absolute' from="5058,2381"
+        to="5341,2381" wrapcoords="1 1 20 1 20 1 1 1 1 1" strokeweight="1.1pt"/>
+       <v:line id="_x0000_s12853" style='position:absolute' from="5058,2756"
+        to="5341,2756" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12854" style='position:absolute' from="5058,2852"
+        to="5341,2852" wrapcoords="0 0 0 1 21 1 21 0 0 0" strokeweight="1.5pt"/>
+       <v:line id="_x0000_s12855" style='position:absolute' from="5058,2321"
+        to="5341,2321" wrapcoords="0 0 0 1 21 1 21 0 0 0" strokeweight="1.23pt"/>
+       <v:line id="_x0000_s12856" style='position:absolute' from="5058,2270"
+        to="5341,2270" wrapcoords="0 0 0 1 21 1 21 0 0 0" strokeweight="1.5pt"/>
+       <v:line id="_x0000_s12857" style='position:absolute' from="5058,2807"
+        to="5341,2807" wrapcoords="0 0 0 1 21 1 21 0 0 0" strokeweight="1.23pt"/>
+       <v:line id="_x0000_s12858" style='position:absolute' from="5058,2711"
+        to="5341,2711" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12859" style='position:absolute' from="5058,2651"
+        to="5341,2651" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12860" style='position:absolute' from="5058,2591"
+        to="5341,2591" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+       <v:line id="_x0000_s12861" style='position:absolute' from="5058,2531"
+        to="5341,2531" wrapcoords="1 1 20 1 20 1 1 1 1 1"/>
+      </v:group><v:rect id="_x0000_s12862" style='position:absolute;left:5610;
+       top:2277;width:113;height:510' wrapcoords="-2400 -424 -2400 21176 24000 21176 24000 -424 -2400 -424"/>
+      <v:shape id="_x0000_s12863" type="#_x0000_t8" style='position:absolute;
+       left:5581;top:2446;width:454;height:170;rotation:270' wrapcoords="-1168 -864 1751 12960 4086 20736 16930 20736 17514 20736 22184 -864 -1168 -864">
+       <v:fill color2="fill darken(118)" rotate="t" angle="-90" method="linear sigma"
+        type="gradient"/>
+      </v:shape><v:line id="_x0000_s12864" style='position:absolute' from="5058,2557"
+       to="9027,2557" wrapcoords="1 1 303 1 303 1 1 1 1 1">
+       <v:stroke dashstyle="longDashDot"/>
+      </v:line></v:group></v:group><v:line id="_x0000_s12865" style='position:absolute'
+     from="7298,10178" to="7298,10559" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:line id="_x0000_s12866" style='position:absolute' from="7638,10178"
+     to="7921,10802" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:line id="_x0000_s12867" style='position:absolute;flip:x' from="9933,10178"
+     to="10245,10802" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+    <v:line id="_x0000_s12868" style='position:absolute' from="9043,11369"
+     to="10404,11369" wrapcoords="1 1 76 1 76 1 1 1 1 1"/>
+    <v:line id="_x0000_s12869" style='position:absolute' from="10258,10868"
+     to="10460,11100" wrapcoords="0 1 0 25 2 25 2 1 0 1"/>
+   </v:group></v:group></v:group><w:wrap type="none"/>
+ <w:anchorlock/>
+</v:group><![endif]--><![if !vml]><img width=605 height=744
+src="05_2.files/image005.gif" v:shapes="_x0000_s12439 _x0000_s12440 _x0000_s12441 _x0000_s12442 _x0000_s12443 _x0000_s12444 _x0000_s12445 _x0000_s12446 _x0000_s12447 _x0000_s12448 _x0000_s12449 _x0000_s12450 _x0000_s12451 _x0000_s12452 _x0000_s12453 _x0000_s12454 _x0000_s12455 _x0000_s12456 _x0000_s12457 _x0000_s12458 _x0000_s12459 _x0000_s12460 _x0000_s12461 _x0000_s12462 _x0000_s12463 _x0000_s12464 _x0000_s12465 _x0000_s12466 _x0000_s12467 _x0000_s12468 _x0000_s12469 _x0000_s12470 _x0000_s12471 _x0000_s12472 _x0000_s12473 _x0000_s12474 _x0000_s12475 _x0000_s12476 _x0000_s12477 _x0000_s12478 _x0000_s12479 _x0000_s12480 _x0000_s12481 _x0000_s12482 _x0000_s12483 _x0000_s12484 _x0000_s12485 _x0000_s12486 _x0000_s12487 _x0000_s12488 _x0000_s12489 _x0000_s12490 _x0000_s12491 _x0000_s12492 _x0000_s12493 _x0000_s12494 _x0000_s12495 _x0000_s12496 _x0000_s12497 _x0000_s12498 _x0000_s12499 _x0000_s12500 _x0000_s12501 _x0000_s12502 _x0000_s12503 _x0000_s12504 _x0000_s12505 _x0000_s12506 _x0000_s12507 _x0000_s12508 _x0000_s12509 _x0000_s12510 _x0000_s12511 _x0000_s12512 _x0000_s12513 _x0000_s12514 _x0000_s12515 _x0000_s12516 _x0000_s12517 _x0000_s12518 _x0000_s12519 _x0000_s12520 _x0000_s12521 _x0000_s12522 _x0000_s12523 _x0000_s12524 _x0000_s12525 _x0000_s12526 _x0000_s12527 _x0000_s12528 _x0000_s12529 _x0000_s12530 _x0000_s12531 _x0000_s12532 _x0000_s12533 _x0000_s12534 _x0000_s12535 _x0000_s12536 _x0000_s12537 _x0000_s12538 _x0000_s12539 _x0000_s12540 _x0000_s12541 _x0000_s12542 _x0000_s12543 _x0000_s12544 _x0000_s12545 _x0000_s12546 _x0000_s12547 _x0000_s12548 _x0000_s12549 _x0000_s12550 _x0000_s12551 _x0000_s12552 _x0000_s12553 _x0000_s12554 _x0000_s12555 _x0000_s12556 _x0000_s12557 _x0000_s12558 _x0000_s12559 _x0000_s12560 _x0000_s12561 _x0000_s12562 _x0000_s12563 _x0000_s12564 _x0000_s12565 _x0000_s12566 _x0000_s12567 _x0000_s12568 _x0000_s12569 _x0000_s12570 _x0000_s12571 _x0000_s12572 _x0000_s12573 _x0000_s12574 _x0000_s12575 _x0000_s12576 _x0000_s12577 _x0000_s12578 _x0000_s12579 _x0000_s12580 _x0000_s12581 _x0000_s12582 _x0000_s12583 _x0000_s12584 _x0000_s12585 _x0000_s12586 _x0000_s12587 _x0000_s12588 _x0000_s12589 _x0000_s12590 _x0000_s12591 _x0000_s12592 _x0000_s12593 _x0000_s12594 _x0000_s12595 _x0000_s12596 _x0000_s12597 _x0000_s12598 _x0000_s12599 _x0000_s12600 _x0000_s12601 _x0000_s12602 _x0000_s12603 _x0000_s12604 _x0000_s12605 _x0000_s12606 _x0000_s12607 _x0000_s12608 _x0000_s12609 _x0000_s12610 _x0000_s12611 _x0000_s12612 _x0000_s12613 _x0000_s12614 _x0000_s12615 _x0000_s12616 _x0000_s12617 _x0000_s12618 _x0000_s12619 _x0000_s12620 _x0000_s12621 _x0000_s12622 _x0000_s12623 _x0000_s12624 _x0000_s12625 _x0000_s12626 _x0000_s12627 _x0000_s12628 _x0000_s12629 _x0000_s12630 _x0000_s12631 _x0000_s12632 _x0000_s12633 _x0000_s12634 _x0000_s12635 _x0000_s12636 _x0000_s12637 _x0000_s12638 _x0000_s12639 _x0000_s12640 _x0000_s12641 _x0000_s12642 _x0000_s12643 _x0000_s12644 _x0000_s12645 _x0000_s12646 _x0000_s12647 _x0000_s12648 _x0000_s12649 _x0000_s12650 _x0000_s12651 _x0000_s12652 _x0000_s12653 _x0000_s12654 _x0000_s12655 _x0000_s12656 _x0000_s12657 _x0000_s12658 _x0000_s12659 _x0000_s12660 _x0000_s12661 _x0000_s12662 _x0000_s12663 _x0000_s12664 _x0000_s12665 _x0000_s12666 _x0000_s12667 _x0000_s12668 _x0000_s12669 _x0000_s12670 _x0000_s12671 _x0000_s12672 _x0000_s12673 _x0000_s12674 _x0000_s12675 _x0000_s12676 _x0000_s12677 _x0000_s12678 _x0000_s12679 _x0000_s12680 _x0000_s12681 _x0000_s12682 _x0000_s12683 _x0000_s12684 _x0000_s12685 _x0000_s12686 _x0000_s12687 _x0000_s12688 _x0000_s12689 _x0000_s12690 _x0000_s12691 _x0000_s12692 _x0000_s12693 _x0000_s12694 _x0000_s12695 _x0000_s12696 _x0000_s12697 _x0000_s12698 _x0000_s12699 _x0000_s12700 _x0000_s12701 _x0000_s12702 _x0000_s12703 _x0000_s12704 _x0000_s12705 _x0000_s12706 _x0000_s12707 _x0000_s12708 _x0000_s12709 _x0000_s12710 _x0000_s12711 _x0000_s12712 _x0000_s12713 _x0000_s12714 _x0000_s12715 _x0000_s12716 _x0000_s12717 _x0000_s12718 _x0000_s12719 _x0000_s12720 _x0000_s12721 _x0000_s12722 _x0000_s12723 _x0000_s12724 _x0000_s12725 _x0000_s12726 _x0000_s12727 _x0000_s12728 _x0000_s12729 _x0000_s12730 _x0000_s12731 _x0000_s12732 _x0000_s12733 _x0000_s12734 _x0000_s12735 _x0000_s12736 _x0000_s12737 _x0000_s12738 _x0000_s12739 _x0000_s12740 _x0000_s12741 _x0000_s12742 _x0000_s12743 _x0000_s12744 _x0000_s12745 _x0000_s12746 _x0000_s12747 _x0000_s12748 _x0000_s12749 _x0000_s12750 _x0000_s12751 _x0000_s12752 _x0000_s12753 _x0000_s12754 _x0000_s12755 _x0000_s12756 _x0000_s12757 _x0000_s12758 _x0000_s12759 _x0000_s12760 _x0000_s12761 _x0000_s12762 _x0000_s12763 _x0000_s12764 _x0000_s12765 _x0000_s12766 _x0000_s12767 _x0000_s12768 _x0000_s12769 _x0000_s12770 _x0000_s12771 _x0000_s12772 _x0000_s12773 _x0000_s12774 _x0000_s12775 _x0000_s12776 _x0000_s12777 _x0000_s12778 _x0000_s12779 _x0000_s12780 _x0000_s12781 _x0000_s12782 _x0000_s12783 _x0000_s12784 _x0000_s12785 _x0000_s12786 _x0000_s12787 _x0000_s12788 _x0000_s12789 _x0000_s12790 _x0000_s12791 _x0000_s12792 _x0000_s12793 _x0000_s12794 _x0000_s12795 _x0000_s12796 _x0000_s12797 _x0000_s12798 _x0000_s12799 _x0000_s12800 _x0000_s12801 _x0000_s12802 _x0000_s12803 _x0000_s12804 _x0000_s12805 _x0000_s12806 _x0000_s12807 _x0000_s12808 _x0000_s12809 _x0000_s12810 _x0000_s12811 _x0000_s12812 _x0000_s12813 _x0000_s12814 _x0000_s12815 _x0000_s12816 _x0000_s12817 _x0000_s12818 _x0000_s12819 _x0000_s12820 _x0000_s12821 _x0000_s12822 _x0000_s12823 _x0000_s12824 _x0000_s12825 _x0000_s12826 _x0000_s12827 _x0000_s12828 _x0000_s12829 _x0000_s12830 _x0000_s12831 _x0000_s12832 _x0000_s12833 _x0000_s12834 _x0000_s12835 _x0000_s12836 _x0000_s12837 _x0000_s12838 _x0000_s12839 _x0000_s12840 _x0000_s12841 _x0000_s12842 _x0000_s12843 _x0000_s12844 _x0000_s12845 _x0000_s12846 _x0000_s12847 _x0000_s12848 _x0000_s12849 _x0000_s12850 _x0000_s12851 _x0000_s12852 _x0000_s12853 _x0000_s12854 _x0000_s12855 _x0000_s12856 _x0000_s12857 _x0000_s12858 _x0000_s12859 _x0000_s12860 _x0000_s12861 _x0000_s12862 _x0000_s12863 _x0000_s12864 _x0000_s12865 _x0000_s12866 _x0000_s12867 _x0000_s12868 _x0000_s12869"><![endif]><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><![endif]--></span><!--[if mso & !supportInlineShapes & supportFields]><span
+style='mso-bookmark:рис5_4'></span><v:shape id="_x0000_i1025" type="#_x0000_t75"
+ style='width:450.45pt;height:555.25pt'>
+ <v:imagedata croptop="-65520f" cropbottom="65520f"/>
+</v:shape><span style='mso-bookmark:рис5_4'><span style='mso-element:field-end'></span></span><![endif]--><span
+style='mso-bookmark:рис5_4'></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>

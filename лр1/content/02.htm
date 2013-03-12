@@ -1,0 +1,503 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="02.files/filelist.xml">
+<title>Основы теории обобщенной машины</title>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="metricconverter"/>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Lena</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>butthead</o:LastAuthor>
+  <o:Revision>34</o:Revision>
+  <o:TotalTime>144</o:TotalTime>
+  <o:Created>2008-01-15T09:32:00Z</o:Created>
+  <o:LastSaved>2008-05-31T12:40:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>1139</o:Words>
+  <o:Characters>6493</o:Characters>
+  <o:Company> </o:Company>
+  <o:Lines>54</o:Lines>
+  <o:Paragraphs>15</o:Paragraphs>
+  <o:CharactersWithSpaces>7617</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>110</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:AutoHyphenation/>
+  <w:HyphenationZone>17</w:HyphenationZone>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+   <w:UseWord97LineBreakingRules/>
+   <w:SelectEntireFieldWithStartOrEnd/>
+   <w:UseWord2002TableStyleRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:204;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:0pt;
+	font-weight:normal;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MTDisplayEquation, li.MTDisplayEquation, div.MTDisplayEquation
+	{mso-style-name:MTDisplayEquation;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	tab-stops:center 241.0pt right 482.0pt;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.style3, li.style3, div.style3
+	{mso-style-name:style3;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.9pt 70.9pt 3.0cm 70.9pt;
+	mso-header-margin:35.45pt;
+	mso-footer-margin:35.45pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+table.MsoTableGrid
+	{mso-style-name:"Сетка таблицы";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="13314">
+  <o:colormenu v:ext="edit" fillcolor="black" strokecolor="none"/>
+ </o:shapedefaults></xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+  <o:regrouptable v:ext="edit">
+   <o:entry new="1" old="0"/>
+   <o:entry new="2" old="0"/>
+   <o:entry new="3" old="0"/>
+   <o:entry new="4" old="0"/>
+   <o:entry new="5" old="0"/>
+   <o:entry new="6" old="0"/>
+   <o:entry new="7" old="0"/>
+   <o:entry new="8" old="0"/>
+   <o:entry new="9" old="0"/>
+   <o:entry new="10" old="0"/>
+   <o:entry new="11" old="10"/>
+   <o:entry new="12" old="0"/>
+   <o:entry new="13" old="12"/>
+   <o:entry new="14" old="0"/>
+   <o:entry new="15" old="0"/>
+   <o:entry new="16" old="0"/>
+   <o:entry new="17" old="0"/>
+   <o:entry new="18" old="0"/>
+   <o:entry new="19" old="18"/>
+   <o:entry new="20" old="19"/>
+  </o:regrouptable>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=RU style='tab-interval:36.0pt'>
+
+<div class=Section1>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='background:#446644;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=1120 style='width:840.05pt;border:solid white 1.0pt;mso-border-alt:
+  solid white .25pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=style3 align=center style='margin-top:2.0pt;margin-right:0cm;
+  margin-bottom:2.0pt;margin-left:0cm;text-align:center'><span
+  style='color:white;font-weight:normal;mso-bidi-font-weight:bold'>2.</span><span
+  lang=EN-US style='color:white;mso-ansi-language:EN-US;font-weight:normal;
+  mso-bidi-font-weight:bold'>&nbsp;</span><span style='color:white;font-weight:
+  normal'>КАЧЕСТВО И ТОЧНОСТЬ ПРОЦЕССА РЕЗАНИЯ</span><span style='color:white;
+  font-weight:normal;mso-bidi-font-weight:bold'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:34.85pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><span
+style='mso-bidi-font-size:14.0pt;color:black'>При работе на ОРМ должны быть
+обеспечены высокие качество и точность резки. </span><i><span style='mso-bidi-font-size:
+14.0pt;color:#446644'>Качество резки</span></i><i><span style='mso-bidi-font-size:
+14.0pt;color:black'> </span></i><span style='mso-bidi-font-size:14.0pt;
+color:black'>определяется гладкостью обре­за, отсутствием шероховатости,
+волнистости, рисок на поверхнос­ти разреза, слипания кромок, следов прижимной
+балки на верхних листах, полной разрезкой нижних листов, ровностью их кромок.</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>Параметры, определяющие </span><i><span style='mso-bidi-font-size:
+14.0pt;color:#446644'>точности резки</span></i><i><span style='mso-bidi-font-size:
+14.0pt;color:black'>:</span></i><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+отклонения в линейных размерах по длине реза должны быть в пределах ± <st1:metricconverter
+ProductID="1 мм" w:st="on">1 мм</st1:metricconverter>;</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+перпендикулярность смежных сторон листов;</span><span style='mso-bidi-font-size:
+14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+допустимая косина (разность в длинах противоположных сто­рон) не должна
+превышать 0,1% от размера листа;</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+при разрезке обложек для брошюр, открыток отклонения не должны превышать ± <st1:metricconverter
+ProductID="0,5 мм" w:st="on">0,5 мм</st1:metricconverter>, для этикеток<span
+style='mso-spacerun:yes'>  </span>± <st1:metricconverter ProductID="0,25 мм"
+w:st="on">0,25 мм</st1:metricconverter>.</span><span style='mso-bidi-font-size:
+14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>На качество и точность резки влияют на ряд факторов:
+качество сталкивания листов, характер и точность базирования стопы, вы­сота
+стопы, величина усилия прижима, геометрия и острота ножа, качество марзана,
+техническое состояние резальной машины, па­раметры материала стопы (влажность,
+плотность и т.д.), модель и особенности конструкции машины, квалификация
+оператора. Рассмотрим некоторые из этих факторов.</span><span style='mso-bidi-font-size:
+14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><i><span
+style='mso-bidi-font-size:14.0pt;color:#446644'>Качество сталкивания листов</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'>. </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>Сталкивание – это выравни­вание
+кромок всех листов в стопе по двум смежным, так называе­мым </span><i><span
+style='mso-bidi-font-size:14.0pt;color:#446644'>верным сторонам</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'>. </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>Операция выполняется с целью
+обеспечения одинакового (идентичного) расположения листов в стопе пе­ред
+разрезкой и подрезкой. Оно необходимо после неточной работы приемок <span
+class=SpellE>листорезальных</span> и печатных машин. Сталкивание может
+выполняться оператором вручную на переднем столе резальной машины или
+механизированным способом с использованием <span class=SpellE>вибросталкивателей</span>.
+Процесс ручного сталкивания обычно состоит из трех операций:</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+образование воздушных прослоек между листами с помощью их роспуска или <span
+class=SpellE>роздува</span>;</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+сталкивание торцевых краев листов до получения ровной по­верхности;</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+удаление воздуха из стопы.</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>Независимо от способа сталкивания на его качество влияют:</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+формат листов (с его увеличением процесс затрудняется);</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+гладкость бумаги (гладкие бумаги легче смещаются друг от­носительно друга);</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+наличие статического электричества (листы слипаются и пре­пятствуют образованию
+воздушных прослоек);</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+влажность бумаги (при недостатке влажности в бумаге обра­зуется статическое
+электричество, при повышении – увеличива­ется трение);</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+плотность бумаги (сталкивание тонких видов бумаги зат­руднено).</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>Лучше сталкиваются листы из глазированных и мелованных бу­маг
+с высокой гладкостью поверхности, хуже – мягкие, тонкие виды бумаг с волнистой
+и шероховатой поверхностью, мятыми бо­ковыми кромками.</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><i><span
+style='mso-bidi-font-size:14.0pt;color:#446644'>Характер и точность базирования</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'> </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>стопы в машине имеет боль­шое
+влияние на качество резки. Обычно базирование осуществля­ется по двум
+плоскостям: по <span class=SpellE>подавателю</span> и одному из боковых упоров,
+укрепленных на столе машины. Для правильного базирования стопы необходимо
+обеспечить соответствие баз строгим геометрическим требованиям. Боковые упоры
+стола укреплены неподвиж­но на заводе-изготовителе перпендикулярно столу и не
+регулиру­ются. Рабочая плоскость подавателя должна быть параллельна плос­кости
+резания и перпендикулярна столу, иначе возможно получе­ние стоны
+трапецеидальной формы. Для достижения этого в механизме подавателя есть
+соответствующие регулировки. Для обеспечения точности резки необходимо
+придерживаться определенных правил. Подрезку чистой бумаги следует выполнять по
+короткой стороне, базируясь на длинную (т. е. по боковому упо­ру), после чего
+подрезают вторую короткую сторону, базируясь уже чистой, подрезанной стороной
+по <span class=SpellE>подавателю</span>. Только после этого можно подрезать
+длинные стороны, базируясь короткими гранями по боковым упорам. При раскрое
+покровных материалов и запеча­танных, листов с обложками, открытками, бланками,
+этикетками сна­чала делают подрезку со всех четырех сторон, а потом режут на
+час­ти. Правило здесь одно – верные стороны подрезают в последнюю очередь.</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><i><span
+style='mso-bidi-font-size:14.0pt;color:#446644'>Высота стопы</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'> </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>выбирается в зависимости от
+необходимой точно­сти резки, вида материала, технического состояния машины и ножа.
+Для мелованной бумаги необходимая точность резки может быть достигнута, если в
+стопе не более 500 листов. Печатные бумаги мо­гут резаться стопами по 1000…1500
+листов и более. При работе на изношенном оборудовании, при резке очень твердых
+материалов, количество листов уменьшают на 25…50%. С увеличением высоты стопы
+всегда увеличиваются отклонения в размерах и косина листов.</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><i><span
+style='mso-bidi-font-size:14.0pt;color:#446644'>Усилие прижима</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'>. </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>Увеличение усилия прижима в
+принципе поло­жительно влияет на точность резки, поскольку деформация верхних
+листов под ножом будет минимальной, и, следовательно, отклонения от их размера
+в сравнении с нижними листами будут небольшими. Например, по данным [5], при
+увеличении погонного давления от 100 до 400 Н/см точность резки возросла в 3,6
+раза. Современные ОРМ используют гидравлический привод прижима, который
+обеспечивает погонное давление от 20…30 до 350 Н/см длины реза. Это позволяет выбирать
+необходимое давление в зависимости от вида материала и высоты стопы. При этом
+придерживаются правила: плотные, <span style='mso-bidi-font-style:italic'>гладкие
+виды бумаг требуют меньшего давления </span>и, наоборот, мягкие, <span
+style='mso-bidi-font-style:italic'>пухлые виды – повышенном. </span>Важно
+также, чтобы величина усилия прижима была достигнута до начала врезания ножа в
+стопу. Однако чрезмерное давление прижима отрицательно влияет на качество
+резки, вследствие чего гребенчатая форма балки прижи­ма оставляет на
+поверхности стопы след в виде отчетливых углуб­лений, чем ухудшает внешний вид
+продукции. Для предотвращения этого недостатка под нижнюю поверхность бал­ки
+прижима прикрепляют специальную пластину. При избыточном давлении нож быстрее
+тупится и отклоняется в сторону оператора, точность резки снижается.</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><i><span
+style='mso-bidi-font-size:14.0pt;color:#446644'>Геометрия и острота ножа</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'>. </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>Для обеспечения точного и каче­ственного
+роза нож должен иметь высокую твердость режущей кром­ки, отклонения от
+прямолинейности лезвия ножа не должны превы­шать <st1:metricconverter
+ProductID="0,3 мм" w:st="on">0,3 мм</st1:metricconverter> на <st1:metricconverter
+ProductID="1000 мм" w:st="on">1000 мм</st1:metricconverter> длины, а лезвие
+ножа должно быть остро за­точенным, без выщербленных мест, трещин и других
+дефектов. Важными параметрами ножа являются угол заточки, острота его кромки,
+стойкость ножа. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><i><span
+style='mso-bidi-font-size:14.0pt;color:#446644'>Марзан</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'> </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black;mso-bidi-font-style:italic'>– </span><span
+style='mso-bidi-font-size:14.0pt;color:black'>чрезвычайно простая, но
+ответственная деталь ма­шины, которая обеспечивает точную и качественную резку ниж­них
+листов в стопе. К марзану предъявляются следующие требования. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+верхняя</span><span style='mso-bidi-font-size:14.0pt'> <span style='color:black'>поверхность
+должна лежать точно в плоскости стола: заниженный или завышенный уровень очень
+отрицательно отразится на качестве</span> <span style='color:black'>резки;<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+марзан должен иметь достаточную жесткость, чтобы не де­формироваться под
+действием сил резания, но быть достаточно по­датливым, чтобы не способствовать
+преждевременному износу и <span class=SpellE>затуплению</span> кромки ножа; <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+глубина врезания ножа в марзан должна быть минимальной, обеспечивая разрезку
+всех листов. Она составляет порядка 0,5…1 мм и менее.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>Нежелательно
+использование марзанов из дерева или случайных материалов.</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><i><span
+style='mso-bidi-font-size:14.0pt;color:#446644'>Техническое состояние машины</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'> </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>определяется состоянием и
+степенью износа контактирующихся поверхностей. Износ или уве­личение зазоров в
+направляющих <span class=SpellE>ножедержателя</span>, в паре винт-гай­ка
+механизма подавателя способствуют появлению неточностей в процессе резания. Нож
+при этом будет двигаться не строго в верти­кальной плоскости, вы­зывая разницу
+в длине верхних и нижних листов.</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:35.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;mso-bidi-font-style:italic'>Модель машины<i><span style='color:black'> </span></i></span><span
+style='mso-bidi-font-size:14.0pt;color:black'>и качество резки связаны самым
+непосред­ственным образом, поскольку конструктивное и технологическое исполнение
+машины, жесткость ее станины, совершенство других узлов влияют на условия
+резки. Возможность точной установки подавателя у различных машин будет разной.
+При использовании ручной установки и упрощенных устройств отсчета положения
+подавателя невозможно получить высокую точность. Машины с про­граммным
+управлением и цифровой индикацией обеспечивают точность до сотых или ты­сячных
+долей миллиметра. </span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,2329 @@
+<html xmlns:mcd="urn:schemas-mathsoft-com:mathcad"
+ xmlns:m="http://www.w3.org/1998/Math/MathML">
+<head>
+<meta http-equiv="Content-Type" content="text/html;  charset=utf-8" />
+<meta name="Generator" content="Mathcad Professional" />
+<meta name="ProgID" content="Mathcad" />
+<meta name="Version" content="13.0" />
+<title>
+Расчет нагрузок</title>
+<style type="text/css">
+body { background : #ffffff }
+.equation { margin-top: 0.5em; margin-bottom: 1em }
+.Normal { font-family:Arial,sans-serif; x-mcd-font-charset:0; font-size:10pt }
+.Heading_1 { font-family:Arial,sans-serif; x-mcd-font-charset:0; font-size:14pt; font-weight:bold }
+.Heading_2 { font-family:Arial,sans-serif; x-mcd-font-charset:0; font-size:12pt; font-weight:bold; font-style:italic }
+.Heading_3 { font-family:Arial,sans-serif; x-mcd-font-charset:0; font-size:12pt }
+.Paragraph { font-family:Arial,sans-serif; x-mcd-font-charset:0; font-size:10pt; text-indent:28px }
+.List { font-family:Arial,sans-serif; x-mcd-font-charset:0; font-size:10pt; margin-left:19px; text-indent:-19px }
+.Indent { font-family:Arial,sans-serif; x-mcd-font-charset:0; font-size:10pt; margin-left:144px }
+.Title { font-family:Times New Roman,sans-serif; x-mcd-font-charset:0; font-size:24pt; font-weight:bold; text-align:center }
+.Subtitle { font-family:Times New Roman,sans-serif; x-mcd-font-charset:0; font-size:18pt; text-align:center }
+</style>
+<script id="clientEventHandlersJS" language="javascript">
+<!--
+//-->
+</script>
+</head>
+<body 
+mcd:mathfonts="id:0;name:Variables;face:Times New Roman;size:12;bold:0;ital:0;ul:0;cid:0
+id:1;name:Constants;face:Times New Roman;size:10;bold:0;ital:0;ul:0;cid:0
+id:2;name:Text;face:Arial;size:10;bold:0;ital:0;ul:0;cid:0
+id:4;name:User 1;face:Arial;size:10;bold:0;ital:0;ul:0;cid:0
+id:5;name:User 2;face:Courier New;size:10;bold:0;ital:0;ul:0;cid:0
+id:6;name:User 3;face:Arial;size:10;bold:1;ital:0;ul:0;cid:0
+id:7;name:User 4;face:Times New Roman;size:10;bold:0;ital:1;ul:0;cid:0
+id:8;name:User 5;face:Times New Roman;size:10;bold:0;ital:0;ul:0;cid:0
+id:9;name:User 6;face:Arial;size:10;bold:0;ital:0;ul:0;cid:0
+id:10;name:User 7;face:Times New Roman;size:10;bold:0;ital:0;ul:0;cid:0"
+mcd:mathtextfont="id:17;name:Math Text Font;face:Times New Roman;size:10;bold:0;ital:0;ul:0;cid:0"
+mcd:numberformat=""
+mcd:displayoptions=""
+mcd:unitformat="format:true;simplify:true"
+mcd:tolerance=""
+mcd:builtinvars="origin:0"
+mcd:calcoptions="auto:false;optimize:false;strict:true"
+mcd:mathdisplay="mult:7;deriv:deriv;litsub:large;define:colon;globeq:triple;local:arrow;equal:bold"
+mcd:unitsystem="default:4"
+mcd:dimnames="display:false;mass:mass;length:length;time:time;current:current;temp:temperature;lum:luminosity;subst:substance"
+mcd:docprops="lrtag:5728;lhbtag:5728;status:8196;delorig:1;deluser:1;cp:1;cc:1;cs:1"
+mcd:ruler="visible:0;units:1"
+mcd:derivopts="ip:0;sc:0;dv:1;os:1"
+mcd:doccolors="eq:#000000;bg:#ffffff;rg:#ffff80"
+mcd:grfxy="0 1 1 21 15 0 0 3 0 "
+mcd:xaxisxy="0 0 1 1 1 0 0 1 1 "
+mcd:yaxisxy="0 0 1 1 1 0 0 1 1 "
+mcd:tracesxy="0 1 0 0 1 1 
+0 2 1 0 1 1 
+0 3 2 0 1 1 
+0 4 3 0 1 1 
+0 1 4 0 1 1 
+0 2 5 0 1 1 
+0 3 6 0 1 1 
+0 4 0 0 1 1 
+0 1 1 0 1 1 
+0 2 2 0 1 1 
+0 3 3 0 1 1 
+0 4 4 0 1 1 
+0 1 5 0 1 1 
+0 2 6 0 1 1 
+0 3 0 0 1 1 
+0 4 1 0 1 1 "
+>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:8;left:40">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4463_3537265.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:120;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4638_3537390.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:184;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4460_3537531.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:185;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4863_3537906.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:209;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4864_3538015.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:241;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4867_3538125.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:264;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4865_3538187.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:296;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4866_3538281.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:344;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4872_3538390.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:377;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4873_3538468.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:401;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4874_3538578.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:425;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4875_3538671.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:480;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4844_3538765.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:513;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4876_3538875.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:537;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4880_3538968.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:561;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4883_3539062.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:593;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4884_3539234.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:633;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4885_3539328.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:657;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4889_3539390.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:681;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4890_3539546.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:705;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4891_3539640.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:761;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4894_3539734.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:792;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4892_3539843.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:824;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4893_3539937.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:849;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4896_3540031.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:905;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4899_3540156.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:929;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4900_3540234.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:953;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4901_3540312.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:976;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4902_3540390.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:1024;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4905_3540500.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:1065;left:480">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4909_3540609.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:1128;left:56">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4952_3540750.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:1176;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5058_3540843.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:1232;left:104">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4954_3540921.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:1280;left:104">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4955_3541031.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:1325;left:104">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4956_3541156.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:1400;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4957_3541328.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:1592;left:104">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4971_3542093.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:1640;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4966_3542203.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:1689;left:352">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4999_3542296.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:1685;left:64">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5000_3542406.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:1728;left:344">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5001_3542546.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:1752;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5010_3542656.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:1809;left:56">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5035_3542781.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:1832;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5036_3542968.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:2161;left:536">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5712_3543234.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:2256;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5047_3543343.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:2309;left:128">
+<layer >
+<img src="./Расчет нагрузок_images/IMG2982_3543421.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:2384;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5129_3543531.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:2472;left:144">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5140_3543609.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:2528;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5131_3543718.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:2632;left:152">
+<layer >
+<img src="./Расчет нагрузок_images/IMG2986_3543843.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:2680;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5132_3544218.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:2745;left:152">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3623_3544375.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:2792;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5141_3544500.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:2864;left:152">
+<layer >
+<img src="./Расчет нагрузок_images/IMG2990_3544593.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:2904;left:152">
+<layer >
+<img src="./Расчет нагрузок_images/IMG2991_3544687.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:2992;left:16">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5172_3544890.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:2977;left:48">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5173_3545078.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:3289;left:528">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5174_3545171.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:3400;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5188_3545265.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:3456;left:112">
+<layer >
+<img src="./Расчет нагрузок_images/IMG2996_3545359.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:3504;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5207_3545484.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:3648;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5235_3545718.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:3633;left:40">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5236_3545984.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:3969;left:536">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5727_3546390.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:4056;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5252_3546500.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:4112;left:136">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3002_3546609.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:4153;left:136">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3003_3546671.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:4201;left:136">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4274_3546765.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:4201;left:208">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5260_3547062.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:4201;left:272">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5271_3547140.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:4201;left:336">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5272_3547203.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:4232;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5318_3547281.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:4329;left:136">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4266_3547625.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:4329;left:296">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5329_3548000.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:4400;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5320_3548078.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:4504;left:136">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3007_3548421.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:4552;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5381_3548640.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:4616;left:144">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3009_3548718.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:4661;left:144">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3010_3548828.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:4728;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5382_3548953.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:4792;left:128">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3012_3549062.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:4840;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5383_3549296.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:4904;left:128">
+<layer >
+<a href='javascript:alert("This value has units\x3a Magnetic Flux Density\x5e2\x2c \nbut must have units\x3a Unitless\x2e")' onmouseover='window.status="This value has units: Magnetic Flux Density^2,  but must have units: Unitless.";return true' onmouseout='window.status=""; return true;'><img src="./Расчет нагрузок_images/IMG3014_3549437.PNG" border="0"/>
+</a>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:4952;left:128">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3015_3549546.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:4998;left:128">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3016_3549625.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:5072;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5399_3549765.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:5169;left:128">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3018_3549875.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:5208;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5415_3550171.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:5273;left:128">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3020_3550265.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:5320;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5448_3550546.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:5361;left:136">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3022_3550812.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:5400;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5449_3550906.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:5446;left:136">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3024_3551000.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:5512;left:136">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4029_3551078.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:5513;left:352">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5453_3551171.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:5512;left:448">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5452_3551296.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:5552;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4263_3551390.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:5640;left:136">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3644_3551515.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:5686;left:136">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3028_3551640.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:5752;left:136">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3029_3551750.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:5792;left:136">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3030_3551859.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:5848;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5454_3551953.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:5904;left:232">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5457_3552031.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:5896;left:136">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5455_3552109.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:5952;left:136">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3036_3552218.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:5953;left:272">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3605_3552296.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:6040;left:16">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5465_3552421.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:6033;left:40">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5717_3552671.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:6361;left:528">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5467_3552765.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:6448;left:16">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5468_3553125.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:6504;left:120">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3045_3553312.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:6576;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5720_3554171.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:6561;left:56">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5721_3554796.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:6993;left:536">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5724_3554890.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:7064;left:16">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5487_3554984.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="56" mcd:aligny="7160" 
+ style="position:absolute;top:7145;left:24;width:510">
+<layer width="510">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Рассчитаем угловую скорость качающегося стола <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">wkc, исходя из рабочей скорости автомата и того, что угол его поворота составляет 20 градусов.  <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3"> <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="55" mcd:aligny="7224" 
+ style="position:absolute;top:7209;left:24;width:315">
+<layer width="315">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Определим время одного цикла tz в секундах<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7197;left:384">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4439_3555078.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7209;left:472">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4440_3555156.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="43" mcd:aligny="7280" 
+ style="position:absolute;top:7265;left:24;width:539">
+<layer width="539">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Время совершения одного оборота качающегося стола, учитывая, что за время одного цикла он проходит туда и обратно угол в 40 градусов, составит<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7337;left:40">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3784_3555421.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7337;left:144">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3783_3555515.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7337;left:216">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3792_3555609.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="52" mcd:aligny="7392" 
+ style="position:absolute;top:7377;left:24;width:547">
+<layer width="547">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Принимая во внимание то, что качающийся стол за время одного цикла имеет состояние выстоя, т. е. не движется, будем считать , что время совершения обного оборота, составит <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7457;left:24">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3789_3555703.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7457;left:96">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4279_3555796.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="64" mcd:aligny="7512" 
+ style="position:absolute;top:7497;left:24;width:475">
+<layer width="475">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Следовательно угловая скорость качающегося стола высчитается так<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7541;left:48">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3797_3555890.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7552;left:176">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3799_3555984.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7542;left:248">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3801_3556078.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="65" mcd:aligny="7624" 
+ style="position:absolute;top:7609;left:32;width:480">
+<layer width="480">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Определяем момент статического сопротивления на главном валу от процесса шитья<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="64" mcd:aligny="7680" 
+ style="position:absolute;top:7665;left:40;width:386">
+<layer width="386">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Приделы интегрирования взяты из графика М<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">S(a) = f(a)<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7712;left:72">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3686_3556171.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7712;left:144">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3690_3556265.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7712;left:240">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3691_3556390.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="52" mcd:aligny="7800" 
+ style="position:absolute;top:7783;left:40;width:115">
+<layer width="115">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">при<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman,sans-serif;charset:0;size:12"></comment><font face="Times New Roman,sans-serif" size="3"> <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7784;left:70">
+<layer >
+<img src="./Расчет нагрузок_images/IMG2682_3556515.PNG" border="0"/>
+</layer>
+</div>
+<comment mcd:chrprop="face:Times New Roman,sans-serif;charset:0;size:12"></comment><font face="Times New Roman,sans-serif" size="3"> &gt; 0<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7764;left:160">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5529_3556593.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7856;left:160">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5528_3556687.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7857;left:248">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3053_3556781.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:7933;left:160">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5527_3556890.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8009;left:160">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5526_3556984.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8009;left:240">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3056_3557140.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="52" mcd:aligny="8080" 
+ style="position:absolute;top:8063;left:40;width:115">
+<layer width="115">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">при<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman,sans-serif;charset:0;size:12"></comment><font face="Times New Roman,sans-serif" size="3"> <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8064;left:70">
+<layer >
+<img src="./Расчет нагрузок_images/IMG2714_3557218.PNG" border="0"/>
+</layer>
+</div>
+<comment mcd:chrprop="face:Times New Roman,sans-serif;charset:0;size:12"></comment><font face="Times New Roman,sans-serif" size="3"> &lt; 0<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8065;left:160">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5525_3557312.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8065;left:256">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5515_3557453.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8124;left:160">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5539_3557562.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8224;left:160">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5543_3557687.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8225;left:248">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3062_3557750.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8277;left:160">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5544_3557875.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8345;left:160">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5545_3558000.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8345;left:256">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5726_3558093.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8344;left:336">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4422_3558187.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8344;left:456">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4432_3558281.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="hilight:true;tag:"
+mcd:textproperties=""
+mcd:alignx="28" mcd:aligny="8440" 
+ style="position:absolute;top:8424;left:16;width:480;background:#ffff80"
+>
+<layer width="480">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:14;bold:1"></comment><font face="Times New Roman CYR,sans-serif" size="4"><b>Расчетный момент статического сопротивления на валу двигателя равен:<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;bold:0"></comment></b></font></span>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="88" mcd:aligny="8520" 
+ style="position:absolute;top:8505;left:40;width:532">
+<layer width="532">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Угловая скорость главного вала <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">w1= 10.47 рад/с<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">В одном обороте 2p радиан <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Время поворота главного вала  tgv на один оборот, за который совершается один цикл шитья, составит<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8603;left:64">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3675_3558406.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8617;left:168">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5548_3558515.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8617;left:240">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5549_3558609.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="72" mcd:aligny="8688" 
+ style="position:absolute;top:8673;left:40;width:434">
+<layer width="434">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Рассчитаем время поворота главного вала на угол <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">a1 <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">и угол <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">a2<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3"> <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8717;left:32">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3696_3558687.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8717;left:184">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3698_3558765.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8761;left:40">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3836_3559046.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8761;left:104">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3839_3559171.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8761;left:192">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3837_3559281.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8761;left:248">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5552_3559437.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="hilight:true;color:#80ff80;tag:"
+mcd:textproperties=""
+mcd:alignx="66" mcd:aligny="8872" 
+ style="position:absolute;top:8856;left:24;width:512;background:#80ff80"
+>
+<layer width="512">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:14;bold:1"></comment><font face="Times New Roman CYR,sans-serif" size="4"><b>Для выбора двигателя по мощности воспользуемся методом эквивалентного момента<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;bold:0"></comment></b></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:8947;left:80">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3702_3559531.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9017;left:152">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3703_3559656.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9017;left:264">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3704_3559750.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:9072;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5626_3559843.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9121;left:128">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3071_3559937.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9120;left:336">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3647_3560000.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9153;left:128">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3072_3560093.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9152;left:336">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3648_3560187.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9185;left:128">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3650_3560281.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9184;left:336">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3651_3560406.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="18" mcd:aligny="9240" 
+ style="position:absolute;top:9224;left:8;width:665">
+<layer width="665">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">где  <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9225;left:37">
+<layer >
+<img src="./Расчет нагрузок_images/IMG2419_3560718.PNG" border="0"/>
+</layer>
+</div>
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3"> - передаточное отношение между выходным валом ЭМС и приводным<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">             шкивом;<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">       <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9268;left:36">
+<layer >
+<img src="./Расчет нагрузок_images/IMG2421_3560968.PNG" border="0"/>
+</layer>
+</div>
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3"> - передаточное отношение между цилинрической прямозубой шестерней,   <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">             закрепленной на одном валу со шкивом, и зубчатым колесом на главном  <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">             валу ниткошвейного автомата; <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">        k - коэффициент, учитывающий потери мощности в переходных процессах, <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">             приводной двигатель работает в продолжительном режиме и поэтому<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">             переходные процессы не оказывают влияния на выбор двигателя по <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">             мощности;<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">        <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9406;left:40">
+<layer >
+<img src="./Расчет нагрузок_images/IMG2709_3561062.PNG" border="0"/>
+</layer>
+</div>
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3"> - КПД зубчатой передачи; <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">       <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9429;left:36">
+<layer >
+<img src="./Расчет нагрузок_images/IMG2710_3561156.PNG" border="0"/>
+</layer>
+</div>
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3"> - <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">КПД <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">пар подшипников; <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="size:12"></comment><font size="3">        <comment mcd:chrprop="size:10"></comment></font><comment mcd:chrprop="face:Symbol,sans-serif;charset:2;size:12"></comment><font face="Symbol,sans-serif" size="3">h<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">кп<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="size:12"></comment><font size="3"> - <comment mcd:chrprop="size:10"></comment></font><comment mcd:chrprop="face:Times New Roman Cyr,sans-serif;charset:204;size:12"></comment><font face="Times New Roman Cyr,sans-serif" size="3">КПД клиноременной передачи <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="57" mcd:aligny="9520" 
+ style="position:absolute;top:9505;left:32;width:375">
+<layer width="375">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Скорость вала приводного двигателя определится так<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9560;left:56">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5631_3561250.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9560;left:208">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5630_3561406.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9555;left:296">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4364_3561500.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="60" mcd:aligny="9640" 
+ style="position:absolute;top:9625;left:32;width:375">
+<layer width="375">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Расчетное значение момента вычисляется по формуле<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9688;left:32">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3860_3561593.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9713;left:256">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3861_3561687.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9713;left:384">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3895_3561828.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="60" mcd:aligny="9800" 
+ style="position:absolute;top:9785;left:32;width:278">
+<layer width="278">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Расчетное значение мощности составит<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9832;left:48">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4365_3561953.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9833;left:248">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4366_3562031.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:9833;left:352">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4367_3562140.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="28" mcd:aligny="9904" 
+ style="position:absolute;top:9889;left:8;width:529">
+<layer width="529">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204"></comment><font face="Times New Roman CYR,sans-serif" >     <comment mcd:chrprop="face:Arial,sans-serif;charset:0"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Привод ниткошвейного автомата обладает разветвленными кинематическими звеньями, которые используются для привода различных исполнительных элементов и узлов, например привод счетно-распределительного устройства. самонаклада, тормозной шкив и т. п.<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">     Все эти вращающиеся части запасают кинетическую энергию, которая используется для выполнения основного технологического процесса.<br /><comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">     Этот прием позволяет снизить мощность приводного двигателя, который накачивает кинетической энергией движущиеся части автомата.<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="39" mcd:aligny="10120" 
+ style="position:absolute;top:10105;left:8;width:548">
+<layer width="548">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Определим расчетное значение момента на быстроходном валу автомата, на котором расположены большого диаметра шкив клиноременной передачи, тормозной шкив и зубчатая шестерня. <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10185;left:96">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5648_3562234.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10184;left:168">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5647_3562390.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10184;left:288">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5646_3562515.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10185;left:408">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5645_3562609.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10240;left:112">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3846_3562718.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10257;left:320">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4448_3562812.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="26" mcd:aligny="10344" 
+ style="position:absolute;top:10329;left:8;width:531">
+<layer width="531">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Работа, совершаемая инерционными массами Jin, расположенными на главном валу: <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="17" mcd:aligny="10400" 
+ style="position:absolute;top:10385;left:8;width:311">
+<layer width="311">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">По данным научно-технической литературы<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10385;left:328">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5662_3562906.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10379;left:408">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5663_3563046.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10417;left:8">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5657_3563156.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10445;left:144">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3889_3563265.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10473;left:296">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3890_3563406.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="40" mcd:aligny="10552" 
+ style="position:absolute;top:10537;left:8;width:389">
+<layer width="389">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman Cyr,sans-serif;charset:204;size:12"></comment><font face="Times New Roman Cyr,sans-serif" size="3">Момент, создаваемый этими инерционными массами:<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10582;left:48">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3892_3563515.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10593;left:184">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4292_3563625.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10593;left:288">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4293_3563703.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="26" mcd:aligny="10672" 
+ style="position:absolute;top:10657;left:8;width:487">
+<layer width="487">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Тогда расчетное значение момента на главном валу автомата составит<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10705;left:40">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3910_3563812.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10705;left:296">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4294_3563906.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="36" mcd:aligny="10768" 
+ style="position:absolute;top:10753;left:8;width:529">
+<layer width="529">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Окончательное расчетное значение момента на валу двигателя вычисляется по формуле<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10814;left:88">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3904_3564000.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10825;left:256">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3913_3564125.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10825;left:368">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3915_3564218.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="17" mcd:aligny="10896" 
+ style="position:absolute;top:10881;left:8;width:536">
+<layer width="536">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">По данному расчетному значению момента рассчитывается мощность приводного электродвигателя<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10952;left:72">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3918_3564312.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10953;left:272">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3919_3564406.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:10953;left:376">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3920_3564500.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="40" mcd:aligny="11040" 
+ style="position:absolute;top:11025;left:16;width:575">
+<layer width="575">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Из каталога на электрические машины по полученному значению Ррок и определенному значению  скорости выбирается двигатель, соблюдая условия: Рном &gt; Р дв, а  <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:11064;left:121">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3923_3564593.PNG" border="0"/>
+</layer>
+</div>
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3"> примерно равна  w<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">ном <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3"> <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">:<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Асинхронный двигатель <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;bold:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><b>АИР80А6У3<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;bold:0"></comment></b></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;ital:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><i>P<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;ital:0"></comment></i></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><sub>ном<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;scrp:0"></comment></sub></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3"> = 0,75  кВт<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="ital:1"></comment><i>U<comment mcd:chrprop="ital:0"></comment></i><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><sub>ном<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;scrp:0"></comment></sub></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3"> = 220/380 В<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="size:12;ital:1"></comment><font size="3"><i>n<comment mcd:chrprop="size:10;ital:0"></comment></i></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><sub>ном  <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;scrp:0"></comment></sub></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">= 1000 об/мин<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;ital:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><i>s<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;ital:0"></comment></i></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><sub>ном<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;scrp:0"></comment></sub></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;ital:1;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><i><sub>.<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;ital:0;scrp:0"></comment></sub></i></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;ital:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><i> <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;ital:0"></comment></i></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">= 8 %,<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;ital:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><i>М<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;ital:0"></comment></i></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><sub>ном<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;scrp:0"></comment></sub></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3"> = 7,78 <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:11214;left:97">
+<layer >
+<img src="./Расчет нагрузок_images/IMG2793_3564750.PNG" border="0"/>
+</layer>
+</div>
+<br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Symbol,sans-serif;charset:2;size:12;ital:1"></comment><font face="Symbol,sans-serif" size="3"><i>h<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;ital:0"></comment></i></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><sub>ном <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;scrp:0"></comment></sub></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><sub> <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;scrp:0"></comment></sub></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">=<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><sub> <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;scrp:0"></comment></sub></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">74 %<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;ital:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><i>cos<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;ital:0"></comment></i></font><comment mcd:chrprop="face:Symbol,sans-serif;charset:2;size:12"></comment><font face="Symbol,sans-serif" size="3">f<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><sub>ном<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;scrp:0"></comment></sub></font><comment mcd:chrprop="face:Symbol,sans-serif;charset:2;size:12"></comment><font face="Symbol,sans-serif" size="3"> <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="size:12"></comment><font size="3">=<comment mcd:chrprop="size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">  0,74<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Symbol,sans-serif;charset:2;size:12;ital:1"></comment><font face="Symbol,sans-serif" size="3"><i>l<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;ital:0"></comment></i></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;ital:1;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><i><sub>1<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;ital:0;scrp:0"></comment></sub></i></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><sub> <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;scrp:0"></comment></sub></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">= <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;ital:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><i>I<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;ital:0"></comment></i></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><sub>max <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;scrp:0"></comment></sub></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">/ <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;ital:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><i>I<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;ital:0"></comment></i></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><sub>ном<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;scrp:0"></comment></sub></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3"> = 2,2<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><br /></span>
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;ital:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><i>J<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;ital:0"></comment></i></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><sub>дв<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;scrp:0"></comment></sub></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12;scrp:1"></comment><font face="Times New Roman CYR,sans-serif" size="3"><sub> <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;scrp:0"></comment></sub></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">= <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">0,0031 <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:11314;left:99">
+<layer >
+<img src="./Расчет нагрузок_images/IMG2796_3564859.PNG" border="0"/>
+</layer>
+</div>
+</span>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="hilight:true;color:#eea899;tag:"
+mcd:textproperties=""
+mcd:alignx="55" mcd:aligny="11432" 
+ style="position:absolute;top:11416;left:24;width:461;background:#eea899"
+>
+<layer width="461">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:14;bold:1"></comment><font face="Times New Roman CYR,sans-serif" size="4"><b>Проверка двигателя по перегрузочной способности<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10;bold:0"></comment></b></font></span>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="124" mcd:aligny="11488" 
+ style="position:absolute;top:11473;left:96;width:145">
+<layer width="145">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Условие проверки<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:11473;left:256">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4297_3564937.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="62" mcd:aligny="11536" 
+ style="position:absolute;top:11521;left:24;width:547">
+<layer width="547">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Определим максимальное значение момента двигателя<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:11561;left:24">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4235_3565031.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:11560;left:208">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3987_3565125.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:11600;left:24">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4234_3565218.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:11601;left:200">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4003_3565296.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="39" mcd:aligny="11656" 
+ style="position:absolute;top:11641;left:24;width:508">
+<layer width="508">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Mdin момент динамический, возникающий при пуске автомата<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="51" mcd:aligny="11704" 
+ style="position:absolute;top:11689;left:24;width:502">
+<layer width="502">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Момент инерции качающего стола, который действует на главном валу <comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:11769;left:24">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4231_3565406.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:11769;left:288">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4449_3565531.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:11763;left:376">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4450_3565609.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="OLEREGION" mcd:properties="tag:"
+ style="position:absolute;top:11888;left:56">
+<layer >
+<img src="./Расчет нагрузок_images/IMG5702_3565703.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="38" mcd:aligny="11952" 
+ style="position:absolute;top:11937;left:16;width:549">
+<layer width="549">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Расчет момента инерции шкива клиноременной передачи, расположенного на главном валу автомата<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:11985;left:304">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3937_3565812.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:11985;left:384">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3948_3565890.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="30" mcd:aligny="12008" 
+ style="position:absolute;top:11993;left:24;width:188">
+<layer width="188">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">r1 - внешний радиус шкива<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="30" mcd:aligny="12040" 
+ style="position:absolute;top:12025;left:24;width:208">
+<layer width="208">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">r2 - внутренний радиус шкива<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:12025;left:304">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3939_3565968.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:12025;left:384">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3950_3566093.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:12072;left:432">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4324_3566187.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:12062;left:504">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4325_3566250.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="22" mcd:aligny="12096" 
+ style="position:absolute;top:12081;left:16;width:385">
+<layer width="385">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">g<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font><comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3"> - удельный вес материала, из которого сделан шкив<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="30" mcd:aligny="12152" 
+ style="position:absolute;top:12137;left:24;width:127">
+<layer width="127">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">b - ширина шкива<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:12137;left:304">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3965_3566406.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:12137;left:384">
+<layer >
+<img src="./Расчет нагрузок_images/IMG3967_3566500.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="30" mcd:aligny="12208" 
+ style="position:absolute;top:12193;left:24;width:128">
+<layer width="128">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">mm - масса шкива<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:12187;left:304">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4243_3566593.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:12225;left:304">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4245_3566812.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="TXT" 
+mcd:properties="tag:"
+mcd:textproperties=""
+mcd:alignx="51" mcd:aligny="12304" 
+ style="position:absolute;top:12289;left:24;width:173">
+<layer width="173">
+<comment mcd:parprop="style:Normal"></comment>
+<span class="Normal">
+<comment mcd:chrprop="face:Times New Roman CYR,sans-serif;charset:204;size:12"></comment><font face="Times New Roman CYR,sans-serif" size="3">Момент инерции<comment mcd:chrprop="face:Arial,sans-serif;charset:0;size:10"></comment></font></span>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:12272;left:224">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4344_3566906.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:12297;left:400">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4345_3567000.PNG" border="0"/>
+</layer>
+</div>
+<div mcd:region="EQN" mcd:properties="tag:"
+class="equation"
+;mcd:eqproperties=""
+ style="position:absolute;top:12291;left:488">
+<layer >
+<img src="./Расчет нагрузок_images/IMG4346_3567093.PNG" border="0"/>
+</layer>
+</div>
+</body>
+</html>

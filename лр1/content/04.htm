@@ -1,0 +1,555 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="04.files/filelist.xml">
+<link rel=Edit-Time-Data href="04.files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Основы теории обобщенной машины</title>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="metricconverter"/>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Lena</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>butthead</o:LastAuthor>
+  <o:Revision>8</o:Revision>
+  <o:TotalTime>174</o:TotalTime>
+  <o:Created>2009-03-12T20:31:00Z</o:Created>
+  <o:LastSaved>2008-05-31T12:44:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>1017</o:Words>
+  <o:Characters>5800</o:Characters>
+  <o:Company> </o:Company>
+  <o:Lines>48</o:Lines>
+  <o:Paragraphs>13</o:Paragraphs>
+  <o:CharactersWithSpaces>6804</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>120</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:AutoHyphenation/>
+  <w:HyphenationZone>17</w:HyphenationZone>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+   <w:UseWord97LineBreakingRules/>
+   <w:SelectEntireFieldWithStartOrEnd/>
+   <w:UseWord2002TableStyleRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:204;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:0pt;
+	font-weight:normal;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MTDisplayEquation, li.MTDisplayEquation, div.MTDisplayEquation
+	{mso-style-name:MTDisplayEquation;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	tab-stops:center 241.0pt right 482.0pt;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.style3, li.style3, div.style3
+	{mso-style-name:style3;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.9pt 70.9pt 3.0cm 70.9pt;
+	mso-header-margin:35.45pt;
+	mso-footer-margin:35.45pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+table.MsoTableGrid
+	{mso-style-name:"Сетка таблицы";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="21506">
+  <o:colormenu v:ext="edit" fillcolor="black" strokecolor="none"/>
+ </o:shapedefaults></xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+  <o:regrouptable v:ext="edit">
+   <o:entry new="1" old="0"/>
+   <o:entry new="2" old="0"/>
+   <o:entry new="3" old="0"/>
+   <o:entry new="4" old="0"/>
+   <o:entry new="5" old="0"/>
+   <o:entry new="6" old="0"/>
+   <o:entry new="7" old="0"/>
+   <o:entry new="8" old="0"/>
+   <o:entry new="9" old="0"/>
+   <o:entry new="10" old="0"/>
+   <o:entry new="11" old="10"/>
+   <o:entry new="12" old="0"/>
+   <o:entry new="13" old="12"/>
+   <o:entry new="14" old="0"/>
+   <o:entry new="15" old="0"/>
+   <o:entry new="16" old="0"/>
+   <o:entry new="17" old="0"/>
+   <o:entry new="18" old="0"/>
+   <o:entry new="19" old="18"/>
+   <o:entry new="20" old="19"/>
+  </o:regrouptable>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=RU link=blue vlink=purple style='tab-interval:36.0pt'>
+
+<div class=Section1>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='background:#446644;border-collapse:collapse;border:none;mso-border-alt:
+ solid white .25pt;mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+ mso-border-insideh:.25pt solid white;mso-border-insidev:.25pt solid white'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width=1031 style='width:773.05pt;border:solid white 1.0pt;mso-border-alt:
+  solid white .25pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=style3 align=center style='margin-top:2.0pt;margin-right:0cm;
+  margin-bottom:2.0pt;margin-left:0cm;text-align:center'><span
+  style='color:white;font-weight:normal;mso-bidi-font-weight:bold'>4.</span><span
+  lang=EN-US style='color:white;mso-ansi-language:EN-US;font-weight:normal;
+  mso-bidi-font-weight:bold'>&nbsp;</span><span style='color:white;font-weight:
+  normal;mso-bidi-font-weight:bold'>МЕХАНИЗМ ПРИЖИМА<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes'>
+  <td width=1031 valign=top style='width:773.05pt;border:solid white 1.0pt;
+  border-top:none;mso-border-top-alt:solid white .25pt;mso-border-alt:solid white .25pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=style3 style='margin-top:2.0pt;margin-right:0cm;margin-bottom:2.0pt;
+  margin-left:0cm;text-indent:29.65pt'><span style='color:white;font-weight:
+  normal'>4.1.</span><span lang=EN-US style='color:white;mso-ansi-language:
+  EN-US;font-weight:normal'>&nbsp;</span><span style='color:white;font-weight:
+  normal'>Общие сведения о работе прижима</span><span style='color:white;
+  font-weight:normal;mso-bidi-font-weight:bold'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:36.0pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><span
+style='mso-bidi-font-size:14.0pt;color:black'>Механизм прижима предназначен для
+зажима, фиксирования стоны и отдельных листов в период резки. Второй его функцией
+является уплотнение, сжатие стопы, чтобы в процессе резки под листами создать достаточно
+плотное основание, которое будет препятствовать чрезмерному прогибу листов под
+лезвием ножа, предотвратит вытягивание листов из-под балки прижима. Балка
+прижима является основным исполнительным звеном механизма: она должна зажать
+стопу до начала резки, удерживать в таком положении до полного разделения
+листов и освободить ее вслед за подъе­мом ножа выше уровня стопы. Поэтому
+характер взаимодействия этих механизмов такой, что прижим (П) при опускании на
+стопу всегда опережает нож (Н), а после разрезки при подъеме – отстает от него
+(<a href="#рис4_1">рис. 4.1, <i style='mso-bidi-font-style:normal'>а</i></a>).
+Балка прижима выполняет также функцию указателя линии реза, поскольку расстояние
+между передней кромкой балки прижима и плоскостью ножа составляем <st1:metricconverter
+ProductID="0,3 мм" w:st="on">0,3 мм</st1:metricconverter>. Величина
+необходимого давления прижима зависит от многих фактором. Однако следует
+стремиться к тому, чтобы прогиб листов в стопе был<span style='font-variant:
+small-caps'> </span>минимальным и, как результат, получить высокую точность
+размеров отрезаемых листов. Эффективная работа механизма прижима возможна лишь
+при учете особенностей поведения стопы бумаги под действием значительных
+сжимающих нагрузок. Зависимость между напряжением сжатия бумаги <span
+class=SpellE><span style='mso-bidi-font-style:italic'>&#963;</span></span><i> </i>и
+относительной деформацией <span class=SpellE>&#949;</span> выражается степенной
+функцией<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:36.0pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><span
+class=SpellE><span style='mso-bidi-font-size:14.0pt;color:black;mso-bidi-font-style:
+italic'>&#963;</span></span><i><span style='mso-bidi-font-size:14.0pt;
+color:black'> = </span></i><span class=SpellE><span style='mso-bidi-font-size:
+14.0pt;color:black'>&#945;</span></span><span style='mso-bidi-font-size:14.0pt;
+color:black'>·<span class=SpellE>&#949;</span></span><i style='mso-bidi-font-style:
+normal'><sup><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;
+mso-ansi-language:EN-US'>k</span></sup></i><span style='mso-bidi-font-size:
+14.0pt;color:black'>,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>где
+<span class=SpellE>&#945;</span> – показатель физико-механических свойств бумаги,
+аналогичный модулю упругости, Па; </span><i><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>k</span></i><span style='mso-bidi-font-size:
+14.0pt;color:black;mso-bidi-font-style:italic'> – </span><span
+style='mso-bidi-font-size:14.0pt;color:black'><span
+style='mso-spacerun:yes'> </span>показатель степени.</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>Для обеспечения надежного зажима стопы и получения
+достаточно плотной структуры материала при резании необходимо достижение, для
+каждого отдельного вида бумаги, определенной деформации стопы<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:6.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center;text-indent:36.0pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><span
+style='mso-bidi-font-size:14.0pt;color:black'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:72.75pt;
+ height:33.75pt'>
+ <v:imagedata src="04.files/image001.png" o:title="" croptop="35015f"
+  cropbottom="22095f" cropleft="27762f" cropright="23059f"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=97 height=45
+src="04.files/image002.jpg" v:shapes="_x0000_i1025"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>где
+</span><i><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;
+mso-ansi-language:EN-US'>h</span></i><i><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black'> </span></i><span style='mso-bidi-font-size:14.0pt;
+color:black'>– первоначальная высота стопы.</span><span style='mso-bidi-font-size:
+14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>Существуют два вида прижима: жесткий и упругий. В <span
+style='mso-bidi-font-style:italic'>жестком </span>прижиме верхняя давящая
+поверхность прижима после предварительного сжатия стопы остается неподвижной (<a
+href="#рис4_1">рис. 4.1, <i>г</i></a><span style='mso-bidi-font-style:italic'>)<i>.
+</i></span>Жестким прижимом является, например, обычный винтовой пресс. Однако
+бумага, имея упруго пластические характеристики, при разрезке стопы ножом
+прогибается под его режущей кромкой и сжимается, из-за чего давление балки
+прижима на стопу будет ослаблено. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:36.0pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><a
+name="рис4_1"><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;
+mso-ansi-language:EN-US'><!--[if gte vml 1]><v:shape id="_x0000_i1026" type="#_x0000_t75"
+ style='width:453.75pt;height:360.75pt'>
+ <v:imagedata src="04.files/image003.png" o:title="" croptop="16891f"
+  cropbottom="8023f" cropleft="20070f" cropright="14490f"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=605 height=481
+src="04.files/image004.jpg" v:shapes="_x0000_i1026"><![endif]></span></a><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center;text-indent:36.0pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1027" type="#_x0000_t75" style='width:359.25pt;height:225.75pt'>
+ <v:imagedata src="04.files/image005.png" o:title="" croptop="21958f"
+  cropbottom="18158f" cropleft="22989f" cropright="18022f"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=479 height=301
+src="04.files/image006.jpg" v:shapes="_x0000_i1027"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:12.0pt'>Рис. 4.1. Взаимодействие прижима и стопы в процессе
+резания<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='mso-bidi-font-size:14.0pt;color:black'>Если предварительное усилие
+сжатия было недостаточным, возможно вытягивание листов из-под балки прижима. Во
+избежание этого в жестких прижимах (с неподвижной балкой прижима) создают
+изначально повышенное давление прижима. Рекомендуется, чтобы оно было в
+диапазоне 1,3<i>...</i><span style='mso-bidi-font-style:italic'>1,8 <span
+class=SpellE><i>Р</i><sub>р</sub></span><i>.</i> </span>Жесткий прижим сейчас
+применяемся очень ограниченно и только в малоформатных резальных машинах.
+Привод его, как прави­ло, осуществляется вручную. Упругий<i> </i>прижим получил
+свое название из-за наличия в составе механизма упругого элемента. При действии
+балки прижима на сто­пу ее давление передается на верхние листы точно по
+площади контакта (<a href="#рис4_1">рис. 4.1, <i style='mso-bidi-font-style:
+normal'>б</i></a>) по линии <i style='mso-bidi-font-style:normal'>А</i><sub>1</sub><i
+style='mso-bidi-font-style:normal'>В</i><sub>1</sub>. По мере удаления от
+нижней по­верхности балки прижима ширина, на которую распространяется давление
+прижима, постепенно увеличивается, достигая максиму­ма у нижних листов (линия <i>А</i><sub><span
+style='mso-bidi-font-style:italic'>2</span></sub><i>В</i><sub><span
+style='mso-bidi-font-style:italic'>2</span></sub><i>). </i>Одновременно
+удельное давле­ние, естественно, будет меньше (кривая <i>Н). </i>От момента зажима
+стопы до врезания ножа давление в стопе за счет выдавливания воздуха между листами
+будет снижать­ся. Это вызовет значительный прогиб </span><i><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>h</span></i><i><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black'> </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>листов мод кромкой ножа (<a
+href="#рис4_1">рис. 4.1, <i style='mso-bidi-font-style:normal'>е</i></a>) и их
+отход от нижней поверхности балки прижима по условной дуге <i>АВ. </i>При этом
+длина дуги <span class=GramE><i>АВ</i></span><i> </i><span style='mso-bidi-font-style:
+italic'>= <i>АС </i>= </span></span><i><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>l</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black;mso-bidi-font-style:italic'>2</span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'> будет больше отрезка </span><i><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>l</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black;mso-bidi-font-style:italic'>1 </span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>значит, возникнет разница в
+длинах верхних и нижних листов. Эта деформация будет тем больше, чем больше
+вертикаль­ная составляющая резания и чем меньше <span class=SpellE>спрессованность</span>
+стопы. В отдельных случаях возможно вытягивание листов из-под балки прижима.
+При наличии упругого прижима при сжатии стопы и ее деформировании лезвием ножа
+балка прижима будет опускаться вместе со стопой, не уменьшая величины давления.
+Благодаря это­му упругий прижим является сейчас общепринятой системой для всех
+профессиональных резальных машин. Следует также учитывать, что из-за наличия воздушной
+прослой­ки между листами и шероховатости на их поверхности действую­щие усилие
+прижима будет передаваться от верхних листов ниже­лежащим не мгновенно, а в
+течение какого-то периода, т. е. давле­ние прижима будет перемещаться сверху в
+вниз виде волны, достигая нижних листов через определенный промежуток, времени.
+Если производить резку сразу же после приложения усилия прижима, возможен
+случай, когда кромка ножа достигнет нижних листов прежде, чем они получат достаточное
+уплотнение, а значит, возмож­ны значительные прогибы листов. Понятно, что время
+распростра­нения давления будет определяться состоянием поверхности бумаги и ее
+плотностью. Для плотных, гладких бумаг этот промежуток бу­дет минимальным, для
+объемных, пористых бумаг с шероховатой поверхностью – максимальным. Поэтому при
+резке таких бумаг желателен более длительный период прессования стопы, и в
+современных ОРМ создается возможность выбора вариантов интервала времени между
+опусканием прижима и резкой, чтобы обеспечить высокую точность продукции неза­висимо
+от ее особенностей.</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>Для обеспечения одинаковых условий прижима и качественной резки
+к механизму прижима предъявляются следующие требования:</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+механизм должен обеспечить зажим стопы любой длины и высоты в границах технических
+параметров машины;</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+балка прижима должна зажать стопу к началу резания, удер­живать ее в таком
+состоянии до конца резания и освободить стопу только когда нож поднимется выше
+уровня стопы;</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+механизм должен иметь бесступенчатое регулирование давления в широком
+диапазоне;</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+балка прижима должна всегда быть параллельна плоскости стола для создания равномерного
+давления по всей ширине стоны;</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+максимальное усилие резания должно обеспечить эффектив­ный зажим стопы любого материала
+при максимальной длине реза;</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+механизм прижима должен обеспечить давление в течение всего периода резания
+даже при наличии значительной деформации материала под балкой прижима;</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+механизм не должен создавать препятствия при резании очень узких лент
+материала, которые подает подаватель, возможность перемещения подавателя к
+линии резания на расстояние порядка 20…25 мм;</span><span style='mso-bidi-font-size:
+14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+балка прижима не должна создавать оттисков своей нижней поверхностью на верхних
+листах стопы, что может привести к их браку;</span><span style='mso-bidi-font-size:
+14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+передний край балки прижима должен быть параллельным плоскости резания,
+поскольку при отсутствии световой линии – указателя места реза – он служит ее заменителем;</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+расположение балки прижима должно быть в относительной близости к ножу, чтобы
+обеспечить деформацию и уплотнение стоны непосредственно в месте реза;</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+возможность опускания балки прижима педалью для обозначения места реза.</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='mso-bidi-font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:36.0pt'><span style='mso-bidi-font-size:
+14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

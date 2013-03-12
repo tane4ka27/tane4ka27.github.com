@@ -1,0 +1,1454 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="03_1.files/filelist.xml">
+<link rel=Edit-Time-Data href="03_1.files/editdata.mso">
+<link rel=OLE-Object-Data href="03_1.files/oledata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Основы теории обобщенной машины</title>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="metricconverter"/>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Lena</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>butthead</o:LastAuthor>
+  <o:Revision>105</o:Revision>
+  <o:TotalTime>534</o:TotalTime>
+  <o:Created>2008-01-15T09:32:00Z</o:Created>
+  <o:LastSaved>2008-05-31T12:40:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>2485</o:Words>
+  <o:Characters>14169</o:Characters>
+  <o:Company> </o:Company>
+  <o:Lines>118</o:Lines>
+  <o:Paragraphs>33</o:Paragraphs>
+  <o:CharactersWithSpaces>16621</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>120</w:Zoom>
+  <w:AutoHyphenation/>
+  <w:HyphenationZone>17</w:HyphenationZone>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+   <w:UseWord97LineBreakingRules/>
+   <w:SelectEntireFieldWithStartOrEnd/>
+   <w:UseWord2002TableStyleRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:204;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Обычный;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:0pt;
+	font-weight:normal;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:35.45pt;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MTDisplayEquation, li.MTDisplayEquation, div.MTDisplayEquation
+	{mso-style-name:MTDisplayEquation;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	tab-stops:center 241.0pt right 482.0pt;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.style3, li.style3, div.style3
+	{mso-style-name:style3;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.9pt 3.0cm 5.0cm 3.0cm;
+	mso-header-margin:0cm;
+	mso-footer-margin:82.2pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Обычная таблица";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+table.MsoTableGrid
+	{mso-style-name:"Сетка таблицы";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="24578">
+  <o:colormenu v:ext="edit" fillcolor="black" strokecolor="none"/>
+ </o:shapedefaults></xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+  <o:regrouptable v:ext="edit">
+   <o:entry new="1" old="0"/>
+   <o:entry new="2" old="0"/>
+   <o:entry new="3" old="0"/>
+   <o:entry new="4" old="0"/>
+   <o:entry new="5" old="0"/>
+   <o:entry new="6" old="0"/>
+   <o:entry new="7" old="0"/>
+   <o:entry new="8" old="0"/>
+   <o:entry new="9" old="0"/>
+   <o:entry new="10" old="0"/>
+   <o:entry new="11" old="10"/>
+   <o:entry new="12" old="0"/>
+   <o:entry new="13" old="12"/>
+   <o:entry new="14" old="0"/>
+   <o:entry new="15" old="0"/>
+   <o:entry new="16" old="0"/>
+   <o:entry new="17" old="0"/>
+   <o:entry new="18" old="0"/>
+   <o:entry new="19" old="18"/>
+   <o:entry new="20" old="19"/>
+  </o:regrouptable>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=RU link=blue vlink=purple style='tab-interval:36.0pt'>
+
+<div class=Section1>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='background:#446644;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=1031 style='width:773.05pt;border:solid white 1.0pt;mso-border-alt:
+  solid white .25pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=style3 style='margin-top:2.0pt;margin-right:0cm;margin-bottom:2.0pt;
+  margin-left:0cm;text-indent:29.65pt'><span style='color:white;font-weight:
+  normal;mso-bidi-font-weight:bold'>3.1.</span><span lang=EN-US
+  style='color:white;mso-ansi-language:EN-US;font-weight:normal;mso-bidi-font-weight:
+  bold'>&nbsp;</span><span style='color:white;font-weight:normal;mso-bidi-font-weight:
+  bold'>Механика процесса резания стопы клиновидным ножом<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:36.0pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><span
+style='mso-bidi-font-size:14.0pt;color:black'>При резке стопы ножом клиновидной
+формы одновременно про­исходит ряд сложных явлений:</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+вертикальное перемещение ножа и плоскости резания и свя­занное с ним
+вдавливание его в стопу, изгиб листов;</span><span style='mso-bidi-font-size:
+14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+горизонтальное смещение ножа в плоскости резания и выз­ванное этим «пиление»
+стопы вдоль линии резания;</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+резка или разрушение листов в месте прогиба под действием движущей силы ножа;</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+трение срезанных кромок листов по тыльной поверхности ножа в плоскости резания;</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+смятие кромок отрезанных листов от давления скошенной части ножа;</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+отодвигание ножом отрезанной части стопы.</span><span style='mso-bidi-font-size:
+14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>На <a href="#рис3_2">рис. 3.2, <i style='mso-bidi-font-style:
+normal'>а</i></a> показана лишь часть явлений, которые происходят при резке
+(те, которые возникают при горизонтальной составляющей движения, не показаны).
+Стопа листов перед разрезкой сжимается балкой прижима. Нож, заостренный под
+углом</span><i style='mso-bidi-font-style:normal'><span style='mso-bidi-font-size:
+14.0pt'> </span></i><span style='mso-bidi-font-size:14.0pt'>&#945;<span
+style='color:black'>, двигается вертикально вниз и создает дав­ление
+приблизительно по линии <i>АА</i><span style='mso-bidi-font-style:italic'>,<i> </i></span>которая
+проходит через центр закругления кромки <i style='mso-bidi-font-style:normal'>С</i>.
+Под действием движущей силы возникает местное сжатие листов. Поскольку удельное
+давление ножа по линии его перемещения будет значительно больше удельного
+давления, которое создает балка прижима, листы под ножом прогнутся, частично
+отходя от балки прижима. В месте контакта кромки ножа со следующим листом (в
+данном случае с 4-м) возникают большие контактные напряжения, которые вызовут
+разрыв волокон ориентировочно по линии <i>АА. </i>По некоторым данным [5],
+такое разрушение начинается при давлении 200 мПа. Поскольку бумага состоит из
+отдельных волокон и соединительной ткани, этот разрыв будет происходить не по
+элементарным волокнам (их прочность намного <span style='mso-bidi-font-weight:
+bold'>больше </span>прочности бумаги <span style='mso-bidi-font-weight:bold'>в<b>
+</b></span>целом), а по соединительной ткани, т.о. разрыв будет не очень ровным
+и гладким. Это явление носит название опережающей трещины и распространяется,
+естественно, только на толщину того листа, в который врезалось лезвие ножа.<o:p></o:p></span></span></p>
+
+<div align=center>
+
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=371 valign=top style='width:277.9pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center;
+  mso-layout-grid-align:none;text-autospace:none'><a name="рис3_2"><b
+  style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;font-family:
+  Verdana;color:#CC0000'><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+   coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+   filled="f" stroked="f">
+   <v:stroke joinstyle="miter"/>
+   <v:formulas>
+    <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+    <v:f eqn="sum @0 1 0"/>
+    <v:f eqn="sum 0 0 @1"/>
+    <v:f eqn="prod @2 1 2"/>
+    <v:f eqn="prod @3 21600 pixelWidth"/>
+    <v:f eqn="prod @3 21600 pixelHeight"/>
+    <v:f eqn="sum @0 0 1"/>
+    <v:f eqn="prod @6 1 2"/>
+    <v:f eqn="prod @7 21600 pixelWidth"/>
+    <v:f eqn="sum @8 21600 0"/>
+    <v:f eqn="prod @7 21600 pixelHeight"/>
+    <v:f eqn="sum @10 21600 0"/>
+   </v:formulas>
+   <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" aspectratio="t"/>
+  </v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:267pt;
+   height:282.75pt'>
+   <v:imagedata src="03_1.files/image001.jpg" o:title="Untitled-2"
+    cropbottom="33343f" cropright="18232f"/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=356 height=377
+  src="03_1.files/image002.jpg" v:shapes="_x0000_i1025"><![endif]></span></b></a><b
+  style='mso-bidi-font-weight:normal'><span lang=EN-US style='font-size:12.0pt;
+  font-family:Verdana;color:#CC0000;mso-ansi-language:EN-US'><o:p></o:p></span></b></p>
+  </td>
+  <td width=508 valign=top style='width:380.85pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center;
+  mso-layout-grid-align:none;text-autospace:none'><b style='mso-bidi-font-weight:
+  normal'><span style='font-size:12.0pt;font-family:Verdana;color:#CC0000'><!--[if gte vml 1]><v:shape
+   id="_x0000_i1026" type="#_x0000_t75" style='width:369.75pt;height:296.25pt'>
+   <v:imagedata src="03_1.files/image001.jpg" o:title="Untitled-2" croptop="31812f"/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=493 height=395
+  src="03_1.files/image031.jpg" v:shapes="_x0000_i1026"><![endif]><o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center;background:white;
+mso-layout-grid-align:none;text-autospace:none'><span style='font-size:12.0pt;
+color:black;mso-bidi-font-style:italic'>Рис. 3.2 <a href="pr3.swf">Механика
+процесса резания стопы, действующие силы</a></span><span style='font-size:12.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><i><span
+style='mso-bidi-font-size:14.0pt;color:#446644'>Силы сопротивления, действующие
+на нож</span></i><i><span style='mso-bidi-font-size:14.0pt;color:black'>. </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>Одновременно с резкой-разрушением
+очередного листа нож скошенной гранью по линии <i>ВВ </i>действует на кромки
+ранее отрезанных листов (1…3), частично деформируя их. Возникают силы сопротивления
+</span><i style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>T</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>1</span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>,<i style='mso-bidi-font-style:
+normal'> Т</i><sub>2</sub>,<i style='mso-bidi-font-style:normal'> </i></span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>T</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>3</span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>, перпендикулярные скошенной
+грани. При этом будут возникать силы трения кромок отодвигаемых листов </span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>N</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>1</span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>,<i style='mso-bidi-font-style:
+normal'> </i></span><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>N</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>2</span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>,<i style='mso-bidi-font-style:
+normal'> </i></span><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>N</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>3</span></sub><i><span
+style='mso-bidi-font-size:14.0pt;color:black'>. </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>После разрезки прогнутые части
+листов из-за упругих свойств бумаги будут стремиться выпрямиться. Поскольку
+длина изогнутой части стопы больше аналогичного горизонтального отрезка, кромки
+листов будут создавать давление </span><i style='mso-bidi-font-style:normal'><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>S</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>1</span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>, </span><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;
+mso-ansi-language:EN-US'>S</span></i><sub><span style='mso-bidi-font-size:14.0pt;
+color:black'>2</span></sub><span style='mso-bidi-font-size:14.0pt;color:black'>,
+</span><i style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>S</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>3</span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'> на тыльную поверхность ножа. При
+этом в зоне контакта будут возникать силы трения </span><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;
+mso-ansi-language:EN-US'>F</span></i><sub><span style='mso-bidi-font-size:14.0pt;
+color:black'>1</span></sub><span style='mso-bidi-font-size:14.0pt;color:black'>,<i
+style='mso-bidi-font-style:normal'> </i></span><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;
+mso-ansi-language:EN-US'>F</span></i><sub><span style='mso-bidi-font-size:14.0pt;
+color:black'>2</span></sub><span style='mso-bidi-font-size:14.0pt;color:black'>,<i
+style='mso-bidi-font-style:normal'> </i></span><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;
+mso-ansi-language:EN-US'>F</span></i><sub><span style='mso-bidi-font-size:14.0pt;
+color:black'>3 </span></sub><span style='mso-bidi-font-size:14.0pt;color:black'>,которые
+вызовут дополнительное сопротивление перемещению ножа вниз. Заменим
+элементарные </span><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>T</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>1</span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>, <i style='mso-bidi-font-style:
+normal'>Т</i><sub>2</sub>,<i style='mso-bidi-font-style:normal'> </i></span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>T</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>3</span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>;<i style='mso-bidi-font-style:
+normal'> </i></span><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>N</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>1</span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>,<i style='mso-bidi-font-style:
+normal'> </i></span><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>N</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>2</span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>,<i style='mso-bidi-font-style:
+normal'> </i></span><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>N</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>3</span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'><span style='mso-spacerun:yes'> 
+</span>и другие упомянутые выше силы соответствующими равнодействующими <i>Т, </i></span><i><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>N</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'>, </span></i><i><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>S</span></i><i><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black'> </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black;mso-bidi-font-style:italic'>и<i> </i></span><i><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>F</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'>.</span></i><span
+style='mso-bidi-font-size:14.0pt;color:black;mso-bidi-font-style:italic'> </span><span
+style='mso-bidi-font-size:14.0pt;color:black'>Таким образом, на нож в процессе
+резания будут действовать такие суммарные силы:</span><span style='mso-bidi-font-size:
+14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+сопротивление стопы <i>Р</i><sub><span style='mso-bidi-font-style:italic'>в</span></sub><i>
+</i>продвижению кромки ножа, которое направлено вертикально вверх
+приблизительно по линии <i style='mso-bidi-font-style:normal'>АА</i>;</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+сопротивление <i style='mso-bidi-font-style:normal'>Т</i> сжатию кромок
+отрезанных листов скошенной гранью ножа;</span><span style='mso-bidi-font-size:
+14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+трение <i style='mso-bidi-font-style:normal'>N </i>краев листов по скошенной
+части ножа;</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+давление </span><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>S</span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'> кромок листов на тыльную
+плоскость ножа;</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+трение </span><i><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;
+mso-ansi-language:EN-US'>F</span></i><i><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black'> </span></i><span style='mso-bidi-font-size:14.0pt;
+color:black'>кромок листов по тыльной поверхности ножа.</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>Следует отметить, что точно охарактеризовать величины и на­правление
+действия перечисленных сил невозможно из-за влиянии большого количества
+факторов, которые к тому же являются непостоянными. Поскольку угол заточки ножа
+небольшой (19…24°), можно полагать с небольшой долей приближения, что силы
+трения </span><i><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;
+mso-ansi-language:EN-US'>F</span></i><i><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black'> </span></i><span style='mso-bidi-font-size:14.0pt;
+color:black'>и <i>N </i>по направлению совпадают с силой сопротивления <i>Р</i><sub><span
+style='mso-bidi-font-style:italic'>в</span></sub><i> </i>и вхо­дят в ее состав.
+Тогда получим, что в сечении, перпендикулярном плоскости резания (<a
+href="#рис3_2">рис. 3.2, <i>б</i></a><i>), </i>на нож действуют три основные
+силы: вертикальная <i>Р</i><sub><span style='mso-bidi-font-style:italic'>в</span></sub><span
+style='mso-bidi-font-style:italic'>, </span>лобовая </span><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;
+mso-ansi-language:EN-US'>T</span></i><span style='mso-bidi-font-size:14.0pt;
+color:black'> и тыльная </span><i><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>S</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'>.</span></i><span
+style='mso-bidi-font-size:14.0pt;color:black;mso-bidi-font-style:italic'> </span><span
+style='mso-bidi-font-size:14.0pt;color:black'>Без сомнения наибольшей является
+вертикальная сила <i>Р</i><sub><span style='mso-bidi-font-style:italic'>в</span></sub><span
+style='mso-bidi-font-style:italic'>, </span>поскольку она определяет основное
+сопротивление вертикальному перемещению ножа. Силы </span><i><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>S</span></i><i><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black'> </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>и <i style='mso-bidi-font-style:
+normal'>Т</i> также могут иметь значительную величину. Сила давления <i
+style='mso-bidi-font-style:normal'>Т</i> на скошенную поверхность ножа будет
+измениться в значительных пределах, поскольку зависит от сил трения между
+листами отрезанной части стоны. Она будет относительно небольшой при
+незначительной ширине отрезаемой части (например, резка этикеток при высокой
+гладкости бумаги в стопе) или отсутствовать вообще (подрезка боковых кромок в
+стопе). В [2,8,11] утверждается, что сила <i style='mso-bidi-font-style:normal'>Т</i>
+образует момент, который стремится повернуть режущую часть ножа по часовой
+стрелке. В экстремальных случаях (например, для случаев высокой стопы, тяжелых
+видов бумаг или материала с шероховатой поверхностью и др.) величина лобовой
+силы <i style='mso-bidi-font-style:normal'>Т</i> будет существенной и, действуя
+на скошенную грань, действительно может отклонить нож в сторону балки прижима.
+Поэтому обычно резальные машины на этот случай имеют на вертикальной поверхности
+балку прижима, обращенную к ножу, специальные накладки из текстолита, которые
+создают опору для ножа. В результате он идет ровно и не трется лезвием по нижнему
+краю балки прижима. Там же утверждается о наличии силы давления </span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>S</span></i><span style='mso-bidi-font-size:
+14.0pt;color:black'> на тыльную сторону ножа, однако ей не уделялось
+надлежащего внимания. Это связано с тем, что указанная сила проявляет себя при
+значительном затуплении ножа. Однако это усилие имеет существенную величину, и
+его можно сравнить с лобовой силой <i style='mso-bidi-font-style:normal'>Т.</i>
+Операторы, работающие на этих машинах, отмечают, что траектория движения кромки
+ножа при резке не всегда лежит в плоскости резания, а при определенных условиях
+(например, при затупленном ноже) имеет тенденцию к криволинейности со смещением
+и сторону отрезанной части стопы. Есть еще одна особенность, которую не всегда
+принимают в расчет при рассмотрении характера взаимодействия всех элементов,
+участвующих в резке. Имеется в виду характер распределения давления балки
+прижима на стопу. Ширина зоны давления на верхние листы будет равна ширине
+контактной поверхности балки прижима <i>А</i><sub><span style='mso-bidi-font-style:
+italic'>1</span></sub><i>В</i><sub><span style='mso-bidi-font-style:italic'>1</span></sub>,
+<a href="#рис3_2">рис. 3.2, <i style='mso-bidi-font-style:normal'>г</i></a>.
+Зона давления нижележащих листов будет шире <span style='mso-bidi-font-style:
+italic'>(<i>А</i><sub>2</sub><i>В</i><sub>2</sub>)<i>, </i></span>достигая у
+стола машины максимальной ширины, т. е. распределение зоны давления будет иметь
+пирамидальный характер. Лезвие ножа при резке будет двигаться как раз по
+границе раздела между спрессованной и необжатой частью стопы. При этом
+спрессованная часть стопы будет создавать повышенное сопротивление кромке ножа,
+и он будет стремиться переместиться в сторону меньшего сопротивления, т.е. за
+пределы зоны спрессованности, в сторону отодвигаемой части стопы. В результате
+на тыльную часть ножа будут действовать две силы: давление отогнутых листов и
+сопротивление спрессованной части стоны. Таким образом, на нож с двух сторон
+будут действовать две силы лобовая <i style='mso-bidi-font-style:normal'>Т</i>
+и тыльная </span><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>S</span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>. Величина этих сил будет
+изменяться в зависимости от ряда факторов. О силе <i style='mso-bidi-font-style:
+normal'>Т</i> сказано выше. Величина силы </span><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;
+mso-ansi-language:EN-US'>S</span></i><span style='mso-bidi-font-size:14.0pt;
+color:black'> будет определяться деформационными свойствами материала в стопе,
+величиной давления балки прижима на стопу, а также величиной затупления кромки
+ножа. Увеличению тыльной силы </span><i style='mso-bidi-font-style:normal'><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>S</span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'> будет способствовать также то,
+что по мере затупления ножа его скругленная режущая кромка, последовательно
+занимая положение приблизительно по биссектрисе угла заточки, <a href="#рис3_2">рис.
+3.2, <i style='mso-bidi-font-style:normal'>в</i></a>, постепенно сместится
+вправо на величину, соответствующую силе </span><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;
+mso-ansi-language:EN-US'>S</span></i><span style='mso-bidi-font-size:14.0pt;
+color:black'>. Это будет способствовать увеличению длины листов стопы под
+балкой прижима, при распрямлении они будут создавать допол­нительное давление
+на тыльную сторону ножа. Следовательно, возможны разные варианты соотношения
+сил <i>Т </i>и </span><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>S</span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>. При определенных
+обстоятельствах большей будет сила <i>Т</i>, тогда нож будет стремиться сместиться
+в сторону балки прижима, делая нижние листы в стопе короче верхних (</span><i
+style='mso-bidi-font-style:normal'><span style='mso-bidi-font-size:14.0pt;
+color:#446644'>нижний подрез</span></i><span style='mso-bidi-font-size:14.0pt;
+color:black'>). В ином случае преобладающей будет сила </span><i><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>S</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'>, </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>тогда кромка ножа будет
+отклоняться на оператора, при этом нижние листы будут длиннее верхних –
+возникает </span><i style='mso-bidi-font-style:normal'><span style='mso-bidi-font-size:
+14.0pt;color:#446644'>верхний</span></i><span style='mso-bidi-font-size:14.0pt;
+color:#446644'> <i>подрез</i></span><span style='mso-bidi-font-size:14.0pt;
+color:black'>. </span><span lang=EN-US style='mso-bidi-font-size:14.0pt;
+color:black;mso-ansi-language:EN-US'>B</span><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black'> </span><span style='mso-bidi-font-size:14.0pt;color:black'>отдельных
+случаях возникает равновесие этих сил. Кроме этих сил из-за сабельного движения
+на нож вдоль его длины будут действовать силы сопротивления горизонтальному
+перемещению, а также силы инерции ножедержателя и силы трения в направ­ляющих станины.
+Обычно последними двумя силами пренебрегают. Все силы сопротивления резанию
+сгруппированы по четырем направлениям и заменены их равнодействующими, <a
+href="#рис3_2">рис. 3.2, <i>в</i></a><span style='mso-bidi-font-style:italic'>:</span></span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+равнодействующая сил, действующих по вертикальной линии <i>АА </i>или
+параллельно ей,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+вертикальная сила <i style='mso-bidi-font-style:normal'>Р</i><sub>в</sub>;</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+равнодействующая сил, действующих параллельно столу,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+горизонтальная сила <i style='mso-bidi-font-style:normal'>Р</i><sub>г</sub>;</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+равнодействующая сил, действующих перпендикулярно скошенной части ножа,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+лобовая сила <i style='mso-bidi-font-style:normal'>Р</i><sub>л</sub>;</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+равнодействующая<span style='mso-spacerun:yes'>   </span>сил,<span
+style='mso-spacerun:yes'>  </span>действующих<span style='mso-spacerun:yes'> 
+</span>на<span style='mso-spacerun:yes'>  </span>тыльную<span
+style='mso-spacerun:yes'>  </span>плоскость<span style='mso-spacerun:yes'> 
+</span>ножа,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>–
+тыльная сила <i>Р</i><sub>т</sub><i> .</i><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>Суммарное сопротивление при резке стопы называется силой <i>резания
+Р</i><sub>р</sub><i> </i>, которая является равнодействующей всех сил:<o:p></o:p></span></p>
+
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=1180 style='width:884.7pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:12.0pt;margin-right:0cm;
+  margin-bottom:12.0pt;margin-left:0cm;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><i style='mso-bidi-font-style:normal'><span
+  style='mso-bidi-font-size:14.0pt'><span style='position:relative;top:5.0pt;
+  mso-text-raise:-5.0pt'><!--[if gte vml 1]><v:shape id="_x0000_i1027" type="#_x0000_t75"
+   style='width:135pt;height:18.75pt' o:ole="" fillcolor="window">
+   <v:imagedata src="03_1.files/image005.wmz" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=180 height=25
+  src="03_1.files/image007.gif" v:shapes="_x0000_i1027"><![endif]></span><!--[if gte mso 9]><xml>
+   <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1027"
+    DrawAspect="Content" ObjectID="_1273753601">
+   </o:OLEObject>
+  </xml><![endif]--></span></i><span lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+  </td>
+  <td width=58 style='width:43.8pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:12.0pt;margin-right:0cm;
+  margin-bottom:12.0pt;margin-left:17.6pt;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt'>(1)<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>Отметим, что действие сил <i style='mso-bidi-font-style:
+normal'>Р</i><sub>л</sub> и <i style='mso-bidi-font-style:normal'>Р</i><sub>т<i
+style='mso-bidi-font-style:normal'> </i></sub>непостоянно по времени и
+нестабильно по величине. Принято считать [11], что сила резания <i
+style='mso-bidi-font-style:normal'>Р</i><sub>р</sub> лежит в плоскости резания
+и направлена под углом</span><i style='mso-bidi-font-style:normal'><span
+style='mso-bidi-font-size:14.0pt'> </span></i><span style='mso-bidi-font-size:
+14.0pt'>&#957;<span style='color:black'> к горизонтали в сторону,
+противоположную движению ножа. Угол &#957; является величиной переменной даже в
+продолжение одного рабочего цикла. Как правило, угол &#957; значительно<span
+style='mso-spacerun:yes'>  </span>больше угла траектории ножа. Например, при
+&#952; = 45°, &#957;</span><i style='mso-bidi-font-style:normal'> </i><span
+style='color:black'><span style='mso-spacerun:yes'> </span>= 73°. Важное значение
+имеет </span><i><span style='color:#446644'>действительный угол резания</span><span
+style='color:black'> </span></i><span style='color:black'>(<a href="#рис3_2">рис.
+3.1, <i>г</i></a><span style='mso-bidi-font-style:italic'>)<i>, </i></span>величина
+которого определена в [11]:<o:p></o:p></span></span></p>
+
+<p class=MsoNormal align=center style='margin-top:12.0pt;margin-right:0cm;
+margin-bottom:12.0pt;margin-left:0cm;text-align:center;text-indent:36.0pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><span
+style='mso-bidi-font-size:14.0pt;color:black'><!--[if gte vml 1]><v:shape id="_x0000_i1028"
+ type="#_x0000_t75" style='width:187.5pt;height:33pt'>
+ <v:imagedata src="03_1.files/image004.png" o:title="" croptop="38173f"
+  cropbottom="23647f" cropleft="27187f" cropright="25549f"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=250 height=44
+src="03_1.files/image006.jpg" v:shapes="_x0000_i1028"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt;background:white;
+mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>где<span style='mso-tab-count:1'>    </span>&#945; – угол
+заточки ножа;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt;background:white;
+mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'><span style='mso-tab-count:1'>         </span>&#952;</span>
+–<span style='mso-bidi-font-size:14.0pt;color:black'> угол траектории ножа с
+горизонталью;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt;background:white;
+mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'><span style='mso-tab-count:1'>         </span><span
+style='mso-bidi-font-style:italic'>&#968; – </span>угол наклона лезвия ножа к
+поверхности стопы.</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>Он уменьшается при уменьшении угла заточки &#945; и угла
+траектории </span><span style='position:relative;top:3.0pt;mso-text-raise:-3.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1029" type="#_x0000_t75" style='width:9.75pt;height:15pt' o:ole="">
+ <v:imagedata src="03_1.files/image013.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=13 height=20
+src="03_1.files/image008.gif" v:shapes="_x0000_i1029"><![endif]></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1029"
+  DrawAspect="Content" ObjectID="_1273753602">
+ </o:OLEObject>
+</xml><![endif]--><span style='mso-bidi-font-size:14.0pt;color:black'>, а также
+при увеличении угла наклона ножа<span style='mso-bidi-font-style:italic'>
+&#968;<i>. </i>У</span>гол заточки лежит в пределах 19…24°, угол наклона
+принимается 1…3° и не может быть увеличен, так как возникнут трудности в
+реализации сабельного движения. Угол траектории обычно принимают в диапазоне
+40…45°. Для перечисленных величин действительный угол резания будет в диапазоне
+12…17°. Понятно, что меньший угол создает лучшие условия резания, однако не следует
+слепо к этому стремиться, пренебрегая рекомендациями о выборе угла заточки.</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><i><span
+style='mso-bidi-font-size:14.0pt;color:#A50021'>Экспериментальные исследования
+сил резания</span></i><i><span style='mso-bidi-font-size:14.0pt;color:black'>. </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>Изучение величин и характера изменения
+составляющих сил является сложной задачей. Для измерения составляющих сил резания
+было использовано оригинальное устройство на основе ножа, <a href="#рис3_3">рис.
+3.3, <i>а</i></a><i>. </i>Выполненные фигурные вырезы делают нож чувствительным
+к деформациям. Наклеенные тензодатчики 1в, 2в, 3в и 4в чувствительны к
+восприятию вертикальной силы <i style='mso-bidi-font-style:normal'>Р</i><sub>в</sub>,
+тензодатчики 1г, 2г, 3г и 4г – горизонтальной силы <i style='mso-bidi-font-style:
+normal'>Р</i><sub>г</sub><span style='mso-bidi-font-style:italic'>, тензо</span>датчики
+1л, 2л, 3л и 4л – лобовой <i style='mso-bidi-font-style:normal'>Р</i><sub>л</sub>.
+Все тензодатчики<span style='mso-spacerun:yes'>  </span>соединены в
+измерительные мостовые схемы, рис. <a href="#рис3_3">рис. 3.3, <i>б</i></a><i>.
+</i>На рис. <a href="#рис3_3">рис. 3.3, <i>в</i></a><i> </i>показана
+осциллограмма, отображающая характер изменений составляющих соответственно
+вертикальной, горизонтальной и лобовой сил резания. На всех кривых можно выде­лить
+три участка. Первый <span style='mso-bidi-font-style:italic'>(<i>АВ</i>)<i> </i></span>соответствует
+врезанию ножа в стопу бумаги и характеризуется быстрым ростом усилий резания до
+максимального значения. Второй участок <span style='mso-bidi-font-style:italic'>(<i>ВС</i>)<i>
+</i></span>соответствует про­цессу резания стопы и сопровождается некоторым
+уменьшением сил резания. Как показали исследования, характер изменения сил
+резания зависит от многих факторов. Кроме известных (острота ножа, угол
+заточки, вид бумаги) будет также влиять степень спрессованности стопы, т. е. ее
+однородность. Поскольку низкие стопы бумаги балка прижима сжимает лучше, чем
+высокие, то и усилия резания будут больше, нежели при разрезке высоких стоп. За
+короткое время действия усилия прижима на стопу нижняя и верхняя части стопы
+будут спрессованы больше, нежели ее средняя часть. Это соответственно отражается
+на силах резания – кривая может иметь вогнутую форму. Если высокая стопа
+сталкивается по частям, то спрессованность по высоте окажется неравномерной (<a
+href="#рис3_3">рис. 3.3, <i>д</i></a><span style='mso-bidi-font-style:italic'>),<i>
+</i></span>и тогда изменение сил резания тоже будет иметь ступенчатый характер.
+Иным фактором, определяющим характер изменения усилий резания на этом участке,
+является жесткость привода механизма ножа и степень его демпфирования. <o:p></o:p></span></p>
+
+<div align=center>
+
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;mso-yfti-tbllook:480;mso-padding-alt:
+ 0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width="100%" colspan=3 valign=top style='width:100.0%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center;
+  mso-layout-grid-align:none;text-autospace:none'><a name="рис3_3"><span
+  lang=EN-US style='mso-ansi-language:EN-US'><!--[if gte vml 1]><v:shape id="_x0000_i1030"
+   type="#_x0000_t75" style='width:387pt;height:131.25pt'>
+   <v:imagedata src="03_1.files/image009.jpg" o:title="Клип2" cropbottom="50161f"/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=516 height=175
+  src="03_1.files/image010.jpg" v:shapes="_x0000_i1030"><![endif]></span></a><span
+  lang=EN-US style='mso-ansi-language:EN-US'><span
+  style='mso-spacerun:yes'> </span><!--[if gte vml 1]><v:shape id="_x0000_i1031"
+   type="#_x0000_t75" style='width:137.25pt;height:2in'>
+   <v:imagedata src="03_1.files/image009.jpg" o:title="Клип2" croptop="17393f"
+    cropbottom="31255f" cropright="42234f"/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=183 height=192
+  src="03_1.files/image011.jpg" v:shapes="_x0000_i1031"><![endif]><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes'>
+  <td width="39%" valign=top style='width:39.18%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=right style='margin-top:6.0pt;text-align:right;
+  mso-layout-grid-align:none;text-autospace:none'><span lang=EN-US
+  style='mso-ansi-language:EN-US'><!--[if gte vml 1]><v:shape id="_x0000_i1032"
+   type="#_x0000_t75" style='width:188.25pt;height:225.75pt'>
+   <v:imagedata src="03_1.files/image009.jpg" o:title="Клип2" croptop="17393f"
+    cropbottom="21679f" cropleft="28037f" cropright="5641f"/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=251 height=301
+  src="03_1.files/image033.jpg" v:shapes="_x0000_i1032"><![endif]><o:p></o:p></span></p>
+  </td>
+  <td width="21%" valign=top style='width:21.64%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center;
+  mso-layout-grid-align:none;text-autospace:none'><span lang=EN-US
+  style='mso-ansi-language:EN-US'><!--[if gte vml 1]><v:shape id="_x0000_i1033"
+   type="#_x0000_t75" style='width:190.5pt;height:234pt'>
+   <v:imagedata src="03_1.files/image009.jpg" o:title="Клип2" croptop="38058f"
+    cropright="33314f"/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=254 height=312
+  src="03_1.files/image034.jpg" v:shapes="_x0000_i1033"><![endif]><o:p></o:p></span></p>
+  </td>
+  <td width="39%" valign=top style='width:39.18%;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='margin-top:6.0pt;mso-layout-grid-align:none;
+  text-autospace:none'><span lang=EN-US style='mso-ansi-language:EN-US'><!--[if gte vml 1]><v:shape
+   id="_x0000_i1034" type="#_x0000_t75" style='width:185.25pt;height:135.75pt'>
+   <v:imagedata src="03_1.files/image009.jpg" o:title="Клип2" croptop="49656f"
+    cropleft="34221f"/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=247 height=181
+  src="03_1.files/image035.jpg" v:shapes="_x0000_i1034"><![endif]><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;
+margin-bottom:6.0pt;margin-left:0cm;text-align:center;text-indent:36.0pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:12.0pt'>Рис. 3.3 Экспериментальное исследование силы<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>Например, при измерении сил резания на машине БР-110 (<a
+href="#рис3_3">рис. рис. 3.3, <i style='mso-bidi-font-style:normal'>г</i></a>)
+кривые имеют колебательный характер, в то время как кривые, полученные на
+машине БРП-2, которая имеет более жесткий привод механизме ножа, этих коле­баний
+сил не выявлено (см. рис. рис. 3.3, <i>д</i><span style='mso-bidi-font-style:
+italic'>)<i>.</i></span></span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>Третий участок <span style='mso-bidi-font-style:italic'>(</span></span><i><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>CD</span></i><span
+style='mso-bidi-font-size:14.0pt;color:black;mso-bidi-font-style:italic'>)<i> </i></span><span
+style='mso-bidi-font-size:14.0pt;color:black'>кривых на осциллограммах
+соответствует врезанию ножа в марзан. Величины сил на этом участке наиболее
+зависит от материала и установки марзана, степени его изношенности и приработки
+к ножу. При правильной установке марзана и остром ноже усилие, возникающее в
+этой фазе, может быть даже меньше максимального усилия резания стопы. При
+затуплении ножа и затягивании нижних листов в клиновую канавку марзана усилие
+возрастает. Графики показывают также величину составляющих силы резания. Как
+видно, наиболее весомой является вертикальная сила <i style='mso-bidi-font-style:
+normal'>Р</i><sub>в</sub>. Горизонтальная сила <i style='mso-bidi-font-style:
+normal'>Р</i><sub>г</sub> значительно меньше вертикальной во все периоды
+резания и составляет ориентировочно 20…45% от <i style='mso-bidi-font-style:
+normal'>Р</i><sub>в</sub>. Лобовая сила <i style='mso-bidi-font-style:normal'>Р</i><sub>л</sub>
+достигает максимума и момент дорезания стопы и составляет 16…30% от <i
+style='mso-bidi-font-style:normal'>Р</i><sub>в</sub>. На величину силы <i>Р</i><sub>в</sub><i><span
+style='mso-spacerun:yes'>  </span></i>будут влиять ряд факторов. Она будет
+расти при затуплении ножа, уменьшении угла на­клона ножа &#968;, увеличении
+ширины отрезаемой части стопы и уменьшении гладкости бумаги. Приблизительно
+такие же факторы влияют на силу <i style='mso-bidi-font-style:normal'>Р</i><sub>г</sub>.
+Величину же лобовой силы <i style='mso-bidi-font-style:normal'>Р</i><sub>л</sub>
+будут определять, в основном, параметры процесса сдвига отрезанной части стопы,
+скошенной поверхностью ножа. Поэтому <i style='mso-bidi-font-style:normal'>Р</i><sub>л</sub>
+будет зависеть от ширины стопы </span><i style='mso-bidi-font-style:normal'><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>L</span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>, ее высоты </span><i><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>h</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'>, </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>ширины отрезаемой части стопы,
+гладкости и влажности бумаги. Если первые параметры будут определять массу
+отрезаемой части стопы, то остальные будут влиять на величину коэффициента
+трения. Исследований величины тыльной силы <i style='mso-bidi-font-style:normal'>Р<sub>т</sub></i>
+еще не проводилось. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><i><span
+style='mso-bidi-font-size:14.0pt;color:#A50021'>Погонное усилие резания</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'>. </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>Для характеристики усилий,
+возникающих в процессе резания, имеет значение погонное услие резания. Это
+величина силы резания, приходящаяся на едини­цу длины ножа (например, <st1:metricconverter
+ProductID="1 см" w:st="on">1 см</st1:metricconverter>),<o:p></o:p></span></p>
+
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=1180 style='width:884.7pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:12.0pt;margin-right:0cm;
+  margin-bottom:12.0pt;margin-left:0cm;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'><!--[if gte vml 1]><v:shape
+   id="_x0000_i1035" type="#_x0000_t75" style='width:54.75pt;height:39.75pt'>
+   <v:imagedata src="03_1.files/image015.png" o:title="" croptop="41782f"
+    cropbottom="12513f" cropleft="43500f" cropright="11590f"/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=73 height=53
+  src="03_1.files/image016.jpg" v:shapes="_x0000_i1035"><![endif]></span><span
+  lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+  </td>
+  <td width=58 style='width:43.8pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:12.0pt;margin-right:0cm;
+  margin-bottom:12.0pt;margin-left:17.6pt;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt'>(2)<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt;background:white;
+mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>где <span style='mso-tab-count:1'>   </span></span><i><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>L</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'> – </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'><span
+style='mso-spacerun:yes'> </span>ширина стопы, см.</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt;text-align:justify;text-indent:
+36.0pt;background:white;mso-layout-grid-align:none;text-autospace:none'><span
+style='mso-bidi-font-size:14.0pt;color:black'>Погонное усилие резания зависит
+от многих факторов, главными же являются вид материала в стопе и острота ножа.
+Погонное усилие резания для некоторых материалов приведено в <a
+href="#таблица3_1">таблице 3.1</a></span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=right style='margin-bottom:6.0pt;text-align:right;
+text-indent:36.0pt;background:white;mso-layout-grid-align:none;text-autospace:
+none'><span style='mso-bidi-font-size:14.0pt;color:black'>Таблица 3.1<b
+style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+
+<p class=MsoNormal align=center style='margin-bottom:6.0pt;text-align:center;
+text-indent:36.0pt;background:white;mso-layout-grid-align:none;text-autospace:
+none'><span style='mso-bidi-font-size:14.0pt;color:black'>Погонное усилие
+резания <span style='mso-bidi-font-style:italic'>для отдельных видов материалов<o:p></o:p></span></span></p>
+
+<div align=center>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;mso-border-insideh:
+ .5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width=399 style='width:299.4pt;border:solid windowtext 1.0pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;text-indent:36.0pt;
+  mso-layout-grid-align:none;text-autospace:none'><a name="таблица3_1"><span
+  style='font-size:12.0pt;color:black;mso-bidi-font-style:italic'>Вид материала</span></a><span
+  style='mso-bookmark:таблица3_1'><span style='font-size:12.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+  <td width=182 style='width:136.6pt;border:solid windowtext 1.0pt;border-left:
+  none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+  style='mso-bookmark:таблица3_1'><span style='font-size:12.0pt;color:black'>Погонное
+  усилие,<span style='mso-spacerun:yes'>  </span>Н/см<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td width=399 style='width:299.4pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>Бумага мягкого типа (папиросная, копировальная,
+  промокательная)<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+  <td width=182 style='width:136.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>150</span></span><span style='mso-bookmark:таблица3_1'><span
+  style='mso-bidi-font-size:14.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td width=399 style='width:299.4pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>Типографская бумага<span style='mso-spacerun:yes'> 
+  </span>№<span style='mso-spacerun:yes'>  </span>2</span></span><span
+  style='mso-bookmark:таблица3_1'><span style='mso-bidi-font-size:14.0pt;
+  color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+  <td width=182 style='width:136.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>166</span></span><span style='mso-bookmark:таблица3_1'><span
+  style='mso-bidi-font-size:14.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td width=399 style='width:299.4pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>Типографская бумага<span style='mso-spacerun:yes'> 
+  </span>№<span style='mso-spacerun:yes'>  </span>1</span></span><span
+  style='mso-bookmark:таблица3_1'><span style='mso-bidi-font-size:14.0pt;
+  color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+  <td width=182 style='width:136.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>184</span></span><span style='mso-bookmark:таблица3_1'><span
+  style='mso-bidi-font-size:14.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td width=399 style='width:299.4pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>Мелованная бумага</span></span><span style='mso-bookmark:
+  таблица3_1'><span style='mso-bidi-font-size:14.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+  <td width=182 style='width:136.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>202</span></span><span style='mso-bookmark:таблица3_1'><span
+  style='mso-bidi-font-size:14.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td width=399 style='width:299.4pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>Офсетная <span style='mso-spacerun:yes'> </span>бумага №
+  2</span></span><span style='mso-bookmark:таблица3_1'><span style='mso-bidi-font-size:
+  14.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+  <td width=182 style='width:136.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>221</span></span><span style='mso-bookmark:таблица3_1'><span
+  style='mso-bidi-font-size:14.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+ </tr>
+ <tr style='mso-yfti-irow:6'>
+  <td width=399 style='width:299.4pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>Офсетная<span style='mso-spacerun:yes'>  </span>бумага №
+  1</span></span><span style='mso-bookmark:таблица3_1'><span style='mso-bidi-font-size:
+  14.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+  <td width=182 style='width:136.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>253</span></span><span style='mso-bookmark:таблица3_1'><span
+  style='mso-bidi-font-size:14.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+ </tr>
+ <tr style='mso-yfti-irow:7'>
+  <td width=399 style='width:299.4pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>Картон марки А</span></span><span style='mso-bookmark:
+  таблица3_1'><span style='mso-bidi-font-size:14.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+  <td width=182 style='width:136.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>270</span></span><span style='mso-bookmark:таблица3_1'><span
+  style='mso-bidi-font-size:14.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+ </tr>
+ <tr style='mso-yfti-irow:8'>
+  <td width=399 style='width:299.4pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>Бумага форзацная, ватман, калька, элерокартон, еллофан<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+  <td width=182 style='width:136.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>200…280</span></span><span style='mso-bookmark:таблица3_1'><span
+  style='mso-bidi-font-size:14.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+ </tr>
+ <tr style='mso-yfti-irow:9'>
+  <td width=399 style='width:299.4pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>Пергамент, целлулоид, металлическая фольга</span></span><span
+  style='mso-bookmark:таблица3_1'><span style='mso-bidi-font-size:14.0pt;
+  color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+  <td width=182 style='width:136.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>300…380</span></span><span style='mso-bookmark:таблица3_1'><span
+  style='mso-bidi-font-size:14.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+ </tr>
+ <tr style='mso-yfti-irow:10;mso-yfti-lastrow:yes'>
+  <td width=399 style='width:299.4pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>Мягкая резина</span></span><span style='mso-bookmark:
+  таблица3_1'><span style='mso-bidi-font-size:14.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+  <td width=182 style='width:136.6pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bookmark:таблица3_1'><span
+  style='color:black'>150</span></span><span style='mso-bookmark:таблица3_1'><span
+  style='mso-bidi-font-size:14.0pt;color:black'><o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:таблица3_1'></span>
+ </tr>
+</table>
+
+</div>
+
+<span style='mso-bookmark:таблица3_1'></span>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:36.0pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><span
+style='mso-bidi-font-size:14.0pt;color:black'>Другим фактором, существенно
+влияющим на величину погонного усилия резания, является </span><i><span
+style='mso-bidi-font-size:14.0pt;color:#446644'>острота</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'> </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>ножа. По мере затупления ножа <i
+style='mso-bidi-font-style:normal'>р</i> быстро растет, превышая первоначальное
+в 5…6 раз. Кроме того, на погонное усилие резания влияют еще ряд факторов: угол
+заточки ножа; высота стопы; скорость резки; усилие прижима и влажность бумаги.
+Погонное усилие резания растет при увеличении угла заточки ножа и резке бумаги
+поперек волокон. Оно уменьшается при увеличении скорости резки, смазке ножа
+парафином и мылом, увеличении относительной влажности бумаги.</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><i><span
+style='mso-bidi-font-size:14.0pt;color:#446644'>Работа сил резания</span></i><i><span
+style='mso-bidi-font-size:14.0pt;color:black'>. </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>Для расчета силы резания
+применяют формулу<o:p></o:p></span></p>
+
+<table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=1180 style='width:884.7pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:12.0pt;margin-right:0cm;
+  margin-bottom:12.0pt;margin-left:0cm;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><i style='mso-bidi-font-style:normal'><span
+  style='mso-bidi-font-size:14.0pt'><span style='position:relative;top:8.0pt;
+  mso-text-raise:-8.0pt'><!--[if gte vml 1]><v:shape id="_x0000_i1036" type="#_x0000_t75"
+   style='width:59.25pt;height:21pt' o:ole="" fillcolor="window">
+   <v:imagedata src="03_1.files/image014.wmz" o:title=""/>
+  </v:shape><![endif]--><![if !vml]><img border=0 width=79 height=28
+  src="03_1.files/image012.gif" v:shapes="_x0000_i1036"><![endif]></span><!--[if gte mso 9]><xml>
+   <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1036"
+    DrawAspect="Content" ObjectID="_1273753603">
+   </o:OLEObject>
+  </xml><![endif]--></span></i><span lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+  </td>
+  <td width=58 style='width:43.8pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-top:12.0pt;margin-right:0cm;
+  margin-bottom:12.0pt;margin-left:17.6pt;text-align:center;mso-layout-grid-align:
+  none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt'>(3)<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt;background:white;
+mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>где <span style='mso-tab-count:1'>   </span></span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>L</span></i><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black'> </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>– ширина стопы, см;<i
+style='mso-bidi-font-style:normal'><o:p></o:p></i></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt;background:white;
+mso-layout-grid-align:none;text-autospace:none'><i style='mso-bidi-font-style:
+normal'><span style='mso-bidi-font-size:14.0pt;color:black'><span
+style='mso-tab-count:1'>         </span>р</span></i><span style='mso-bidi-font-size:
+14.0pt;color:black'> – погонное усилие резания (для бумаг рекомендуется среднее
+значение 200 Н/см);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt;background:white;
+mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'><span style='mso-tab-count:1'>         </span></span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>k</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>з</span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'> – коэффициент запаса,
+учитывающий возможное затупление ножа. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>Для определе­ния максимальной <i style='mso-bidi-font-style:
+normal'>Р</i><sub>р</sub> принимают<i style='mso-bidi-font-style:normal'> </i></span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>k</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>з</span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'> = 1,5. Работа резания (работа,
+расходуемая на преодоление ножом всех сил сопротивления стопы листов) является
+основной частью работы, которую выполняет резальная машина. Если известна кри­вая
+зависимости </span><i style='mso-bidi-font-style:normal'><span
+style='mso-bidi-font-size:14.0pt'><span style='position:relative;top:8.0pt;
+mso-text-raise:-8.0pt'><!--[if gte vml 1]><v:shape id="_x0000_i1037" type="#_x0000_t75"
+ style='width:60.75pt;height:21pt' o:ole="" fillcolor="window">
+ <v:imagedata src="03_1.files/image017.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=81 height=28
+src="03_1.files/image020.gif" v:shapes="_x0000_i1037"><![endif]></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1037"
+  DrawAspect="Content" ObjectID="_1273753604">
+ </o:OLEObject>
+</xml><![endif]--></span></i><span style='mso-bidi-font-size:14.0pt;color:black'>,
+рис. 3.3, <i>в</i><span style='mso-bidi-font-style:italic'>,<i> </i></span>то
+работа резания <o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:12.0pt;margin-right:0cm;
+margin-bottom:12.0pt;margin-left:0cm;text-align:center;text-indent:36.0pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><i
+style='mso-bidi-font-style:normal'><span style='mso-bidi-font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1038" type="#_x0000_t75" style='width:76.5pt;height:42.75pt'>
+ <v:imagedata src="03_1.files/image021.png" o:title="" croptop="36055f"
+  cropbottom="17392f" cropleft="25757f" cropright="25184f"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=102 height=57
+src="03_1.files/image022.jpg" v:shapes="_x0000_i1038"><![endif]></span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt;background:white;
+mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>где <span style='mso-tab-count:1'>   </span></span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>S<sub>H</sub></span></i><i><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black'> </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>и </span><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;
+mso-ansi-language:EN-US'>S<sub>K</sub></span></i><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;color:black'> </span><span style='mso-bidi-font-size:
+14.0pt;color:black'>– граничные значения пути ножа.</span><i style='mso-bidi-font-style:
+normal'><span style='mso-bidi-font-size:14.0pt'> </span></i><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>Для практических инженерных расчетов условно принимают</span><span
+style='mso-bidi-font-size:14.0pt'> <span style='color:black'>усилие резания </span></span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>P</span></i><sub><span lang=EN-US
+style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>p</span></sub><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black'> </span><span
+style='mso-bidi-font-size:14.0pt;color:black'>постоянным, тогда</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:12.0pt;margin-right:0cm;
+margin-bottom:12.0pt;margin-left:0cm;text-align:center;text-indent:36.0pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><span
+style='mso-bidi-font-size:14.0pt'><!--[if gte vml 1]><v:shape id="_x0000_i1039"
+ type="#_x0000_t75" style='width:55.5pt;height:19.5pt'>
+ <v:imagedata src="03_1.files/image023.png" o:title="" croptop="43054f"
+  cropbottom="16968f" cropleft="29906f" cropright="25041f"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=74 height=26
+src="03_1.files/image024.jpg" v:shapes="_x0000_i1039"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt;background:white;
+mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>где <span style='mso-tab-count:1'>   </span></span><i><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;mso-ansi-language:EN-US'>S</span></i><i><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;color:black'> </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>– длина пути ножа во время
+резания, которая определяется высотой стопы </span><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;
+mso-ansi-language:EN-US'>H</span></i><i><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black'> </span></i><span style='mso-bidi-font-size:14.0pt;
+color:black'>и усредненным углом траектории ножа &#952;:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:12.0pt;margin-right:0cm;
+margin-bottom:12.0pt;margin-left:0cm;text-align:center;text-indent:36.0pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><i
+style='mso-bidi-font-style:normal'><span style='mso-bidi-font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1040" type="#_x0000_t75" style='width:54.75pt;height:36.75pt'>
+ <v:imagedata src="03_1.files/image025.png" o:title="" croptop="43054f"
+  cropbottom="12089f" cropleft="29763f" cropright="25327f"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=73 height=49
+src="03_1.files/image026.jpg" v:shapes="_x0000_i1040"><![endif]></span></i><span
+lang=EN-US style='mso-bidi-font-size:14.0pt;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>Средняя механическая мощность, расходуемая на резание за
+цикл,<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:12.0pt;margin-right:0cm;
+margin-bottom:12.0pt;margin-left:0cm;text-align:center;text-indent:36.0pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><i
+style='mso-bidi-font-style:normal'><span style='mso-bidi-font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1041" type="#_x0000_t75" style='width:78pt;height:39.75pt'>
+ <v:imagedata src="03_1.files/image027.png" o:title="" croptop="43054f"
+  cropbottom="11241f" cropleft="27617f" cropright="23038f"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=104 height=53
+src="03_1.files/image028.jpg" v:shapes="_x0000_i1041"><![endif]></span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;tab-stops:35.45pt;background:white;
+mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>где <span style='mso-tab-count:1'>   </span></span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>t</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>ц</span></sub><span
+style='mso-bidi-font-size:14.0pt;color:black'> = 60/</span><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='mso-bidi-font-size:14.0pt;color:black;
+mso-ansi-language:EN-US'>n</span></i><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black'> </span><span style='mso-bidi-font-size:14.0pt;color:black'>–
+время одного кинематического цикла машины;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><i><span
+style='mso-bidi-font-size:14.0pt;color:black'>п </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>– количество циклов машины в
+минуту при непрерывной работе;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;tab-stops:35.45pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><i
+style='mso-bidi-font-style:normal'><span style='mso-bidi-font-size:14.0pt;
+color:black'>&#951;</span></i><sub><span style='mso-bidi-font-size:14.0pt;
+color:black'>н</span></sub><span style='mso-bidi-font-size:14.0pt;color:black'>
+– КПД механизма ножа.</span><span style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;tab-stops:35.45pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><span
+style='mso-bidi-font-size:14.0pt;color:black'>Фактическое время резания </span><i
+style='mso-bidi-font-style:normal'><span lang=EN-US style='mso-bidi-font-size:
+14.0pt;color:black;mso-ansi-language:EN-US'>t</span></i><sub><span
+style='mso-bidi-font-size:14.0pt;color:black'>р</span></sub><i><span
+style='mso-bidi-font-size:14.0pt;color:black'> </span></i><span
+style='mso-bidi-font-size:14.0pt;color:black'>будет определяться углом поворо­та
+кривошипа &#966;<sub>р</sub>, соответствующим периоду разрезки стопы, т. е.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:12.0pt;margin-right:0cm;
+margin-bottom:12.0pt;margin-left:0cm;text-align:center;text-indent:36.0pt;
+background:white;mso-layout-grid-align:none;text-autospace:none'><i
+style='mso-bidi-font-style:normal'><span style='mso-bidi-font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1042" type="#_x0000_t75" style='width:54pt;height:38.25pt'>
+ <v:imagedata src="03_1.files/image029.png" o:title="" croptop="45599f"
+  cropbottom="9120f" cropleft="29620f" cropright="25613f"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=72 height=51
+src="03_1.files/image030.jpg" v:shapes="_x0000_i1042"><![endif]></span></i><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;background:white;mso-layout-grid-align:
+none;text-autospace:none'><span style='mso-bidi-font-size:14.0pt;color:black'>где
+<span style='mso-tab-count:1'>   </span>&#966;<sub>р</sub> = &#966;<sub>2</sub></span><span
+style='mso-bidi-font-size:14.0pt'> – <span style='color:black'>&#966;<sub>1</sub></span>,
+<span style='color:black'>здесь &#966;<sub>1</sub> и &#966;<sub>2</sub></span>
+–<span style='color:black'> углы, соответствующие началу вре­зания ножа в стопу
+и марзан, радиан, рис.1.13,&nbsp;<i style='mso-bidi-font-style:normal'>а</i>;<o:p></o:p></span></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt;background:
+white;mso-layout-grid-align:none;text-autospace:none'><span style='mso-bidi-font-size:
+14.0pt;color:black'>&#969;<sub>1 </sub>– угловая скорость приводного вала, с<sup>–1</sup>.</span><span
+style='mso-bidi-font-size:14.0pt'><o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
